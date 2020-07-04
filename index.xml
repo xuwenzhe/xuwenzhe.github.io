@@ -5,7 +5,17 @@
     <description>Recent content in Wenzhe&#39;s Blog on Wenzhe&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Fri, 03 Jul 2020 01:17:52 -0700</lastBuildDate>
     <atom:link href="https://xuwenzhe.github.io/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Posts</title>
+      <link>https://xuwenzhe.github.io/posts/</link>
+      <pubDate>Fri, 03 Jul 2020 01:17:52 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/posts/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

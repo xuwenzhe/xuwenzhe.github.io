@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Wenzhe&#39;s Blog</title>
+    <link>https://xuwenzhe.github.io/posts/</link>
+    <description>Recent content in Posts on Wenzhe&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 03 Jul 2020 01:17:52 -0700</lastBuildDate>
+    
+	<atom:link href="https://xuwenzhe.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 Hugo &#43; Github Pages 搭建个人博客</title>
+      <link>https://xuwenzhe.github.io/2020/hugo-blog-site/</link>
+      <pubDate>Fri, 03 Jul 2020 01:17:52 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/2020/hugo-blog-site/</guid>
+      <description>Hugo: 一个静态网页生成器，将markdown格式的博文编译为HTML，CSS，JavaScript Github Pages: 静态网页托管服务，将hugo转化后的博客公</description>
+    </item>
+    
+  </channel>
+</rss>
