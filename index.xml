@@ -1,0 +1,11 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wenzhe&#39;s Blog on Wenzhe&#39;s Blog</title>
+    <link>https://xuwenzhe.github.io/</link>
+    <description>Recent content in Wenzhe&#39;s Blog on Wenzhe&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <atom:link href="https://xuwenzhe.github.io/" rel="self" type="application/rss+xml" />
+    
+  </channel>
+</rss>
