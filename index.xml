@@ -17,5 +17,15 @@
       <description></description>
     </item>
     
+    <item>
+      <title>About</title>
+      <link>https://xuwenzhe.github.io/about/</link>
+      <pubDate>Thu, 02 Jul 2020 17:50:36 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/about/</guid>
+      <description>&lt;h1 id=&#34;this-is-wenzhes-about&#34;&gt;this is wenzhe&amp;rsquo;s about&lt;/h1&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
