@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Wenzhe&#39;s Blog</title>
-    <link>https://xuwenzhe.github.io/posts/</link>
-    <description>Recent content in Posts on Wenzhe&#39;s Blog</description>
+    <title>leetcode on Wenzhe&#39;s Blog</title>
+    <link>https://xuwenzhe.github.io/tags/leetcode/</link>
+    <description>Recent content in leetcode on Wenzhe&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 16 Jul 2020 12:46:49 -0700</lastBuildDate>
     
-	<atom:link href="https://xuwenzhe.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://xuwenzhe.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -36,28 +36,6 @@
       
       <guid>https://xuwenzhe.github.io/2020/leetcode-binary-search/</guid>
       <description>模板 # def binarySearch(nums, target): # if len(nums) == 0: # return -1 # start, end = 0, len(nums) - 1 while start + 1 &amp;lt; end: # 要点3-1 mid = (start + end) // 2 # 要点3-2: python动态数据类型 # if nums[start] &amp;lt; target: start = mid # 要</description>
-    </item>
-    
-    <item>
-      <title>Foundational Finance for Strategic Decision Making</title>
-      <link>https://xuwenzhe.github.io/2020/coursera-umich-fffsdm/</link>
-      <pubDate>Mon, 06 Jul 2020 21:02:03 -0700</pubDate>
-      
-      <guid>https://xuwenzhe.github.io/2020/coursera-umich-fffsdm/</guid>
-      <description>Coursera specializations offered by UM
-Course I Time Value of Money Simple Future Value (FV)  PV = Present Value (unit: $) FV = Present Value (unit: $) n = # of Periods (#) r = Interest Rate (%, not $) &amp;gt; 0 (assumption)  Insight: A dollar today is worth more than a dollar tomorrow.
-You cannot compare money across time.
-Example: Power of Compounding!
-Peter Minuit bought the Manhattan Island from Native Americans for $24 in 1626.</description>
-    </item>
-    
-    <item>
-      <title>使用 Hugo &#43; Github Pages 搭建个人博客</title>
-      <link>https://xuwenzhe.github.io/2020/hugo-blog-site/</link>
-      <pubDate>Fri, 03 Jul 2020 01:17:52 -0700</pubDate>
-      
-      <guid>https://xuwenzhe.github.io/2020/hugo-blog-site/</guid>
-      <description>Hugo: 一个静态网页生成器，将markdown格式的博文编译为HTML，CSS，JavaScript Github Pages: 静态网页托管服务，将hugo转化后的博客公</description>
     </item>
     
   </channel>

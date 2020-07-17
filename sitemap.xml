@@ -2,9 +2,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://xuwenzhe.github.io/2020/leetcode-binary-search/</loc>
+      <loc>https://xuwenzhe.github.io/tags/leetcode/</loc>
       
-      <lastmod>2020-07-07T19:47:02-07:00</lastmod>
+      <lastmod>2020-07-16T12:46:49-07:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://xuwenzhe.github.io/2020/leetcode-tree-traversal/</loc>
+      
+      <lastmod>2020-07-16T12:46:49-07:00</lastmod>
       
       
       
@@ -14,7 +24,17 @@
     <url>
       <loc>https://xuwenzhe.github.io/posts/</loc>
       
-      <lastmod>2020-07-07T19:47:02-07:00</lastmod>
+      <lastmod>2020-07-16T12:46:49-07:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://xuwenzhe.github.io/tags/</loc>
+      
+      <lastmod>2020-07-16T12:46:49-07:00</lastmod>
       
       
       
@@ -23,6 +43,26 @@
   
     <url>
       <loc>https://xuwenzhe.github.io/</loc>
+      
+      <lastmod>2020-07-16T12:46:49-07:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://xuwenzhe.github.io/2020/leetcode-divide-conquer/</loc>
+      
+      <lastmod>2020-07-10T00:20:03-07:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://xuwenzhe.github.io/2020/leetcode-binary-search/</loc>
       
       <lastmod>2020-07-07T19:47:02-07:00</lastmod>
       
@@ -63,14 +103,6 @@
   
     <url>
       <loc>https://xuwenzhe.github.io/categories/</loc>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/tags/</loc>
       
       
       

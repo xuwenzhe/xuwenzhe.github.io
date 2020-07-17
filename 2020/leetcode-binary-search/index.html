@@ -10,7 +10,7 @@
     
     
     <link rel="prev" href="https://xuwenzhe.github.io/2020/coursera-umich-fffsdm/" />
-    
+    <link rel="next" href="https://xuwenzhe.github.io/2020/leetcode-divide-conquer/" />
     <link rel="canonical" href="https://xuwenzhe.github.io/2020/leetcode-binary-search/" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -22,10 +22,10 @@
     <title>
         
         
-            Leetcode之Binary Search | Wenzhe&#39;s Blog
+            Leetcode：二分查找 | Wenzhe&#39;s Blog
         
     </title>
-    <meta name="title" content="Leetcode之Binary Search | Wenzhe&#39;s Blog">
+    <meta name="title" content="Leetcode：二分查找 | Wenzhe&#39;s Blog">
     
 <link rel="stylesheet" href="/css/main.min.css">
 
@@ -43,9 +43,9 @@
          "@id": "https:\/\/xuwenzhe.github.io"
     },
     "articleSection" : "posts",
-    "name" : "Leetcode之Binary Search",
-    "headline" : "Leetcode之Binary Search",
-    "description" : "模板 def binarySearch(nums, target): if len(nums) == 0: return -1 start, end = 0, len(nums) - 1 while start \u002b 1 \u0026lt; end: # 要点3-1 mid = (start \u002b end) \/\/ 2 # 要点3-2: python动态数据类型 if nums[start] \u0026lt; target: start = mid # 要点3-3:",
+    "name" : "Leetcode：二分查找",
+    "headline" : "Leetcode：二分查找",
+    "description" : "模板 # def binarySearch(nums, target): # if len(nums) == 0: # return -1 # start, end = 0, len(nums) - 1 while start \u002b 1 \u0026lt; end: # 要点3-1 mid = (start \u002b end) \/\/ 2 # 要点3-2: python动态数据类型 # if nums[start] \u0026lt; target: start = mid # 要",
     "inLanguage" : "zh-cn",
     "author" : "Wenzhe",
     "creator" : "Wenzhe",
@@ -56,8 +56,8 @@
     "datePublished": "2020-07-07 19:47:02 -0700 PDT",
     "dateModified" : "2020-07-07 19:47:02 -0700 PDT",
     "url" : "https:\/\/xuwenzhe.github.io\/2020\/leetcode-binary-search\/",
-    "wordCount" : "3030",
-    "keywords" : [  "Wenzhe\u0027s Blog"]
+    "wordCount" : "3454",
+    "keywords" : [ "leetcode", "Wenzhe\u0027s Blog"]
 }
 </script>
 
@@ -146,7 +146,7 @@
                     
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Leetcode之Binary Search</h1>
+        <h1 class="post-title" itemprop="name headline">Leetcode：二分查找</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://xuwenzhe.github.io" rel="author">Wenzhe</a> with ♥
                 <span class="post-time">
@@ -154,7 +154,7 @@
                 </span>
                 in
                 
-                <span class="post-word-count">3030 words</span>
+                <span class="post-word-count">3454 words</span>
         </div>
     </header>
 
@@ -177,576 +177,562 @@
         
 
         <h1 id="模板">模板</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">binarySearch</span>(nums, target):
-	<span style="color:#66d9ef">if</span> len(nums) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-		<span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-	start, end <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(nums) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># def binarySearch(nums, target):</span>
+<span style="color:#75715e"># 	if len(nums) == 0:</span>
+<span style="color:#75715e"># 		return -1</span>
+<span style="color:#75715e"># 	start, end = 0, len(nums) - 1</span>
 	<span style="color:#66d9ef">while</span> start <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> end: <span style="color:#75715e"># 要点3-1</span>
 		mid <span style="color:#f92672">=</span> (start <span style="color:#f92672">+</span> end) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e"># 要点3-2: python动态数据类型</span>
-		<span style="color:#66d9ef">if</span> nums[start] <span style="color:#f92672">&lt;</span> target:
+<span style="color:#75715e"># 		if nums[start] &lt; target:</span>
 			start <span style="color:#f92672">=</span> mid <span style="color:#75715e"># 要点3-3: mid不+-1</span>
-		<span style="color:#66d9ef">else</span>:
-			end <span style="color:#f92672">=</span> mid
+<span style="color:#75715e"># 		else:</span>
+<span style="color:#75715e"># 			end = mid</span>
 
-	<span style="color:#66d9ef">if</span> nums[start] <span style="color:#f92672">==</span> target:
-		<span style="color:#66d9ef">return</span> start
-	<span style="color:#66d9ef">if</span> nums[end] <span style="color:#f92672">==</span> target:
-		<span style="color:#66d9ef">return</span> end
-	<span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-</code></pre></div><table>
-<thead>
-<tr>
-<th><a href=""></a></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="/leetcode-binary-search/find-position.png" alt="find-position" loading="lazy" ></td>
-<td><img src="/leetcode-binary-search/non-mono.png" alt="non-mono" loading="lazy" ></td>
-</tr>
-<tr>
-<td><img src="/leetcode-binary-search/find-status.png" alt="find-status" loading="lazy" ></td>
-<td><img src="/leetcode-binary-search/binary-answer.png" alt="binary-answer" loading="lazy" ></td>
-</tr>
-</tbody>
-</table>
+<span style="color:#75715e"># 	if nums[start] == target:</span>
+<span style="color:#75715e"># 		return start</span>
+<span style="color:#75715e"># 	if nums[end] == target:</span>
+<span style="color:#75715e"># 		return end</span>
+<span style="color:#75715e"># 	return -1</span>
+</code></pre></div><p><img src="/leetcode-binary-search/mindmaster.png" alt=""></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <h1 id="找位置">找位置</h1>
-<h2 id="l34-find-first-and-last-position-of-element-in-sorted-array-medium">L34. Find First and Last Position of Element in Sorted Array (medium)</h2>
+<h2 id="34-find-first-and-last-position-of-element-in-sorted-array-medium">34. Find First and Last Position of Element in Sorted Array (medium)</h2>
 <p>简述：已排序数组，求目标值第一次和最后一次出现的位置</p>
 <p>思路：拆解为两个子函数，<code>findFirst()</code>和<code>findLast()</code></p>
 <p>联系：基础模板题</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">searchRange</span>(self, nums, target):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type nums: List[int]
-</span><span style="color:#e6db74">        :type target: int
-</span><span style="color:#e6db74">        :rtype: List[int]
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        first, last <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>findFirst(nums, target), self<span style="color:#f92672">.</span>findLast(nums, target)
-        <span style="color:#66d9ef">return</span> [first, last]
-        
-        
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findFirst</span>(self, nums, target):
-        <span style="color:#66d9ef">if</span> len(nums) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(nums) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> nums[mid] <span style="color:#f92672">&lt;</span> target: <span style="color:#75715e"># 要点2-1</span>
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">if</span> nums[left] <span style="color:#f92672">==</span> target:
-            <span style="color:#66d9ef">return</span> left
-        <span style="color:#66d9ef">if</span> nums[right] <span style="color:#f92672">==</span> target:
-            <span style="color:#66d9ef">return</span> right
-        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-    
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findLast</span>(self, nums, target):
-        <span style="color:#66d9ef">if</span> len(nums) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(nums) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> nums[mid] <span style="color:#f92672">&gt;</span> target: <span style="color:#75715e"># 要点2-2</span>
-                right <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                left <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">if</span> nums[right] <span style="color:#f92672">==</span> target:
-            <span style="color:#66d9ef">return</span> right
-        <span style="color:#66d9ef">if</span> nums[left] <span style="color:#f92672">==</span> target:
-            <span style="color:#66d9ef">return</span> left
-        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  
-</code></pre></div><h2 id="l35-search-insert-position-easy">L35. Search Insert Position (easy)</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def searchRange(self, nums, target):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type nums: List[int]</span>
+<span style="color:#75715e"># 		:type target: int</span>
+<span style="color:#75715e"># 		:rtype: List[int]</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		first, last = self.findFirst(nums, target), self.findLast(nums, target)</span>
+<span style="color:#75715e"># 		return [first, last]</span>
+		
+		
+<span style="color:#75715e"># 	def findFirst(self, nums, target):</span>
+<span style="color:#75715e"># 		if len(nums) == 0:</span>
+<span style="color:#75715e"># 			return -1</span>
+<span style="color:#75715e"># 		left, right = 0, len(nums) - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+			<span style="color:#66d9ef">if</span> nums[mid] <span style="color:#f92672">&lt;</span> target: <span style="color:#75715e"># 要点2-1</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 		if nums[left] == target:</span>
+<span style="color:#75715e"># 			return left</span>
+<span style="color:#75715e"># 		if nums[right] == target:</span>
+<span style="color:#75715e"># 			return right</span>
+<span style="color:#75715e"># 		return -1</span>
+	
+<span style="color:#75715e"># 	def findLast(self, nums, target):</span>
+<span style="color:#75715e"># 		if len(nums) == 0:</span>
+<span style="color:#75715e"># 			return -1</span>
+<span style="color:#75715e"># 		left, right = 0, len(nums) - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+			<span style="color:#66d9ef">if</span> nums[mid] <span style="color:#f92672">&gt;</span> target: <span style="color:#75715e"># 要点2-2</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 		if nums[right] == target:</span>
+<span style="color:#75715e"># 			return right</span>
+<span style="color:#75715e"># 		if nums[left] == target:</span>
+<span style="color:#75715e"># 			return left</span>
+<span style="color:#75715e"># 		return -1</span>
+</code></pre></div><h2 id="35-search-insert-position-easy">35. Search Insert Position (easy)</h2>
 <p>简述：已排序数组，求插入位置保证插入后依然排序</p>
 <p>思路：类似<code>findFirst()</code></p>
-<p>联系：出自L34</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">searchInsert</span>(self, nums, target):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type nums: List[int]
-</span><span style="color:#e6db74">        :type target: int
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        <span style="color:#75715e"># 要点1-1: 注意输入边界情况</span>
-        <span style="color:#66d9ef">if</span> target <span style="color:#f92672">&lt;</span> nums[<span style="color:#ae81ff">0</span>]:
-            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-        <span style="color:#66d9ef">if</span> target <span style="color:#f92672">&gt;</span> nums[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
-            <span style="color:#66d9ef">return</span> len(nums)
-        
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(nums) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> nums[mid] <span style="color:#f92672">&lt;</span> target:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">if</span> nums[left] <span style="color:#f92672">&gt;=</span> target:
-            <span style="color:#66d9ef">return</span> left
-        <span style="color:#66d9ef">return</span> right
-</code></pre></div><h2 id="l744-find-smallest-letter-greater-than-target-easy">L744. Find Smallest Letter Greater Than Target (easy)</h2>
+<p>联系：出自34</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def searchInsert(self, nums, target):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type nums: List[int]</span>
+<span style="color:#75715e"># 		:type target: int</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		# 要点1-1: 注意输入边界情况</span>
+		<span style="color:#66d9ef">if</span> target <span style="color:#f92672">&lt;</span> nums[<span style="color:#ae81ff">0</span>]:
+			<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+		<span style="color:#66d9ef">if</span> target <span style="color:#f92672">&gt;</span> nums[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+			<span style="color:#66d9ef">return</span> len(nums)
+		
+<span style="color:#75715e"># 		left, right = 0, len(nums) - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if nums[mid] &lt; target:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 		if nums[left] &gt;= target:</span>
+<span style="color:#75715e"># 			return left</span>
+<span style="color:#75715e"># 		return right</span>
+</code></pre></div><h2 id="744-find-smallest-letter-greater-than-target-easy">744. Find Smallest Letter Greater Than Target (easy)</h2>
 <p>简述：已排序的数组，求大于目标的最前位置</p>
 <p>思路：类似<code>findFirst()</code></p>
-<p>联系：出自L34</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nextGreatestLetter</span>(self, letters, target):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type letters: List[str]
-</span><span style="color:#e6db74">        :type target: str
-</span><span style="color:#e6db74">        :rtype: str
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(letters) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> letters[mid] <span style="color:#f92672">&lt;=</span> target:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">if</span> letters[left] <span style="color:#f92672">&gt;</span> target:
-            <span style="color:#66d9ef">return</span> letters[left]
-        <span style="color:#66d9ef">if</span> letters[right] <span style="color:#f92672">&gt;</span> target:
-            <span style="color:#66d9ef">return</span> letters[right]
-        <span style="color:#66d9ef">return</span> letters[<span style="color:#ae81ff">0</span>]
-</code></pre></div><h2 id="l702-search-in-a-sorted-array-of-unknown-size-medium">L702. Search in a Sorted Array of Unknown Size (medium)</h2>
+<p>联系：出自34</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def nextGreatestLetter(self, letters, target):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type letters: List[str]</span>
+<span style="color:#75715e"># 		:type target: str</span>
+<span style="color:#75715e"># 		:rtype: str</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		left, right = 0, len(letters) - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if letters[mid] &lt;= target:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 		if letters[left] &gt; target:</span>
+<span style="color:#75715e"># 			return letters[left]</span>
+<span style="color:#75715e"># 		if letters[right] &gt; target:</span>
+<span style="color:#75715e"># 			return letters[right]</span>
+<span style="color:#75715e"># 		return letters[0]</span>
+</code></pre></div><h2 id="702-search-in-a-sorted-array-of-unknown-size-medium">702. Search in a Sorted Array of Unknown Size (medium)</h2>
 <p>简述：已排序数组，但不知size，求目标值位置</p>
 <p>思路：扩右边直到包含目标值，再二分</p>
-<p>联系：出自L34</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">search</span>(self, reader, target):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type reader: ArrayReader
-</span><span style="color:#e6db74">        :type target: int
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        <span style="color:#75715e"># 要点1-1: 倍增右边界</span>
-        right <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> reader<span style="color:#f92672">.</span>get(right) <span style="color:#f92672">&lt;</span> target:
-            right <span style="color:#f92672">*=</span> <span style="color:#ae81ff">2</span>
-        left <span style="color:#f92672">=</span> right <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> reader<span style="color:#f92672">.</span>get(mid) <span style="color:#f92672">==</span> target:
-                <span style="color:#66d9ef">return</span> mid
-            <span style="color:#66d9ef">if</span> reader<span style="color:#f92672">.</span>get(mid) <span style="color:#f92672">&lt;</span> target:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">if</span> reader<span style="color:#f92672">.</span>get(left) <span style="color:#f92672">==</span> target:
-            <span style="color:#66d9ef">return</span> left
-        <span style="color:#66d9ef">if</span> reader<span style="color:#f92672">.</span>get(right) <span style="color:#f92672">==</span> target:
-            <span style="color:#66d9ef">return</span> right
-        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-</code></pre></div><h2 id="l74-search-a-2d-matrix-medium">L74. Search a 2D Matrix (medium)</h2>
+<p>联系：出自34</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def search(self, reader, target):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type reader: ArrayReader</span>
+<span style="color:#75715e"># 		:type target: int</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		# 要点1-1: 倍增右边界</span>
+		right <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+		<span style="color:#66d9ef">while</span> reader<span style="color:#f92672">.</span>get(right) <span style="color:#f92672">&lt;</span> target:
+			right <span style="color:#f92672">*=</span> <span style="color:#ae81ff">2</span>
+		left <span style="color:#f92672">=</span> right <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if reader.get(mid) == target:</span>
+<span style="color:#75715e"># 				return mid</span>
+<span style="color:#75715e"># 			if reader.get(mid) &lt; target:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 		if reader.get(left) == target:</span>
+<span style="color:#75715e"># 			return left</span>
+<span style="color:#75715e"># 		if reader.get(right) == target:</span>
+<span style="color:#75715e"># 			return right</span>
+<span style="color:#75715e"># 		return -1</span>
+</code></pre></div><h2 id="74-search-a-2d-matrix-medium">74. Search a 2D Matrix (medium)</h2>
 <p>简述：已排序的2D数组(每行排序，一行最后元素小于下行最前元素)，求目标值是否存在</p>
 <p>思路：只是1D数组layout变化，模板不变</p>
-<p>联系：出自L34</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">searchMatrix</span>(self, matrix, target):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type matrix: List[List[int]]
-</span><span style="color:#e6db74">        :type target: int
-</span><span style="color:#e6db74">        :rtype: bool
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> matrix <span style="color:#f92672">or</span> <span style="color:#f92672">not</span> matrix[<span style="color:#ae81ff">0</span>]:
-            <span style="color:#66d9ef">return</span> False
-        M, N <span style="color:#f92672">=</span> len(matrix), len(matrix[<span style="color:#ae81ff">0</span>])
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, M <span style="color:#f92672">*</span> N <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            row, col <span style="color:#f92672">=</span> mid <span style="color:#f92672">//</span> N, mid <span style="color:#f92672">%</span> N
-            <span style="color:#66d9ef">if</span> matrix[row][col] <span style="color:#f92672">==</span> target:
-                <span style="color:#66d9ef">return</span> True
-            <span style="color:#66d9ef">if</span> matrix[row][col] <span style="color:#f92672">&lt;</span> target:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">return</span> matrix[left<span style="color:#f92672">//</span>N][left<span style="color:#f92672">%</span>N] <span style="color:#f92672">==</span> target <span style="color:#f92672">or</span> matrix[right<span style="color:#f92672">//</span>N][right<span style="color:#f92672">%</span>N] <span style="color:#f92672">==</span> target
-</code></pre></div><h2 id="l240-search-a-2d-matrix-ii-medium">L240. Search a 2D Matrix II (medium)</h2>
+<p>联系：出自34</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def searchMatrix(self, matrix, target):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type matrix: List[List[int]]</span>
+<span style="color:#75715e"># 		:type target: int</span>
+<span style="color:#75715e"># 		:rtype: bool</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		if not matrix or not matrix[0]:</span>
+<span style="color:#75715e"># 			return False</span>
+<span style="color:#75715e"># 		M, N = len(matrix), len(matrix[0])</span>
+<span style="color:#75715e"># 		left, right = 0, M * N - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			row, col = mid // N, mid % N</span>
+<span style="color:#75715e"># 			if matrix[row][col] == target:</span>
+<span style="color:#75715e"># 				return True</span>
+<span style="color:#75715e"># 			if matrix[row][col] &lt; target:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 		return matrix[left//N][left%N] == target or matrix[right//N][right%N] == target</span>
+</code></pre></div><h2 id="240-search-a-2d-matrix-ii-medium">240. Search a 2D Matrix II (medium)</h2>
 <p>简述：已排序的2D数组(每行排序，每列排序)，求目标值是否存在</p>
 <p>思路：斜对角线一个个坐标走，不是二分题</p>
-<p>联系：出自L74，不是二分</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">searchMatrix</span>(self, matrix, target):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type matrix: List[List[int]]
-</span><span style="color:#e6db74">        :type target: int
-</span><span style="color:#e6db74">        :rtype: bool
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> matrix <span style="color:#f92672">or</span> <span style="color:#f92672">not</span> matrix[<span style="color:#ae81ff">0</span>]:
-            <span style="color:#66d9ef">return</span> False
-        M, N <span style="color:#f92672">=</span> len(matrix), len(matrix[<span style="color:#ae81ff">0</span>])
-        x, y <span style="color:#f92672">=</span> M <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>
-        <span style="color:#66d9ef">while</span> True:
-            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> (<span style="color:#ae81ff">0</span> <span style="color:#f92672">&lt;=</span> x <span style="color:#f92672">&lt;</span> M <span style="color:#f92672">and</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&lt;=</span> y <span style="color:#f92672">&lt;</span> N):
-                <span style="color:#66d9ef">return</span> False
-            <span style="color:#66d9ef">if</span> matrix[x][y] <span style="color:#f92672">==</span> target:
-                <span style="color:#66d9ef">return</span> True
-            <span style="color:#66d9ef">if</span> matrix[x][y] <span style="color:#f92672">&gt;</span> target:
-                x <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
-            <span style="color:#66d9ef">else</span>:
-                y <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">return</span> False
-</code></pre></div><h2 id="l658-find-k-closest-elements-medium">L658. Find K Closest Elements (medium)</h2>
+<p>联系：出自74，不是二分</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def searchMatrix(self, matrix, target):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type matrix: List[List[int]]</span>
+<span style="color:#75715e"># 		:type target: int</span>
+<span style="color:#75715e"># 		:rtype: bool</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		if not matrix or not matrix[0]:</span>
+<span style="color:#75715e"># 			return False</span>
+<span style="color:#75715e"># 		M, N = len(matrix), len(matrix[0])</span>
+<span style="color:#75715e"># 		x, y = M - 1, 0</span>
+<span style="color:#75715e"># 		while True:</span>
+<span style="color:#75715e"># 			if not (0 &lt;= x &lt; M and 0 &lt;= y &lt; N):</span>
+<span style="color:#75715e"># 				return False</span>
+<span style="color:#75715e"># 			if matrix[x][y] == target:</span>
+<span style="color:#75715e"># 				return True</span>
+<span style="color:#75715e"># 			# 要点1-1: 不是二分，走坐标</span>
+			<span style="color:#66d9ef">if</span> matrix[x][y] <span style="color:#f92672">&gt;</span> target:
+				x <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+			<span style="color:#66d9ef">else</span>:
+				y <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#75715e"># 		return False</span>
+</code></pre></div><h2 id="658-find-k-closest-elements-medium">658. Find K Closest Elements (medium)</h2>
 <p>简述：已排序数组，求k个最邻近目标的元素们</p>
 <p>思路：先找到最邻近目标的元素，再往两边扩展</p>
-<p>联系：出自L34</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findClosestElements</span>(self, arr, k, x):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type arr: List[int]
-</span><span style="color:#e6db74">        :type k: int
-</span><span style="color:#e6db74">        :type x: int
-</span><span style="color:#e6db74">        :rtype: List[int]
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(arr) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> arr[mid] <span style="color:#f92672">&lt;</span> x:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
-        <span style="color:#75715e"># 要点1-1: 最后的范围左右开区间(left, right)</span>
-        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>expand(arr, left, right, k, x)
-    
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">expand</span>(self, arr, left, right, k, x):
-        cnt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-        <span style="color:#66d9ef">while</span> cnt <span style="color:#f92672">&lt;</span> k:
-            <span style="color:#66d9ef">if</span> right <span style="color:#f92672">&gt;=</span> len(arr) <span style="color:#f92672">or</span> abs(arr[left] <span style="color:#f92672">-</span> x) <span style="color:#f92672">&lt;=</span> abs(arr[right] <span style="color:#f92672">-</span> x):
-                left <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-            cnt <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">return</span> arr[left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> : left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> k]
+<p>联系：出自34</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def findClosestElements(self, arr, k, x):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type arr: List[int]</span>
+<span style="color:#75715e"># 		:type k: int</span>
+<span style="color:#75715e"># 		:type x: int</span>
+<span style="color:#75715e"># 		:rtype: List[int]</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		left, right = 0, len(arr) - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if arr[mid] &lt; x:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 		# 要点1-1: 最后的范围左右开区间(left, right)</span>
+		<span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>expand(arr, left, right, k, x)
+	
+<span style="color:#75715e"># 	def expand(self, arr, left, right, k, x):</span>
+<span style="color:#75715e"># 		cnt = 0</span>
+<span style="color:#75715e"># 		while cnt &lt; k:</span>
+<span style="color:#75715e"># 			if right &gt;= len(arr) or abs(arr[left] - x) &lt;= abs(arr[right] - x):</span>
+<span style="color:#75715e"># 				left -= 1</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right += 1</span>
+<span style="color:#75715e"># 			cnt += 1</span>
+		<span style="color:#66d9ef">return</span> arr[left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> : left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> k]
 </code></pre></div><h1 id="非单调">非单调</h1>
-<h2 id="l153-find-minimum-in-rotated-sorted-array-medium">L153. Find Minimum in Rotated Sorted Array (medium)</h2>
+<h2 id="153-find-minimum-in-rotated-sorted-array-medium">153. Find Minimum in Rotated Sorted Array (medium)</h2>
 <p>简述：rotate过的排序数组(无重复元素)，求最小值</p>
 <p>思路：pivot出现在前半段，经过顺序为 中&lt;右&lt;左，pivot出现在后半段，经过顺序为 右&lt;左&lt;中</p>
 <p>联系：左右关系无法判断, 应判断中右关系</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findMin</span>(self, nums):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type nums: List[int]
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(nums) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> nums[mid] <span style="color:#f92672">&gt;</span> nums[right]:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">return</span> min(nums[left], nums[right])
-</code></pre></div><h2 id="l33-search-in-rotated-sorted-array-medium">L33. Search in Rotated Sorted Array (medium)</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def findMin(self, nums):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type nums: List[int]</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		left, right = 0, len(nums) - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+			<span style="color:#66d9ef">if</span> nums[mid] <span style="color:#f92672">&gt;</span> nums[right]:
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 		return min(nums[left], nums[right])</span>
+</code></pre></div><h2 id="33-search-in-rotated-sorted-array-medium">33. Search in Rotated Sorted Array (medium)</h2>
 <p>简述：rotate过的排序数组(无重复元素)，求目标值位置</p>
 <p>思路：先找pivot，再传统二分</p>
-<p>联系：出自L153</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">search</span>(self, nums, target):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type nums: List[int]
-</span><span style="color:#e6db74">        :type target: int
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        <span style="color:#66d9ef">if</span> len(nums) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-        pivot <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>findPivot(nums)
-        L <span style="color:#f92672">=</span> len(nums)
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, L <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#75715e"># 要点1-1: 访问排序数组时转化坐标</span>
-            <span style="color:#66d9ef">if</span> nums[(mid <span style="color:#f92672">+</span> pivot) <span style="color:#f92672">%</span> L] <span style="color:#f92672">&gt;</span> target:
-                right <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                left <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">if</span> nums[(left <span style="color:#f92672">+</span> pivot) <span style="color:#f92672">%</span> L] <span style="color:#f92672">==</span> target:
-            <span style="color:#66d9ef">return</span> (left <span style="color:#f92672">+</span> pivot) <span style="color:#f92672">%</span> L
-        <span style="color:#66d9ef">if</span> nums[(right <span style="color:#f92672">+</span> pivot) <span style="color:#f92672">%</span> L] <span style="color:#f92672">==</span> target:
-            <span style="color:#66d9ef">return</span> (right <span style="color:#f92672">+</span> pivot) <span style="color:#f92672">%</span> L
-        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-        
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findPivot</span>(self, nums):
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(nums) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> nums[mid] <span style="color:#f92672">&gt;</span> nums[right]:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">if</span> nums[left] <span style="color:#f92672">&lt;</span> nums[right]:
-            <span style="color:#66d9ef">return</span> left
-        <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">return</span> right
-</code></pre></div><h2 id="l154-find-minimum-in-rotated-sorted-array-ii-hard">L154. Find Minimum in Rotated Sorted Array II (hard)</h2>
+<p>联系：出自153</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def search(self, nums, target):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type nums: List[int]</span>
+<span style="color:#75715e"># 		:type target: int</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		if len(nums) == 0:</span>
+<span style="color:#75715e"># 			return -1</span>
+<span style="color:#75715e"># 		pivot = self.findPivot(nums)</span>
+<span style="color:#75715e"># 		L = len(nums)</span>
+<span style="color:#75715e"># 		left, right = 0, L - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			# 要点1-1: 访问排序数组时转化坐标</span>
+			<span style="color:#66d9ef">if</span> nums[(mid <span style="color:#f92672">+</span> pivot) <span style="color:#f92672">%</span> L] <span style="color:#f92672">&gt;</span> target:
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 		if nums[(left + pivot) % L] == target:</span>
+<span style="color:#75715e"># 			return (left + pivot) % L</span>
+<span style="color:#75715e"># 		if nums[(right + pivot) % L] == target:</span>
+<span style="color:#75715e"># 			return (right + pivot) % L</span>
+<span style="color:#75715e"># 		return -1</span>
+		
+	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findPivot</span>(self, nums):
+<span style="color:#75715e"># 		left, right = 0, len(nums) - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if nums[mid] &gt; nums[right]:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 		if nums[left] &lt; nums[right]:</span>
+<span style="color:#75715e"># 			return left</span>
+<span style="color:#75715e"># 		else:</span>
+<span style="color:#75715e"># 			return right</span>
+</code></pre></div><h2 id="154-find-minimum-in-rotated-sorted-array-ii-hard">154. Find Minimum in Rotated Sorted Array II (hard)</h2>
 <p>简述：rotate过的排序数组(有重复元素)，求最小元素</p>
 <p>思路：11111011 (最坏情况linear查找)</p>
-<p>联系：出自L33</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findMin</span>(self, nums):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type nums: List[int]
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(nums) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> nums[right] <span style="color:#f92672">&gt;</span> nums[mid]:
-                right <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">elif</span> nums[right] <span style="color:#f92672">&lt;</span> nums[mid]:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>: <span style="color:#75715e"># 要点1-1: 如何把线性查找与二分查找合并</span>
-                right <span style="color:#f92672">=</span> right <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">return</span> min(nums[left], nums[right])
-</code></pre></div><h2 id="l852-peak-index-in-a-mountain-array-easy">L852. Peak Index in a Mountain Array (easy)</h2>
+<p>联系：出自33</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def findMin(self, nums):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type nums: List[int]</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		left, right = 0, len(nums) - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if nums[right] &gt; nums[mid]:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 			elif nums[right] &lt; nums[mid]:</span>
+<span style="color:#75715e"># 				left = mid</span>
+			<span style="color:#66d9ef">else</span>: <span style="color:#75715e"># 要点1-1: 如何把线性查找与二分查找合并</span>
+				right <span style="color:#f92672">=</span> right <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+<span style="color:#75715e"># 		return min(nums[left], nums[right])</span>
+</code></pre></div><h2 id="852-peak-index-in-a-mountain-array-easy">852. Peak Index in a Mountain Array (easy)</h2>
 <p>简述：山形数组，求山峰位置</p>
 <p>思路：思考山峰若在前半段发生什么(A[mid-1] &gt; A[mid] &gt; A[mid+1])，若在后半段发生什么(A[mid-1] &lt; A[mid] &lt; A[mid+1])</p>
-<p>联系：思考方式出自L153，都是在想目标出现前后半段的性质差别，二分保证充要</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">peakIndexInMountainArray</span>(self, A):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type A: List[int]
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(A) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> A[mid] <span style="color:#f92672">&gt;</span> A[mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">and</span> A[mid] <span style="color:#f92672">&gt;</span> A[mid<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
-                <span style="color:#66d9ef">return</span> mid
-            <span style="color:#66d9ef">if</span> A[mid] <span style="color:#f92672">&gt;</span> A[mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">and</span> A[mid] <span style="color:#f92672">&lt;</span> A[mid<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
-                right <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                left <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">if</span> A[left] <span style="color:#f92672">&gt;</span> A[right]:
-            <span style="color:#66d9ef">return</span> left
-        <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">return</span> right
-</code></pre></div><h2 id="l162-find-peak-element-medium">L162. Find Peak Element (medium)</h2>
+<p>联系：思考方式出自153，都是在想目标出现前后半段的性质差别，二分保证充要</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def peakIndexInMountainArray(self, A):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type A: List[int]</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		left, right = 0, len(A) - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if A[mid] &gt; A[mid+1] and A[mid] &gt; A[mid-1]:</span>
+<span style="color:#75715e"># 				return mid</span>
+<span style="color:#75715e"># 			if A[mid] &gt; A[mid+1] and A[mid] &lt; A[mid-1]:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 		if A[left] &gt; A[right]:</span>
+<span style="color:#75715e"># 			return left</span>
+<span style="color:#75715e"># 		else:</span>
+<span style="color:#75715e"># 			return right</span>
+</code></pre></div><h2 id="162-find-peak-element-medium">162. Find Peak Element (medium)</h2>
 <p>简述：重峦叠嶂数组(相邻不等)，求任意一个山峰位置</p>
-<p>思路：类似L852，但并不充要</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findPeakElement</span>(self, nums):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type nums: List[int]
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(nums) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> nums[mid] <span style="color:#f92672">&gt;</span> nums[mid <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">and</span> nums[mid] <span style="color:#f92672">&gt;</span> nums[mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]:
-                <span style="color:#66d9ef">return</span> mid
-            <span style="color:#66d9ef">if</span> nums[mid] <span style="color:#f92672">&gt;</span> nums[mid <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">and</span> nums[mid] <span style="color:#f92672">&lt;</span> nums[mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">if</span> nums[left] <span style="color:#f92672">&gt;</span> nums[right]:
-            <span style="color:#66d9ef">return</span> left
-        <span style="color:#66d9ef">else</span>:
-            <span style="color:#66d9ef">return</span> right
+<p>思路：类似852，但并不充要</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def findPeakElement(self, nums):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type nums: List[int]</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		left, right = 0, len(nums) - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if nums[mid] &gt; nums[mid - 1] and nums[mid] &gt; nums[mid + 1]:</span>
+<span style="color:#75715e"># 				return mid</span>
+<span style="color:#75715e"># 			if nums[mid] &gt; nums[mid - 1] and nums[mid] &lt; nums[mid + 1]:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 		if nums[left] &gt; nums[right]:</span>
+<span style="color:#75715e"># 			return left</span>
+<span style="color:#75715e"># 		else:</span>
+<span style="color:#75715e"># 			return right</span>
 </code></pre></div><h1 id="找状态">找状态</h1>
-<h2 id="l278-first-bad-version-easy">L278. First Bad Version (easy)</h2>
+<h2 id="278-first-bad-version-easy">278. First Bad Version (easy)</h2>
 <p>简述：OOOOXXX, 求第一个失败版本idx</p>
 <p>思路：目标出现前后半段导致mid状态差别</p>
 <p>联系：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># The isBadVersion API is already defined for you.</span>
-<span style="color:#75715e"># @param version, an integer</span>
-<span style="color:#75715e"># @return a bool</span>
-<span style="color:#75715e"># def isBadVersion(version):</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># # The isBadVersion API is already defined for you.</span>
+<span style="color:#75715e"># # @param version, an integer</span>
+<span style="color:#75715e"># # @return a bool</span>
+<span style="color:#75715e"># # def isBadVersion(version):</span>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">firstBadVersion</span>(self, n):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type n: int
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, n
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> isBadVersion(mid):
-                right <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                left <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">if</span> isBadVersion(left):
-            <span style="color:#66d9ef">return</span> left
-        <span style="color:#66d9ef">return</span> right
-</code></pre></div><h2 id="l374-guess-number-higher-or-lower-easy">L374. Guess Number Higher or Lower (easy)</h2>
+<span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def firstBadVersion(self, n):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type n: int</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		left, right = 1, n</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if isBadVersion(mid):</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 		if isBadVersion(left):</span>
+<span style="color:#75715e"># 			return left</span>
+<span style="color:#75715e"># 		return right</span>
+</code></pre></div><h2 id="374-guess-number-higher-or-lower-easy">374. Guess Number Higher or Lower (easy)</h2>
 <p>简述：1-n猜数字，api回答高低，求目标数字</p>
 <p>思路：从目标开始后面都会猜高</p>
-<p>联系：出自L278</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># The guess API is already defined for you.</span>
-<span style="color:#75715e"># @param num, your guess</span>
-<span style="color:#75715e"># @return -1 if my number is lower, 1 if my number is higher, otherwise return 0</span>
-<span style="color:#75715e"># def guess(num):</span>
+<p>联系：出自278</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># # The guess API is already defined for you.</span>
+<span style="color:#75715e"># # @param num, your guess</span>
+<span style="color:#75715e"># # @return -1 if my number is lower, 1 if my number is higher, otherwise return 0</span>
+<span style="color:#75715e"># # def guess(num):</span>
 
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">guessNumber</span>(self, n):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type n: int
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, n
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            api_res <span style="color:#f92672">=</span> guess(mid)
-            <span style="color:#66d9ef">if</span> api_res <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-                <span style="color:#66d9ef">return</span> mid
-            <span style="color:#66d9ef">if</span> api_res <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">return</span> left <span style="color:#66d9ef">if</span> guess(left) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> right
-</code></pre></div><h2 id="l69-sqrtx-easy">L69. Sqrt(x) (easy)</h2>
+<span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def guessNumber(self, n):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type n: int</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		left, right = 1, n</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			api_res = guess(mid)</span>
+<span style="color:#75715e"># 			if api_res == 0:</span>
+<span style="color:#75715e"># 				return mid</span>
+<span style="color:#75715e"># 			if api_res == 1:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 		return left if guess(left) == 0 else right</span>
+</code></pre></div><h2 id="69-sqrtx-easy">69. Sqrt(x) (easy)</h2>
 <p>简述：求根号x，取整</p>
 <p>思路：从正确答案后，平方大于x</p>
-<p>联系：出自L278</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mySqrt</span>(self, x):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type x: int
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, x
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> mid <span style="color:#f92672">*</span> mid <span style="color:#f92672">==</span> x:
-                <span style="color:#66d9ef">return</span> mid
-            <span style="color:#66d9ef">if</span> mid <span style="color:#f92672">*</span> mid <span style="color:#f92672">&gt;</span> x:
-                right <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                left <span style="color:#f92672">=</span> mid
-        <span style="color:#66d9ef">return</span> right <span style="color:#66d9ef">if</span> right <span style="color:#f92672">*</span> right <span style="color:#f92672">&lt;=</span> x <span style="color:#66d9ef">else</span> left
-</code></pre></div><h2 id="l302-smallest-rectangle-enclosing-black-pixels-hard">L302. Smallest Rectangle Enclosing Black Pixels (hard)</h2>
+<p>联系：出自278</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def mySqrt(self, x):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type x: int</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		left, right = 1, x</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if mid * mid == x:</span>
+<span style="color:#75715e"># 				return mid</span>
+<span style="color:#75715e"># 			if mid * mid &gt; x:</span>
+<span style="color:#75715e"># 				right = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 		return right if right * right &lt;= x else left</span>
+</code></pre></div><h2 id="302-smallest-rectangle-enclosing-black-pixels-hard">302. Smallest Rectangle Enclosing Black Pixels (hard)</h2>
 <p>简述：二值化图片，黑色像素相连，给一个黑色像素坐标，求包围黑色区域的最小矩形面积</p>
 <p>思路：从黑色坐标向上下左右找边界，一旦超过边界将再无黑色行列</p>
-<p>联系：出自L278</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">minArea</span>(self, image, x, y):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type image: List[List[str]]
-</span><span style="color:#e6db74">        :type x: int
-</span><span style="color:#e6db74">        :type y: int
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        m, n <span style="color:#f92672">=</span> len(image), len(image[<span style="color:#ae81ff">0</span>])
-        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">row_has_black</span>(row):
-            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(n):
-                <span style="color:#66d9ef">if</span> image[row][j] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>:
-                    <span style="color:#66d9ef">return</span> True
-            <span style="color:#66d9ef">return</span> False
-        
-        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">col_has_black</span>(col):
-            <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(m):
-                <span style="color:#66d9ef">if</span> image[i][col] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>:
-                    <span style="color:#66d9ef">return</span> True
-            <span style="color:#66d9ef">return</span> False
-        
-        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_upper</span>():
-            left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, x
-            <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-                mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-                <span style="color:#66d9ef">if</span> row_has_black(mid):
-                    right <span style="color:#f92672">=</span> mid
-                <span style="color:#66d9ef">else</span>:
-                    left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">if</span> row_has_black(left):
-                <span style="color:#66d9ef">return</span> left
-            <span style="color:#66d9ef">return</span> right
-        
-        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_lower</span>():
-            left, right <span style="color:#f92672">=</span> x, m <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-            <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-                mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-                <span style="color:#66d9ef">if</span> row_has_black(mid):
-                    left <span style="color:#f92672">=</span> mid
-                <span style="color:#66d9ef">else</span>:
-                    right <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">if</span> row_has_black(right):
-                <span style="color:#66d9ef">return</span> right
-            <span style="color:#66d9ef">return</span> left
-        
-        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_left</span>():
-            left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, y
-            <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-                mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-                <span style="color:#66d9ef">if</span> col_has_black(mid):
-                    right <span style="color:#f92672">=</span> mid
-                <span style="color:#66d9ef">else</span>:
-                    left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">if</span> col_has_black(left):
-                <span style="color:#66d9ef">return</span> left
-            <span style="color:#66d9ef">return</span> right
-        
-        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_right</span>():
-            left, right <span style="color:#f92672">=</span> y, n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-            <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-                mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-                <span style="color:#66d9ef">if</span> col_has_black(mid):
-                    left <span style="color:#f92672">=</span> mid
-                <span style="color:#66d9ef">else</span>:
-                    right <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">if</span> col_has_black(right):
-                <span style="color:#66d9ef">return</span> right
-            <span style="color:#66d9ef">return</span> left
-        
-        upper, lower, left, right <span style="color:#f92672">=</span> find_upper(), find_lower(), find_left(), find_right()
-        
-        <span style="color:#66d9ef">return</span> (lower <span style="color:#f92672">-</span> upper <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> (right <span style="color:#f92672">-</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+<p>联系：出自278</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def minArea(self, image, x, y):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type image: List[List[str]]</span>
+<span style="color:#75715e"># 		:type x: int</span>
+<span style="color:#75715e"># 		:type y: int</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		m, n = len(image), len(image[0])</span>
+<span style="color:#75715e"># 		def row_has_black(row):</span>
+<span style="color:#75715e"># 			for j in range(n):</span>
+<span style="color:#75715e"># 				if image[row][j] == &#39;1&#39;:</span>
+<span style="color:#75715e"># 					return True</span>
+<span style="color:#75715e"># 			return False</span>
+		
+<span style="color:#75715e"># 		def col_has_black(col):</span>
+<span style="color:#75715e"># 			for i in range(m):</span>
+<span style="color:#75715e"># 				if image[i][col] == &#39;1&#39;:</span>
+<span style="color:#75715e"># 					return True</span>
+<span style="color:#75715e"># 			return False</span>
+		
+		<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_upper</span>():
+<span style="color:#75715e"># 			left, right = 0, x</span>
+<span style="color:#75715e"># 			while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 				mid = (left + right) // 2</span>
+<span style="color:#75715e"># 				if row_has_black(mid):</span>
+<span style="color:#75715e"># 					right = mid</span>
+<span style="color:#75715e"># 				else:</span>
+<span style="color:#75715e"># 					left = mid</span>
+<span style="color:#75715e"># 			if row_has_black(left):</span>
+<span style="color:#75715e"># 				return left</span>
+<span style="color:#75715e"># 			return right</span>
+		
+		<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_lower</span>():
+<span style="color:#75715e"># 			left, right = x, m - 1</span>
+<span style="color:#75715e"># 			while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 				mid = (left + right) // 2</span>
+<span style="color:#75715e"># 				if row_has_black(mid):</span>
+<span style="color:#75715e"># 					left = mid</span>
+<span style="color:#75715e"># 				else:</span>
+<span style="color:#75715e"># 					right = mid</span>
+<span style="color:#75715e"># 			if row_has_black(right):</span>
+<span style="color:#75715e"># 				return right</span>
+<span style="color:#75715e"># 			return left</span>
+		
+		<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_left</span>():
+<span style="color:#75715e"># 			left, right = 0, y</span>
+<span style="color:#75715e"># 			while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 				mid = (left + right) // 2</span>
+<span style="color:#75715e"># 				if col_has_black(mid):</span>
+<span style="color:#75715e"># 					right = mid</span>
+<span style="color:#75715e"># 				else:</span>
+<span style="color:#75715e"># 					left = mid</span>
+<span style="color:#75715e"># 			if col_has_black(left):</span>
+<span style="color:#75715e"># 				return left</span>
+<span style="color:#75715e"># 			return right</span>
+		
+		<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_right</span>():
+<span style="color:#75715e"># 			left, right = y, n - 1</span>
+<span style="color:#75715e"># 			while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 				mid = (left + right) // 2</span>
+<span style="color:#75715e"># 				if col_has_black(mid):</span>
+<span style="color:#75715e"># 					left = mid</span>
+<span style="color:#75715e"># 				else:</span>
+<span style="color:#75715e"># 					right = mid</span>
+<span style="color:#75715e"># 			if col_has_black(right):</span>
+<span style="color:#75715e"># 				return right</span>
+<span style="color:#75715e"># 			return left</span>
+		
+<span style="color:#75715e"># 		upper, lower, left, right = find_upper(), find_lower(), find_left(), find_right()</span>
+		
+		<span style="color:#66d9ef">return</span> (lower <span style="color:#f92672">-</span> upper <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> (right <span style="color:#f92672">-</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
 </code></pre></div><h1 id="二分答案">二分答案</h1>
-<h2 id="l274-h-index-medium">L274. H-Index (medium)</h2>
+<h2 id="274-h-index-medium">274. H-Index (medium)</h2>
 <p>简述：引用数组，求hIndex&ndash;h篇每篇至少h引用，其余每篇不超过h引用</p>
 <p>思路：二分答案，答案经过一次状态改变</p>
 <p>联系：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hIndex</span>(self, citations):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type citations: List[int]
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> citations:
-            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, len(citations)
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            h <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            cnt <span style="color:#f92672">=</span> sum([x <span style="color:#f92672">&gt;=</span> h <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> citations])
-            <span style="color:#66d9ef">if</span> cnt <span style="color:#f92672">==</span> h:
-                <span style="color:#66d9ef">return</span> h
-            <span style="color:#66d9ef">if</span> cnt <span style="color:#f92672">&gt;</span> h:
-                left <span style="color:#f92672">=</span> h
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> h
-        cnt <span style="color:#f92672">=</span> sum([x <span style="color:#f92672">&gt;=</span> right <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> citations])
-        <span style="color:#66d9ef">if</span> cnt <span style="color:#f92672">&gt;=</span> right:
-            <span style="color:#66d9ef">return</span> right
-        <span style="color:#66d9ef">return</span> left
-</code></pre></div><h2 id="l275-h-index-ii-hard">L275. H-Index II (hard)</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def hIndex(self, citations):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type citations: List[int]</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		if not citations:</span>
+<span style="color:#75715e"># 			return 0</span>
+<span style="color:#75715e"># 		left, right = 0, len(citations)</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			h = (left + right) // 2</span>
+			cnt <span style="color:#f92672">=</span> sum([x <span style="color:#f92672">&gt;=</span> h <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> citations])
+<span style="color:#75715e"># 			if cnt == h:</span>
+<span style="color:#75715e"># 				return h</span>
+<span style="color:#75715e"># 			if cnt &gt; h:</span>
+<span style="color:#75715e"># 				left = h</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = h</span>
+<span style="color:#75715e"># 		cnt = sum([x &gt;= right for x in citations])</span>
+<span style="color:#75715e"># 		if cnt &gt;= right:</span>
+<span style="color:#75715e"># 			return right</span>
+<span style="color:#75715e"># 		return left</span>
+</code></pre></div><h2 id="275-h-index-ii-hard">275. H-Index II (hard)</h2>
 <p>简述：引用数组(已排序)，求hIndex&ndash;h篇每篇至少h引用，其余每篇不超过h引用</p>
 <p>思路：不是二分答案，注意结尾情况</p>
-<p>联系：出自L274，但不属于二分答案</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>(object):
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hIndex</span>(self, citations):
-        <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">        :type citations: List[int]
-</span><span style="color:#e6db74">        :rtype: int
-</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
-        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> citations:
-            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
-        N <span style="color:#f92672">=</span> len(citations)
-        left, right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, N <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#66d9ef">while</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> right:
-            mid <span style="color:#f92672">=</span> (left <span style="color:#f92672">+</span> right) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>
-            <span style="color:#66d9ef">if</span> N <span style="color:#f92672">-</span> mid <span style="color:#f92672">&gt;=</span> citations[mid]:
-                left <span style="color:#f92672">=</span> mid
-            <span style="color:#66d9ef">else</span>:
-                right <span style="color:#f92672">=</span> mid
+<p>联系：出自274，但不属于二分答案</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># class Solution(object):</span>
+<span style="color:#75715e"># 	def hIndex(self, citations):</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		:type citations: List[int]</span>
+<span style="color:#75715e"># 		:rtype: int</span>
+<span style="color:#75715e"># 		&#34;&#34;&#34;</span>
+<span style="color:#75715e"># 		if not citations:</span>
+<span style="color:#75715e"># 			return 0</span>
+<span style="color:#75715e"># 		N = len(citations)</span>
+<span style="color:#75715e"># 		left, right = 0, N - 1</span>
+<span style="color:#75715e"># 		while left + 1 &lt; right:</span>
+<span style="color:#75715e"># 			mid = (left + right) // 2</span>
+<span style="color:#75715e"># 			if N - mid &gt;= citations[mid]:</span>
+<span style="color:#75715e"># 				left = mid</span>
+<span style="color:#75715e"># 			else:</span>
+<span style="color:#75715e"># 				right = mid</span>
 
-        <span style="color:#75715e"># 要点1-1: 结尾情况很难想全        </span>
-        <span style="color:#66d9ef">if</span> N <span style="color:#f92672">-</span> right <span style="color:#f92672">&gt;=</span> citations[right]:
-            <span style="color:#66d9ef">return</span> citations[right]
-        <span style="color:#66d9ef">if</span> N <span style="color:#f92672">-</span> right <span style="color:#f92672">&gt;=</span> citations[left]:
-            <span style="color:#66d9ef">return</span> N <span style="color:#f92672">-</span> right
-        <span style="color:#66d9ef">if</span> N <span style="color:#f92672">-</span> left <span style="color:#f92672">&gt;=</span> citations[left]:
-            <span style="color:#66d9ef">return</span> citations[left]
-        <span style="color:#66d9ef">return</span> N <span style="color:#f92672">-</span> left
+		<span style="color:#75715e"># 要点1-1: 结尾情况很难想全        </span>
+		<span style="color:#66d9ef">if</span> N <span style="color:#f92672">-</span> right <span style="color:#f92672">&gt;=</span> citations[right]:
+			<span style="color:#66d9ef">return</span> citations[right]
+		<span style="color:#66d9ef">if</span> N <span style="color:#f92672">-</span> right <span style="color:#f92672">&gt;=</span> citations[left]:
+			<span style="color:#66d9ef">return</span> N <span style="color:#f92672">-</span> right
+		<span style="color:#66d9ef">if</span> N <span style="color:#f92672">-</span> left <span style="color:#f92672">&gt;=</span> citations[left]:
+			<span style="color:#66d9ef">return</span> citations[left]
+		<span style="color:#66d9ef">return</span> N <span style="color:#f92672">-</span> left
 </code></pre></div>
     </div>
 
@@ -774,6 +760,14 @@
 
     <div class="post-tags">
         
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://xuwenzhe.github.io/tags/leetcode/">
+                    #leetcode</a></span>
+            
+            </section>
+        
         <section>
                 <a href="javascript:window.history.back();">back</a></span> ·
                 <span><a href="https://xuwenzhe.github.io">home</a></span>
@@ -784,6 +778,8 @@
         
         <a href="https://xuwenzhe.github.io/2020/coursera-umich-fffsdm/" class="prev" rel="prev" title="Foundational Finance for Strategic Decision Making"><i class="iconfont icon-left"></i>&nbsp;Foundational Finance for Strategic Decision Making</a>
         
+        
+        <a href="https://xuwenzhe.github.io/2020/leetcode-divide-conquer/" class="next" rel="next" title="Leetcode：树的Divide &amp; Conquer">Leetcode：树的Divide &amp; Conquer&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
