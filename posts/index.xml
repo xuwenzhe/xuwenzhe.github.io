@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Wenzhe&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 16 Jul 2020 12:46:49 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2020 23:50:06 -0700</lastBuildDate>
     
 	<atom:link href="https://xuwenzhe.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Leetcode：位运算</title>
+      <link>https://xuwenzhe.github.io/2020/leetcode-bit-manipulation/</link>
+      <pubDate>Sun, 26 Jul 2020 23:50:06 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/2020/leetcode-bit-manipulation/</guid>
+      <description>while位 342. Power of Four (easy) 简述：判断是否为4的幂 思路：mask挪位置 联系：出自693 # class Solution(object): # def isPowerOfFour(self, num): # &amp;#34;&amp;#34;&amp;#34; # :type num: int # :rtype: bool # &amp;#34;&amp;#34;&amp;#34; # base = 1 while base &amp;lt;= num: # if base ==</description>
+    </item>
     
     <item>
       <title>Leetcode：树的Traversal</title>
