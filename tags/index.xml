@@ -6,10 +6,46 @@
     <description>Recent content in Tags on Wenzhe&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 26 Jul 2020 23:50:06 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2020 22:00:55 -0700</lastBuildDate>
     
 	<atom:link href="https://xuwenzhe.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>https://xuwenzhe.github.io/tags/machine-learning/</link>
+      <pubDate>Wed, 12 Aug 2020 22:00:55 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AdTech</title>
+      <link>https://xuwenzhe.github.io/tags/adtech/</link>
+      <pubDate>Sun, 09 Aug 2020 23:51:42 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/tags/adtech/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spark</title>
+      <link>https://xuwenzhe.github.io/tags/spark/</link>
+      <pubDate>Sun, 09 Aug 2020 22:25:25 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/tags/spark/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://xuwenzhe.github.io/tags/git/</link>
+      <pubDate>Tue, 28 Jul 2020 12:31:43 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/tags/git/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>leetcode</title>

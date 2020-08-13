@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AdTech on Wenzhe&#39;s Blog</title>
+    <link>https://xuwenzhe.github.io/tags/adtech/</link>
+    <description>Recent content in AdTech on Wenzhe&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 09 Aug 2020 23:51:42 -0700</lastBuildDate>
+    
+	<atom:link href="https://xuwenzhe.github.io/tags/adtech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>网络广告是如何用cookie来追踪用户的？</title>
+      <link>https://xuwenzhe.github.io/2020/cookie-track-user/</link>
+      <pubDate>Sun, 09 Aug 2020 23:51:42 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/2020/cookie-track-user/</guid>
+      <description>什么是Cookie 参考 Web客户端追踪(上)-Cookie追踪 网络广告代理商是如何通过 cookie 收集用户信息的？ - LO的回答 - 知乎 RTB广告竞价系统</description>
+    </item>
+    
+  </channel>
+</rss>

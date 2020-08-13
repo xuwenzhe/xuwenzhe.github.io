@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noodp"/>
+    <meta name="author" content="Wenzhe">
+    
+    
+    
+    <link rel="prev" href="https://xuwenzhe.github.io/2020/cookie-track-user/" />
+    
+    <link rel="canonical" href="https://xuwenzhe.github.io/2020/precision-recall/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+        
+        
+            Precision和Recall | Wenzhe&#39;s Blog
+        
+    </title>
+    <meta name="title" content="Precision和Recall | Wenzhe&#39;s Blog">
+    
+<link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    
+ 
+
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/xuwenzhe.github.io"
+    },
+    "articleSection" : "posts",
+    "name" : "Precision和Recall",
+    "headline" : "Precision和Recall",
+    "description" : "什么是精确率（precision）与召回率（recall）？ Precision和Recall是衡量模型预测能力的指标。在简单的分类问题（种类",
+    "inLanguage" : "zh-cn",
+    "author" : "Wenzhe",
+    "creator" : "Wenzhe",
+    "publisher": "Wenzhe",
+    "accountablePerson" : "Wenzhe",
+    "copyrightHolder" : "Wenzhe",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-08-12 22:00:55 -0700 PDT",
+    "dateModified" : "2020-08-12 22:00:55 -0700 PDT",
+    "url" : "https:\/\/xuwenzhe.github.io\/2020\/precision-recall\/",
+    "wordCount" : "982",
+    "keywords" : [ "Machine Learning", "Wenzhe\u0027s Blog"]
+}
+</script>
+
+  </head>
+    <body class="">
+        <div class="wrapper">
+            <nav class="navbar">
+    
+        <progress class="content_progress" max="0" value="0"></progress>
+    
+    <div class="container">
+        
+            <div class="navbar-header header-back2home-logo">
+                <span class="logo_mark" >>$</span>
+                <a href="https://xuwenzhe.github.io">
+                    <span class="logo_text" >cd /home/</span>
+                    <span class="logo_cursor" ></span>
+                </a>
+            </div>
+        
+        <div class="navbar-right">
+                
+                <span class="menu">
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <span class="divide"></span>
+                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-dark-mode"></i></a>
+                </span>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+    
+        <progress class="content_progress" max="0" value="0"></progress>
+    
+     <div class="container">
+        <div class="navbar">
+            <div class="navbar-header header-logo">
+                    <a href="https://xuwenzhe.github.io">Wenzhe&#39;s Blog</a>
+            </div>
+            <div class="navbar-right">
+                <div><a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-dark-mode"></i></a></div>
+                <div class="menu-toggle">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                <nav class="mb-md">
+                    
+                    
+                        <a class="menu-item" href="/posts/" title="">
+                            <h3>Blog</h3>
+                            <div class="menu-active"></div>
+                        </a>
+                    
+                        <a class="menu-item" href="/categories/" title="">
+                            <h3>Categories</h3>
+                            <div class="menu-active"></div>
+                        </a>
+                    
+                        <a class="menu-item" href="/tags/" title="">
+                            <h3>Tags</h3>
+                            <div class="menu-active"></div>
+                        </a>
+                    
+                        <a class="menu-item" href="/about/" title="">
+                            <h3>About</h3>
+                            <div class="menu-active"></div>
+                        </a>
+                    
+                </nav>
+        </div>
+    </div>
+</nav>
+            <main class="main">
+                <div class="container">
+                    
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Precision和Recall</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://xuwenzhe.github.io" rel="author">Wenzhe</a> with ♥
+                <span class="post-time">
+                on <time datetime=2020-08-12 itemprop="datePublished">August 12, 2020</time>
+                </span>
+                in
+                
+                <span class="post-word-count">982 words</span>
+        </div>
+    </header>
+
+    <div class="post-content">
+        
+
+        
+        
+            
+        
+
+        
+        
+        
+        
+        
+
+        
+        
+        
+
+        <h2 id="什么是精确率precision与召回率recall">什么是精确率（precision）与召回率（recall）？</h2>
+<p>Precision和Recall是衡量模型预测能力的指标。在简单的分类问题（种类数=2）中，根据实际答案与模型预测，可分为如下4种情况：</p>
+<ul>
+<li>True Positive (TP) - 正确预测了阳类</li>
+<li>True Negative (TN) - 正确预测了阴类</li>
+<li>False Positive (FP) - 错误预测了阳类（实际为阴类）</li>
+<li>False Negative (FN) - 错误预测了阴类（实际为阳类）</li>
+</ul>
+<p>注：True和False表示预测是否正确，Positive和Negative表示预测结果</p>
+<p>精准率和召回率定义：</p>
+<p>Precision = TP / (TP + FP)</p>
+<p>Recall = TP / (TP + FN)</p>
+<p>他们区别在分母不同，所取值范围均为0～1</p>
+<h2 id="如何理解precision和recall">如何理解Precision和Recall？</h2>
+<p>信息检索中，Precision又叫查准率（找得对），Recall又叫查全率（找得全）。</p>
+<p>举个例子，池塘有大龙虾30只，小龙虾70只。我们发明了一只捕大龙虾神器专捕大龙虾。神器一网下去，捕到大龙虾20只，小龙虾5只。那么：</p>
+<p>精准率 = 20 /（20 + 5） = 0.80</p>
+<p>召回率 = 20 / 30 = 0.67</p>
+<p>我们来看3个极端神器的Precision和Recall。</p>
+<ul>
+<li>神器谨慎版：只捕了一只，且为大龙虾。Precision = 1/1 = 1.0, Recall = 1/30 = 0.033</li>
+<li>神器电鱼版：捕了全池塘的100只。Precision = 30/100 = 0.3, Recall = 30/30 = 1.0</li>
+<li>神器专业版：补了30只，且全为大龙虾。Precision = 30/30 = 1.0, Recall = 30/30 = 1.0</li>
+</ul>
+<p>实际应用中，Precision和Recall往往不能兼得。有时我们更在意Precision，而有时我们更在意Recall。比如判断视频是否适合儿童观看（适合-正，不适合-负），我们更青睐high precision - low recall的分类器（声称安全的视频真是安全的，但可能也拦截了其他安全的视频）。再比如报警器判断是否有小偷（有小偷-正，无小偷-负），我们更青睐low precision - high recall的警报器（声称有小偷的时候可能是误报，但是真有小偷的时候它通常会响）。</p>
+<h2 id="pr曲线">PR曲线</h2>
+<p>机器学习模型往往先预测概率（scoring），再根据概率决策分类（label）。比如score高于threshold输出positive，低于输出negative。这样Precision与Recall将是Threshold的函数，即P(t)和R(t)。如果把P(t)和R(t)作为坐标画在坐标中,就形成了PR曲线，其中(1,1)为理想点。我们可以用PR曲线下的面积（AUPR）来衡量模型表现。</p>
+<figure class="center">
+    <img src="https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/Precision-Recall-Plot-for-a-No-Skill-Classifier-and-a-Logistic-Regression-Model4.png" width="500"/> 
+</figure>
+
+<p>相比于ROC曲线，PR曲线对不平衡数据集的性能描述更为准确。</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Wenzhe </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://xuwenzhe.github.io/2020/precision-recall/>https://xuwenzhe.github.io/2020/precision-recall/</span>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://xuwenzhe.github.io/tags/machine-learning/">
+                    #Machine Learning</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://xuwenzhe.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://xuwenzhe.github.io/2020/cookie-track-user/" class="prev" rel="prev" title="网络广告是如何用cookie来追踪用户的？"><i class="iconfont icon-left"></i>&nbsp;网络广告是如何用cookie来追踪用户的？</a>
+        
+        
+    </div>
+
+    <div class="post-comment">
+        
+            
+        
+    </div>
+</article>
+                </div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://xuwenzhe.github.io">Wenzhe</a> | </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/Mogeko/Mogege" target="_blank" rel="external nofollow">Mogege</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+<script defer src="/js/vendor_main.min.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script> pangu.spacingPage();</script>
+
+
+
+
+
+        </div>
+    </body>
+</html>
