@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Wenzhe&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Aug 2020 22:00:55 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2020 17:17:14 -0700</lastBuildDate>
     
 	<atom:link href="https://xuwenzhe.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linux入门</title>
+      <link>https://xuwenzhe.github.io/2020/linux-intro/</link>
+      <pubDate>Wed, 19 Aug 2020 17:17:14 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/2020/linux-intro/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Precision和Recall</title>
@@ -53,7 +62,7 @@
       <pubDate>Tue, 28 Jul 2020 12:31:43 -0700</pubDate>
       
       <guid>https://xuwenzhe.github.io/2020/git-github/</guid>
-      <description>diff -u oldfile newfile diff -u oldfile newfile &amp;gt; change.diff # patch patch oldfile &amp;lt; change.diff # apply the change diff显示结果解释</description>
+      <description>The git directory acts as a database for all the changes tracked in Git and the working tree acts as a sandbox where we can edit the current versions of the files. 1. 基本操作 git init # 创建仓库 # 登陆当前操作系统的用户范围 (否则为项目级别) git config --global</description>
     </item>
     
     <item>
