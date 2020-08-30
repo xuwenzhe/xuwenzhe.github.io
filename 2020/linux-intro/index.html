@@ -10,7 +10,7 @@
     
     
     <link rel="prev" href="https://xuwenzhe.github.io/2020/precision-recall/" />
-    
+    <link rel="next" href="https://xuwenzhe.github.io/2020/spark-fundamentals/" />
     <link rel="canonical" href="https://xuwenzhe.github.io/2020/linux-intro/" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -45,7 +45,7 @@
     "articleSection" : "posts",
     "name" : "Linux入门",
     "headline" : "Linux入门",
-    "description" : "",
+    "description" : "目录结构 \/bin (\/usr\/bin, \/usr\/local\/bin): binary,存放最经常使用的命令 \/sbin (\/usr\/sbin, \/usr\/local\/sbin): s: super user, 存放系统管理员使用的系统管理程序 \/home: 存放普通用户的主目录，每个用户都有一个自己的目",
     "inLanguage" : "zh-cn",
     "author" : "Wenzhe",
     "creator" : "Wenzhe",
@@ -56,7 +56,7 @@
     "datePublished": "2020-08-19 17:17:14 -0700 PDT",
     "dateModified" : "2020-08-19 17:17:14 -0700 PDT",
     "url" : "https:\/\/xuwenzhe.github.io\/2020\/linux-intro\/",
-    "wordCount" : "0",
+    "wordCount" : "1793",
     "keywords" : [ "linux", "Wenzhe\u0027s Blog"]
 }
 </script>
@@ -154,7 +154,7 @@
                 </span>
                 in
                 
-                <span class="post-word-count">0 words</span>
+                <span class="post-word-count">1793 words</span>
         </div>
     </header>
 
@@ -163,18 +163,147 @@
 
         
         
-
-        
-        
-        
-        
+            
         
 
         
         
         
+        
+        
 
         
+        
+        
+
+        <h2 id="目录结构">目录结构</h2>
+<ul>
+<li><code>/bin</code> (<code>/usr/bin</code>, <code>/usr/local/bin</code>): binary,存放最经常使用的命令</li>
+<li><code>/sbin</code> (<code>/usr/sbin</code>, <code>/usr/local/sbin</code>): s: super user, 存放系统管理员使用的系统管理程序</li>
+<li><code>/home</code>: 存放普通用户的主目录，每个用户都有一个自己的目录</li>
+<li><code>/root</code>: 超级权限者的用户主目录(This is not the root (/) filesystem. It is the home directory for the root user.)</li>
+<li><code>/lib</code>: 系统开机所需要最基本的动态连接共享库，类似Windows的DLL文件。几乎所有应用程序都需要用到这些共享库</li>
+<li><code>/etc</code>: 系统管理所需要的配置文件和子目录</li>
+<li><code>/usr</code>: 用户的很多应用程序和文件都放在这个目录下，类似Windows的program files目录</li>
+<li><code>/proc</code>,<code>/srv</code>,<code>/sys</code>: 内核相关目录（不要轻易修改）</li>
+<li><code>/dev</code>: 硬件以文件的形式存放在该处</li>
+<li><code>/media</code>: U盘，光驱，等等</li>
+<li><code>/mnt</code>: 用户临时挂载的文件系统</li>
+<li><code>/opt</code>: 存放安装软件</li>
+<li><code>/usr/local</code>: 存放安装软件所安装的目录，一般是通过编译源码的方式安装的程序</li>
+<li><code>/var</code>: 存放经常被修改的东西，比如日志文件</li>
+</ul>
+<figure class="center">
+    <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/unix.png" width="1000"/> 
+</figure>
+
+<h2 id="vivim快捷键">Vi/Vim快捷键</h2>
+<ol>
+<li>拷贝当前行<code>yy</code>, 拷贝当前行以下的5行<code>5yy</code>,粘贴<code>p</code></li>
+<li>删除当前行<code>dd</code>, 删除当前行以下的5行<code>5dd</code></li>
+<li>查找关键词<code>/keyword</code>,下一个出现<code>n</code></li>
+<li>显示行号<code>:set nu</code>,隐藏行号<code>:set nonu</code></li>
+<li>阅览最首行<code>gg</code>最末行<code>G</code></li>
+<li>撤销输入动作<code>u</code></li>
+<li>移动光标至第20行<code>20</code>+<code>shift g</code></li>
+</ol>
+<h2 id="开关重启命令">开关重启命令</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sync <span style="color:#75715e"># 把内存数据同步到磁盘，以下操作前先执行该命令</span>
+shutdown -h now <span style="color:#75715e"># 立即关机</span>
+shutdown -h <span style="color:#ae81ff">1</span> <span style="color:#75715e"># 1min 关机</span>
+shutdown -r now <span style="color:#75715e"># 立即重启</span>
+halt <span style="color:#75715e"># 等同于关机</span>
+reboot <span style="color:#75715e"># 立即重启</span>
+</code></pre></div><h2 id="用户管理">用户管理</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">useradd xiaoming <span style="color:#75715e"># 自动创建home下同名目录</span>
+passwd xiaoming <span style="color:#75715e"># 指定密码</span>
+userdel xiaoming <span style="color:#75715e"># 删除用户xiaoming，home下其目录会保留</span>
+userdel -r xiaoming <span style="color:#75715e"># 删除用户xiaoming，home下其目录不会保留</span>
+su - xiaoming <span style="color:#75715e"># 切换用户登陆， 权限不足会给提示，exit返回到原先用户</span>
+groupadd zuming <span style="color:#75715e"># 创建组</span>
+groupdel zuming <span style="color:#75715e"># 删除组</span>
+useradd -g zuming xiaoming <span style="color:#75715e"># 创建用户时，指定组</span>
+id xiaoming <span style="color:#75715e"># 查询用户信息</span>
+usermod -g zuming2 xiaoming <span style="color:#75715e"># 修改用户所在组</span>
+</code></pre></div><ul>
+<li>用户配置文件在： <code>/etc/passwd</code> （用户id，组id，家目录，shell）</li>
+<li>组配置文件在：<code>/etc/group</code></li>
+<li>口令配置文件（密码，登录信息）：<code>/etc/shadow</code>(加密的)</li>
+</ul>
+<h2 id="实用命令">实用命令</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">man ls <span style="color:#75715e"># 显示ls用法</span>
+help cd <span style="color:#75715e"># 显示cd用法</span>
+touch filename <span style="color:#75715e"># 创建空文件</span>
+cat -n filename ｜ more <span style="color:#75715e"># 打开文件内容（只读方式）, -n 显示行号，more分页显示</span>
+more filename <span style="color:#75715e"># 按页显示文件，空格翻页，Enter下一行，ctrl+f/b</span>
+less filename <span style="color:#75715e"># 分页查看，lazy加载，利于显示大文件 &#34;less is more&#34;</span>
+ls -l &gt; filename <span style="color:#75715e"># 重定向（覆盖）</span>
+ls -l &gt;&gt; filename <span style="color:#75715e"># 追加（append到尾部）</span>
+head -n <span style="color:#ae81ff">5</span> filename <span style="color:#75715e"># 只显示文件前5行（默认10行）</span>
+tail -n <span style="color:#ae81ff">5</span> filename <span style="color:#75715e"># 只显示文件后5行（默认10行） -f追踪文件更新，日志监控经常用</span>
+date <span style="color:#e6db74">&#34;+%Y-%m-%d %H:%M:%S&#34;</span> <span style="color:#75715e"># 按格式显示当前年月日时分秒，“+”必要， -s设定</span>
+cal <span style="color:#75715e"># 显示当前日历</span>
+find <span style="color:#f92672">[</span>scope<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-name 文件名, -user 用户, -size 文件大小<span style="color:#f92672">]</span>
+grep <span style="color:#f92672">[</span>-n 显示匹配行行号， -i 忽略大小写<span style="color:#f92672">]</span> 查找内容 源文件
+cat hello.txt | grep -ni yes <span style="color:#75715e"># 在hello.txt中，不区分大小写的查找yes</span>
+grep -r <span style="color:#f92672">[</span>keyword<span style="color:#f92672">]</span> /data/reports
+zip -r xxx.zip files
+unzip -d 位置 xxx.zip
+tar -zcvf a.tar.gz a1.txt a2.txt
+tar -zxvf a.tar.gz
+</code></pre></div><h2 id="组管理权限管理">组管理，权限管理</h2>
+<p>在linux中的每个用户必须属于一个组，不能独立于组外。在linux中每个文件有所有者，所在组，其他组的概念。</p>
+<h2 id="任务调度">任务调度</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">crontab -e
+crontab -l
+crontab -r
+</code></pre></div><p><code>45 22 * * *</code> 在22点45分执行</p>
+<p><code>0 17 * * 1</code> 每周一17点0分执行</p>
+<p><code>0 5 1,15 * *</code> 每月1号15号凌晨5点执行</p>
+<p><code>40 4 * * 1-5</code> 每周一到周五凌晨4点40分执行</p>
+<p><code>*/10 4 * * *</code> 每天凌晨4点每隔10分执行一次</p>
+<p><code>0 0 1,15 * 1</code> 每月1号和15号，每周一的0点0分执行。星期几和几号最好不要同时出现，容易混乱</p>
+<h2 id="进程管理">进程管理</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ps -a/u/x | more
+ps -ef | grep sshd <span style="color:#75715e"># 查看sshd的父进程ID</span>
+kill <span style="color:#f92672">[</span>pid<span style="color:#f92672">]</span>
+pstree -p
+top
+netstat -anp | more <span style="color:#75715e"># 查看网络服务</span>
+</code></pre></div><ul>
+<li><code>USER</code> 用户名称</li>
+<li><code>PID</code> 进程号</li>
+<li><code>%CPU</code> 进程占用CPU的百分比</li>
+<li><code>%MEM</code> 进程占用物理内存的百分比</li>
+<li><code>VSZ</code> 进程占用的虚拟内存大小（KB）</li>
+<li><code>RSS</code> 进程占用的物理内存大小（KB）</li>
+<li><code>TT</code> 终端名称</li>
+<li><code>STAT</code> 进程状态 S-睡眠 R-正在运行 Z-僵死</li>
+<li><code>STARTED</code> 进程的启动时间</li>
+<li><code>TIME</code> 使用CPU总时间</li>
+<li><code>COMMAND</code> 启动进程的命令和参数</li>
+</ul>
+<h2 id="服务管理">服务管理</h2>
+<p>开机流程：</p>
+<p>开机 -&gt; BIOS -&gt; /boot -&gt; init process (1) -&gt; 运行级别 -&gt; 运行级别对应的服务</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">service <span style="color:#f92672">[</span>service name<span style="color:#f92672">]</span> start|stop|restart|reload|status
+ls -l /etc/init.d
+chkconfig --list
+</code></pre></div><p>服务的运行级别(runlevel)：</p>
+<ul>
+<li>运行级别0: 系统停机状态，系统默认运行级别不能设为0，否则不能正常启动</li>
+<li>运行级别1: 单用户工作状态，root权限，用于系统维护，禁止远程登录</li>
+<li>运行级别2: 多用户状态（没有NFS），不支持网络</li>
+<li>运行级别3: 完全的多用户状态（有NFS），登陆后进入控制台命令行模式</li>
+<li>运行级别4: 系统未使用，保留</li>
+<li>运行级别5: X11控制台，登陆后进入图形GUI模式</li>
+<li>运行级别6: 系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动</li>
+</ul>
+<h2 id="ubuntu">Ubuntu</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">su root <span style="color:#75715e"># 切换root用户，因为初始root未设置密码，提示错误</span>
+sudo passwd <span style="color:#75715e"># 设置root密码</span>
+su root <span style="color:#75715e"># 切换root用户，设置root密码后可以成功切换</span>
+</code></pre></div>
     </div>
 
     <div class="post-copyright">
@@ -219,6 +348,8 @@
         
         <a href="https://xuwenzhe.github.io/2020/precision-recall/" class="prev" rel="prev" title="Precision和Recall"><i class="iconfont icon-left"></i>&nbsp;Precision和Recall</a>
         
+        
+        <a href="https://xuwenzhe.github.io/2020/spark-fundamentals/" class="next" rel="next" title="Spark FAQ">Spark FAQ&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 

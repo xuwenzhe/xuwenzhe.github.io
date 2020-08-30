@@ -6,10 +6,28 @@
     <description>Recent content in Posts on Wenzhe&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Aug 2020 17:17:14 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2020 02:45:00 -0700</lastBuildDate>
     
 	<atom:link href="https://xuwenzhe.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spark数据倾斜及其解决方案</title>
+      <link>https://xuwenzhe.github.io/2020/spark-data-skew/</link>
+      <pubDate>Sun, 30 Aug 2020 02:45:00 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/2020/spark-data-skew/</guid>
+      <description>参考 Arganzheng&amp;rsquo;s Blog, Spark数据倾斜及其解决方案</description>
+    </item>
+    
+    <item>
+      <title>Spark FAQ</title>
+      <link>https://xuwenzhe.github.io/2020/spark-fundamentals/</link>
+      <pubDate>Sat, 29 Aug 2020 23:46:21 -0700</pubDate>
+      
+      <guid>https://xuwenzhe.github.io/2020/spark-fundamentals/</guid>
+      <description>什么是Job, Stage, Task? Spark数据处理是像流水线一样，通过一系列操作（算子）完成对RDD的处理, 即RDD1 -&amp;gt; RDD2 -&amp;gt; ...。操作分为两类：Tran</description>
+    </item>
     
     <item>
       <title>Linux入门</title>
@@ -17,7 +35,7 @@
       <pubDate>Wed, 19 Aug 2020 17:17:14 -0700</pubDate>
       
       <guid>https://xuwenzhe.github.io/2020/linux-intro/</guid>
-      <description></description>
+      <description>目录结构 /bin (/usr/bin, /usr/local/bin): binary,存放最经常使用的命令 /sbin (/usr/sbin, /usr/local/sbin): s: super user, 存放系统管理员使用的系统管理程序 /home: 存放普通用户的主目录，每个用户都有一个自己的目</description>
     </item>
     
     <item>

@@ -17,7 +17,7 @@
       <pubDate>Wed, 19 Aug 2020 17:17:14 -0700</pubDate>
       
       <guid>https://xuwenzhe.github.io/2020/linux-intro/</guid>
-      <description></description>
+      <description>目录结构 /bin (/usr/bin, /usr/local/bin): binary,存放最经常使用的命令 /sbin (/usr/sbin, /usr/local/sbin): s: super user, 存放系统管理员使用的系统管理程序 /home: 存放普通用户的主目录，每个用户都有一个自己的目</description>
     </item>
     
   </channel>
