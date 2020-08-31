@@ -1,67 +1,66 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Wenzhe&#39;s Blog</title>
-    <link>https://xuwenzhe.github.io/tags/</link>
-    <description>Recent content in Tags on Wenzhe&#39;s Blog</description>
+    <title>Tags on </title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
     <lastBuildDate>Sun, 30 Aug 2020 02:45:00 -0700</lastBuildDate>
     
-	<atom:link href="https://xuwenzhe.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>spark</title>
-      <link>https://xuwenzhe.github.io/tags/spark/</link>
+      <link>/tags/spark/</link>
       <pubDate>Sun, 30 Aug 2020 02:45:00 -0700</pubDate>
       
-      <guid>https://xuwenzhe.github.io/tags/spark/</guid>
+      <guid>/tags/spark/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://xuwenzhe.github.io/tags/linux/</link>
+      <link>/tags/linux/</link>
       <pubDate>Wed, 19 Aug 2020 17:17:14 -0700</pubDate>
       
-      <guid>https://xuwenzhe.github.io/tags/linux/</guid>
+      <guid>/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Machine Learning</title>
-      <link>https://xuwenzhe.github.io/tags/machine-learning/</link>
+      <link>/tags/machine-learning/</link>
       <pubDate>Wed, 12 Aug 2020 22:00:55 -0700</pubDate>
       
-      <guid>https://xuwenzhe.github.io/tags/machine-learning/</guid>
+      <guid>/tags/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>AdTech</title>
-      <link>https://xuwenzhe.github.io/tags/adtech/</link>
+      <link>/tags/adtech/</link>
       <pubDate>Sun, 09 Aug 2020 23:51:42 -0700</pubDate>
       
-      <guid>https://xuwenzhe.github.io/tags/adtech/</guid>
+      <guid>/tags/adtech/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://xuwenzhe.github.io/tags/git/</link>
+      <link>/tags/git/</link>
       <pubDate>Tue, 28 Jul 2020 12:31:43 -0700</pubDate>
       
-      <guid>https://xuwenzhe.github.io/tags/git/</guid>
+      <guid>/tags/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>leetcode</title>
-      <link>https://xuwenzhe.github.io/tags/leetcode/</link>
+      <link>/tags/leetcode/</link>
       <pubDate>Sun, 26 Jul 2020 23:50:06 -0700</pubDate>
       
-      <guid>https://xuwenzhe.github.io/tags/leetcode/</guid>
+      <guid>/tags/leetcode/</guid>
       <description></description>
     </item>
     

@@ -1,24 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Machine Learning on Wenzhe&#39;s Blog</title>
-    <link>https://xuwenzhe.github.io/tags/machine-learning/</link>
-    <description>Recent content in Machine Learning on Wenzhe&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Wed, 12 Aug 2020 22:00:55 -0700</lastBuildDate>
-    
-	<atom:link href="https://xuwenzhe.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Precision和Recall</title>
-      <link>https://xuwenzhe.github.io/2020/precision-recall/</link>
-      <pubDate>Wed, 12 Aug 2020 22:00:55 -0700</pubDate>
-      
-      <guid>https://xuwenzhe.github.io/2020/precision-recall/</guid>
-      <description>什么是精确率（precision）与召回率（recall）？ Precision和Recall是衡量模型预测能力的指标。在简单的分类问题（种类</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Machine Learning - Tag - Wenzhe&#39;s Blog</title>
+        <link>https://xuwenzhe.github.io/tags/machine-learning/</link>
+        <description>Machine Learning - Tag - Wenzhe&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 Aug 2020 22:00:55 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/tags/machine-learning/" rel="self" type="application/rss+xml" /><item>
+    <title>Precision和Recall</title>
+    <link>https://xuwenzhe.github.io/precision-recall/</link>
+    <pubDate>Wed, 12 Aug 2020 22:00:55 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/precision-recall/</guid>
+    <description><![CDATA[什么是精确率（precision）与召回率（recall）？ Precision和Recall是衡量模型预测能力的指标。在简单的分类问题（种类数=2）中，根据实际答案与模型预测，可分为如下4种情况：
+ True Positive (TP) - 正确预测了阳类 True Negative (TN) - 正确预测了阴类 False Positive (FP) - 错误预测了阳类（实际为阴类） False Negative (FN) - 错误预测了阴类（实际为阳类）  注：True和False表示预测是否正确，Positive和Negative表示预测结果
+精准率和召回率定义：
+Precision = TP / (TP + FP)
+Recall = TP / (TP + FN)
+他们区别在分母不同，所取值范围均为0～1
+如何理解Precision和Recall？ 信息检索中，Precision又叫查准率（找得对），Recall又叫查全率（找得全）。
+举个例子，池塘有大龙虾30只，小龙虾70只。我们发明了一只捕大龙虾神器专捕大龙虾。神器一网下去，捕到大龙虾20只，小龙虾5只。那么：
+精准率 = 20 /（20 + 5） = 0.80
+召回率 = 20 / 30 = 0.67
+我们来看3个极端神器的Precision和Recall。
+ 神器谨慎版：只捕了一只，且为大龙虾。Precision = 1/1 = 1.0, Recall = 1/30 = 0.]]></description>
+</item></channel>
 </rss>

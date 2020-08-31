@@ -1,24 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>git on Wenzhe&#39;s Blog</title>
-    <link>https://xuwenzhe.github.io/tags/git/</link>
-    <description>Recent content in git on Wenzhe&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Tue, 28 Jul 2020 12:31:43 -0700</lastBuildDate>
-    
-	<atom:link href="https://xuwenzhe.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Git与Github使用</title>
-      <link>https://xuwenzhe.github.io/2020/git-github/</link>
-      <pubDate>Tue, 28 Jul 2020 12:31:43 -0700</pubDate>
-      
-      <guid>https://xuwenzhe.github.io/2020/git-github/</guid>
-      <description>The git directory acts as a database for all the changes tracked in Git and the working tree acts as a sandbox where we can edit the current versions of the files. 1. 基本操作 git init # 创建仓库 # 登陆当前操作系统的用户范围 (否则为项目级别) git config --global</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>git - Tag - Wenzhe&#39;s Blog</title>
+        <link>https://xuwenzhe.github.io/tags/git/</link>
+        <description>git - Tag - Wenzhe&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 28 Jul 2020 12:31:43 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/tags/git/" rel="self" type="application/rss+xml" /><item>
+    <title>Git与Github使用</title>
+    <link>https://xuwenzhe.github.io/git-github/</link>
+    <pubDate>Tue, 28 Jul 2020 12:31:43 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/git-github/</guid>
+    <description><![CDATA[The git directory acts as a database for all the changes tracked in Git and the working tree acts as a sandbox where we can edit the current versions of the files.
+1. 基本操作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  git init # 创建仓库 # 登陆当前操作系统的用户范围 (否则为项目级别) git config --global user.name &#34;My Name&#34; git config --global user.]]></description>
+</item></channel>
 </rss>

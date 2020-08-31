@@ -1,51 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>leetcode on Wenzhe&#39;s Blog</title>
-    <link>https://xuwenzhe.github.io/tags/leetcode/</link>
-    <description>Recent content in leetcode on Wenzhe&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Sun, 26 Jul 2020 23:50:06 -0700</lastBuildDate>
-    
-	<atom:link href="https://xuwenzhe.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Leetcode：位运算</title>
-      <link>https://xuwenzhe.github.io/2020/leetcode-bit-manipulation/</link>
-      <pubDate>Sun, 26 Jul 2020 23:50:06 -0700</pubDate>
-      
-      <guid>https://xuwenzhe.github.io/2020/leetcode-bit-manipulation/</guid>
-      <description>while位 342. Power of Four (easy) 简述：判断是否为4的幂 思路：mask挪位置 联系：出自693 # class Solution(object): # def isPowerOfFour(self, num): # &amp;#34;&amp;#34;&amp;#34; # :type num: int # :rtype: bool # &amp;#34;&amp;#34;&amp;#34; # base = 1 while base &amp;lt;= num: # if base ==</description>
-    </item>
-    
-    <item>
-      <title>Leetcode：树的Traversal</title>
-      <link>https://xuwenzhe.github.io/2020/leetcode-tree-traversal/</link>
-      <pubDate>Thu, 16 Jul 2020 12:46:49 -0700</pubDate>
-      
-      <guid>https://xuwenzhe.github.io/2020/leetcode-tree-traversal/</guid>
-      <description>In-Order 230. Kth Smallest Element in a BST (medium) 简述：在BST中，求第k小的值 思路：inorder，记录遍历idx 联系：模板题 # class Solution(object): # def kthSmallest(self, root, k): # &amp;#34;&amp;#34;&amp;#34; # :type root: TreeNode # :type k: int # :rtype: int #</description>
-    </item>
-    
-    <item>
-      <title>Leetcode：树的Divide &amp; Conquer</title>
-      <link>https://xuwenzhe.github.io/2020/leetcode-divide-conquer/</link>
-      <pubDate>Fri, 10 Jul 2020 00:20:03 -0700</pubDate>
-      
-      <guid>https://xuwenzhe.github.io/2020/leetcode-divide-conquer/</guid>
-      <description>100. Same Tree (easy) 简述：判断两棵二叉树是否相同 思路：分治法 联系：模板题 # Definition for a binary tree node. # class TreeNode(object): # def __init__(self, x): # self.val = x # self.left = None # self.right = None # class Solution(object): # def isSameTree(self, p, q): # &amp;#34;&amp;#34;&amp;#34; # :type p: TreeNode</description>
-    </item>
-    
-    <item>
-      <title>Leetcode：二分查找</title>
-      <link>https://xuwenzhe.github.io/2020/leetcode-binary-search/</link>
-      <pubDate>Tue, 07 Jul 2020 19:47:02 -0700</pubDate>
-      
-      <guid>https://xuwenzhe.github.io/2020/leetcode-binary-search/</guid>
-      <description>模板 # def binarySearch(nums, target): # if len(nums) == 0: # return -1 # start, end = 0, len(nums) - 1 while start + 1 &amp;lt; end: # 要点3-1 mid = (start + end) // 2 # 要点3-2: python动态数据类型 # if nums[start] &amp;lt; target: start = mid # 要</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>leetcode - Tag - Wenzhe&#39;s Blog</title>
+        <link>https://xuwenzhe.github.io/tags/leetcode/</link>
+        <description>leetcode - Tag - Wenzhe&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 26 Jul 2020 23:50:06 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/tags/leetcode/" rel="self" type="application/rss+xml" /><item>
+    <title>Leetcode：位运算</title>
+    <link>https://xuwenzhe.github.io/leetcode-bit-manipulation/</link>
+    <pubDate>Sun, 26 Jul 2020 23:50:06 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/leetcode-bit-manipulation/</guid>
+    <description><![CDATA[while位 342. Power of Four (easy) 简述：判断是否为4的幂
+思路：mask挪位置
+联系：出自693
+1 2 3 4 5 6 7 8 9 10 11 12 13  # class Solution(object): # def isPowerOfFour(self, num): # &#34;&#34;&#34; # :type num: int # :rtype: bool # &#34;&#34;&#34; # base = 1 while base &lt;= num: # if base == num: # return True # 要点1-1: 偶数位为1 base &lt;&lt;= 2 # return False   476. Number Complement (easy) 简述：将所给数二进制取反输出对应十进制]]></description>
+</item><item>
+    <title>Leetcode：树的Traversal</title>
+    <link>https://xuwenzhe.github.io/leetcode-tree-traversal/</link>
+    <pubDate>Thu, 16 Jul 2020 12:46:49 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/leetcode-tree-traversal/</guid>
+    <description><![CDATA[In-Order 230. Kth Smallest Element in a BST (medium) 简述：在BST中，求第k小的值
+思路：inorder，记录遍历idx
+联系：模板题
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22  # class Solution(object): # def kthSmallest(self, root, k): # &#34;&#34;&#34; # :type root: TreeNode # :type k: int # :rtype: int # &#34;&#34;&#34; # self.idx, self.res = 0, None # self.k = k # self.]]></description>
+</item><item>
+    <title>Leetcode：树的Divide &amp; Conquer</title>
+    <link>https://xuwenzhe.github.io/leetcode-divide-conquer/</link>
+    <pubDate>Fri, 10 Jul 2020 00:20:03 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/leetcode-divide-conquer/</guid>
+    <description><![CDATA[Title   --  100. Same Tree (easy) 简述：判断两棵二叉树是否相同
+思路：分治法
+联系：模板题
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  # Definition for a binary tree node. # class TreeNode(object): # def __init__(self, x): # self.val = x # self.left = None # self.right = None # class Solution(object): # def isSameTree(self, p, q): # &#34;&#34;&#34; # :type p: TreeNode # :type q: TreeNode # :rtype: bool # &#34;&#34;&#34; # if p is None and q is None: # return True # if p is None or q is None: # return False return p.]]></description>
+</item><item>
+    <title>Leetcode：二分查找</title>
+    <link>https://xuwenzhe.github.io/leetcode-binary-search/</link>
+    <pubDate>Tue, 07 Jul 2020 19:47:02 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/leetcode-binary-search/</guid>
+    <description><![CDATA[模板 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  # def binarySearch(nums, target): # if len(nums) == 0: # return -1 # start, end = 0, len(nums) - 1 while start + 1 &lt; end: # 要点3-1 mid = (start + end) // 2 # 要点3-2: python动态数据类型 # if nums[start] &lt; target: start = mid # 要点3-3: mid不+-1 # else: # end = mid # if nums[start] == target: # return start # if nums[end] == target: # return end # return -1   找位置 34.]]></description>
+</item></channel>
 </rss>

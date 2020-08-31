@@ -1,252 +1,29 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/posts/</loc>
-      
-      <lastmod>2020-08-30T02:45:00-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/tags/spark/</loc>
-      
-      <lastmod>2020-08-30T02:45:00-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/spark-data-skew/</loc>
-      
-      <lastmod>2020-08-30T02:45:00-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/tags/</loc>
-      
-      <lastmod>2020-08-30T02:45:00-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/</loc>
-      
-      <lastmod>2020-08-30T02:45:00-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/spark-fundamentals/</loc>
-      
-      <lastmod>2020-08-29T23:46:21-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/tags/linux/</loc>
-      
-      <lastmod>2020-08-19T17:17:14-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/linux-intro/</loc>
-      
-      <lastmod>2020-08-19T17:17:14-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/tags/machine-learning/</loc>
-      
-      <lastmod>2020-08-12T22:00:55-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/precision-recall/</loc>
-      
-      <lastmod>2020-08-12T22:00:55-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/tags/adtech/</loc>
-      
-      <lastmod>2020-08-09T23:51:42-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/cookie-track-user/</loc>
-      
-      <lastmod>2020-08-09T23:51:42-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/from-pandas-to-pyspark/</loc>
-      
-      <lastmod>2020-08-09T22:25:25-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/coursera-spark/</loc>
-      
-      <lastmod>2020-08-05T15:42:21-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/tags/git/</loc>
-      
-      <lastmod>2020-07-28T12:31:43-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/git-github/</loc>
-      
-      <lastmod>2020-07-28T12:31:43-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/tags/leetcode/</loc>
-      
-      <lastmod>2020-07-26T23:50:06-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/leetcode-bit-manipulation/</loc>
-      
-      <lastmod>2020-07-26T23:50:06-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/leetcode-tree-traversal/</loc>
-      
-      <lastmod>2020-07-16T12:46:49-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/leetcode-divide-conquer/</loc>
-      
-      <lastmod>2020-07-10T00:20:03-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/leetcode-binary-search/</loc>
-      
-      <lastmod>2020-07-07T19:47:02-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/coursera-umich-fffsdm/</loc>
-      
-      <lastmod>2020-07-06T21:02:03-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/2020/hugo-blog-site/</loc>
-      
-      <lastmod>2020-07-03T01:17:52-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/about/</loc>
-      
-      <lastmod>2020-07-02T17:50:36-07:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://xuwenzhe.github.io/categories/</loc>
-      
-      
-      
-      
-    </url>
-  
-</urlset>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    ><url>
+            <loc>https://xuwenzhe.github.io/posts/</loc><lastmod>2020-08-30T02:45:00-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xuwenzhe.github.io/tags/spark/</loc><lastmod>2020-08-30T02:45:00-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xuwenzhe.github.io/spark-data-skew/</loc><lastmod>2020-08-30T02:45:00-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xuwenzhe.github.io/tags/</loc><lastmod>2020-08-30T02:45:00-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xuwenzhe.github.io/</loc><lastmod>2020-08-30T02:45:00-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xuwenzhe.github.io/spark-fundamentals/</loc><lastmod>2020-08-29T23:46:21-07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://xuwenzhe.github.io/tags/linux/</loc><lastmod>2020-08-19T17:17:14-07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://xuwenzhe.github.io/linux-intro/</loc><lastmod>2020-08-19T17:17:14-07:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>https://xuwenzhe.github.io/tags/machine-learning/</loc><lastmod>2020-08-12T22:00:55-07:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://xuwenzhe.github.io/precision-recall/</loc><lastmod>2020-08-12T22:00:55-07:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://xuwenzhe.github.io/tags/adtech/</loc><lastmod>2020-08-09T23:51:42-07:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://xuwenzhe.github.io/cookie-track-user/</loc><lastmod>2020-08-09T23:51:42-07:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://xuwenzhe.github.io/from-pandas-to-pyspark/</loc><lastmod>2020-08-09T22:25:25-07:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://xuwenzhe.github.io/coursera-spark/</loc><lastmod>2020-08-05T15:42:21-07:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>https://xuwenzhe.github.io/tags/git/</loc><lastmod>2020-07-28T12:31:43-07:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>https://xuwenzhe.github.io/git-github/</loc><lastmod>2020-07-28T12:31:43-07:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>https://xuwenzhe.github.io/tags/leetcode/</loc><lastmod>2020-07-26T23:50:06-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xuwenzhe.github.io/leetcode-bit-manipulation/</loc><lastmod>2020-07-26T23:50:06-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xuwenzhe.github.io/leetcode-tree-traversal/</loc><lastmod>2020-07-16T12:46:49-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xuwenzhe.github.io/leetcode-divide-conquer/</loc><lastmod>2020-07-10T00:20:03-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xuwenzhe.github.io/leetcode-binary-search/</loc><lastmod>2020-07-07T19:47:02-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xuwenzhe.github.io/coursera-umich-fffsdm/</loc><lastmod>2020-07-06T21:02:03-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xuwenzhe.github.io/hugo-blog-site/</loc><lastmod>2020-07-03T01:17:52-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xuwenzhe.github.io/about/</loc><lastmod>2020-07-02T17:50:36-07:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://xuwenzhe.github.io/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Leetcode：位运算 - Wenzhe&#39;s Blog</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="Leetcode：位运算" />
+<meta property="og:description" content="while位 342. Power of Four (easy) 简述：判断是否为4的幂
+思路：mask挪位置
+联系：出自693
+1 2 3 4 5 6 7 8 9 10 11 12 13  # class Solution(object): # def isPowerOfFour(self, num): # &#34;&#34;&#34; # :type num: int # :rtype: bool # &#34;&#34;&#34; # base = 1 while base &lt;= num: # if base == num: # return True # 要点1-1: 偶数位为1 base &lt;&lt;= 2 # return False   476. Number Complement (easy) 简述：将所给数二进制取反输出对应十进制" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xuwenzhe.github.io/leetcode-bit-manipulation/" />
+<meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
+<meta property="article:published_time" content="2020-07-26T23:50:06-07:00" />
+<meta property="article:modified_time" content="2020-07-26T23:50:06-07:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Leetcode：位运算"/>
+<meta name="twitter:description" content="while位 342. Power of Four (easy) 简述：判断是否为4的幂
+思路：mask挪位置
+联系：出自693
+1 2 3 4 5 6 7 8 9 10 11 12 13  # class Solution(object): # def isPowerOfFour(self, num): # &#34;&#34;&#34; # :type num: int # :rtype: bool # &#34;&#34;&#34; # base = 1 while base &lt;= num: # if base == num: # return True # 要点1-1: 偶数位为1 base &lt;&lt;= 2 # return False   476. Number Complement (easy) 简述：将所给数二进制取反输出对应十进制"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://xuwenzhe.github.io/leetcode-bit-manipulation/" /><link rel="prev" href="https://xuwenzhe.github.io/leetcode-tree-traversal/" /><link rel="next" href="https://xuwenzhe.github.io/git-github/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Leetcode：位运算",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/xuwenzhe.github.io\/leetcode-bit-manipulation\/"
+        },"image": ["https:\/\/xuwenzhe.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "leetcode","wordcount":  674 ,
+        "url": "https:\/\/xuwenzhe.github.io\/leetcode-bit-manipulation\/","datePublished": "2020-07-26T23:50:06-07:00","dateModified": "2020-07-26T23:50:06-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/xuwenzhe.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "wenzhe"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Wenzhe&#39;s Blog">Wenzhe&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Wenzhe&#39;s Blog">Wenzhe&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Leetcode：位运算</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-26">2020-07-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;674 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;<span id="/leetcode-bit-manipulation/" class="leancloud_visitors" data-flag-title="Leetcode：位运算">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#342-power-of-four-easy">342. Power of Four (easy)</a></li>
+    <li><a href="#476-number-complement-easy">476. Number Complement (easy)</a></li>
+    <li><a href="#693-binary-number-with-alternating-bits-easy">693. Binary Number with Alternating Bits (easy)</a></li>
+    <li><a href="#477-total-hamming-distance-medium">477. Total Hamming Distance (medium)</a></li>
+    <li><a href="#201-bitwise-and-of-numbers-range-medium">201. Bitwise AND of Numbers Range (medium)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#191-number-of-1-bits-easy">191. Number of 1 Bits (easy)</a></li>
+    <li><a href="#231-power-of-two-easy">231. Power of Two (easy)</a></li>
+    <li><a href="#461-hamming-distance-easy">461. Hamming Distance (easy)</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#136-single-number-easy">136. Single Number (easy)</a></li>
+    <li><a href="#389-find-the-difference-easy">389. Find the Difference (easy)</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><figure class="center">
+    <img src="/leetcode-bit-manipulation/mindmaster.png" width="500"/> 
+</figure>
+
+<h1 id="while位">while位</h1>
+<h2 id="342-power-of-four-easy">342. Power of Four (easy)</h2>
+<p>简述：判断是否为4的幂</p>
+<p>思路：mask挪位置</p>
+<p>联系：出自693</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def isPowerOfFour(self, num):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type num: int</span>
+<span class="c1"># 		:rtype: bool</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		base = 1</span>
+		<span class="k">while</span> <span class="n">base</span> <span class="o">&lt;=</span> <span class="n">num</span><span class="p">:</span>
+<span class="c1"># 			if base == num:</span>
+<span class="c1"># 				return True</span>
+			<span class="c1"># 要点1-1: 偶数位为1</span>
+			<span class="n">base</span> <span class="o">&lt;&lt;=</span> <span class="mi">2</span>
+<span class="c1"># 		return False</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="476-number-complement-easy">476. Number Complement (easy)</h2>
+<p>简述：将所给数二进制取反输出对应十进制</p>
+<p>思路：利用stack</p>
+<p>联系：出自342</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def findComplement(self, num):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type num: int</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		stack = []</span>
+<span class="c1"># 		while num:</span>
+<span class="c1"># 			stack.append(1 ^ (num &amp; 1))</span>
+<span class="c1"># 			num = num &gt;&gt; 1</span>
+<span class="c1"># 		res = 0</span>
+<span class="c1"># 		while stack:</span>
+			<span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="n">res</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="c1"># 		return res</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="693-binary-number-with-alternating-bits-easy">693. Binary Number with Alternating Bits (easy)</h2>
+<p>简述：判断所给数二进制是否间隔均不同，即<code>...0101...</code>或者<code>...1010...</code></p>
+<p>思路：while异常退出，逐位判断</p>
+<p>联系：342</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def hasAlternatingBits(self, n):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type n: int</span>
+<span class="c1"># 		:rtype: bool</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		state = n &amp; 1</span>
+<span class="c1"># 		while n:</span>
+<span class="c1"># 			n = n &gt;&gt; 1</span>
+			<span class="c1"># 要点1-1: python位与，位xor</span>
+			<span class="k">if</span> <span class="n">state</span> <span class="o">^</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+<span class="c1"># 				return False</span>
+<span class="c1"># 			state ^= 1</span>
+<span class="c1"># 		return True</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="477-total-hamming-distance-medium">477. Total Hamming Distance (medium)</h2>
+<p>简述：求所有数对hamming距离之和</p>
+<p>思路：找出每一位位置上，多少个数为1或为0</p>
+<p>联系：342</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def totalHammingDistance(self, nums):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type nums: List[int]</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		res = 0</span>
+<span class="c1"># 		for i in range(32):</span>
+			<span class="n">countZeros</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">x</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">])</span>
+			<span class="n">res</span> <span class="o">+=</span> <span class="n">countZeros</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="n">countZeros</span><span class="p">)</span>
+<span class="c1"># 		return res</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="201-bitwise-and-of-numbers-range-medium">201. Bitwise AND of Numbers Range (medium)</h2>
+<p>简述：求区间内所有数位AND值</p>
+<p>思路：只要区间跨过1，末位AND值为0，递归求解</p>
+<p>联系：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def rangeBitwiseAnd(self, m, n):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type m: int</span>
+<span class="c1"># 		:type n: int</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if m == n:</span>
+<span class="c1"># 			return m</span>
+<span class="c1"># 		if n == m + 1:</span>
+<span class="c1"># 			return m &amp; n</span>
+		<span class="c1"># 要点1-1: 区间跨过1，末位AND值为0，递归</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rangeBitwiseAnd</span><span class="p">(</span><span class="n">m</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="与关系">与关系</h1>
+<h2 id="191-number-of-1-bits-easy">191. Number of 1 Bits (easy)</h2>
+<p>简述：求所给数二进制里多少位是1</p>
+<p>思路：<code>n &amp; (n-1)</code>去掉最后一位1</p>
+<p>联系：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def hammingWeight(self, n):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type n: int</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		res = 0</span>
+<span class="c1"># 		while n:</span>
+			<span class="c1"># n &amp; (n-1) 去掉最后一位1</span>
+			<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 			res += 1</span>
+<span class="c1"># 		return res</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="231-power-of-two-easy">231. Power of Two (easy)</h2>
+<p>简述：判断是否为2的幂</p>
+<p>思路：二进制中有且仅有1个1</p>
+<p>联系：出自191</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def isPowerOfTwo(self, n):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type n: int</span>
+<span class="c1"># 		:rtype: bool</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		return n &amp; (n-1) == 0 and n != 0</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="461-hamming-distance-easy">461. Hamming Distance (easy)</h2>
+<p>简述：求所给数对的hamming distance</p>
+<p>思路：先亦或，再数多少个1</p>
+<p>联系：出自191</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def hammingDistance(self, x, y):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type x: int</span>
+<span class="c1"># 		:type y: int</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+		<span class="n">num</span> <span class="o">=</span> <span class="n">x</span> <span class="o">^</span> <span class="n">y</span>
+<span class="c1"># 		res = 0</span>
+<span class="c1"># 		while num:</span>
+			<span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 			res += 1</span>
+<span class="c1"># 		return res</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="异或关系">异或关系</h1>
+<h2 id="136-single-number-easy">136. Single Number (easy)</h2>
+<p>简述：数组中除某元素外每个元素出现两次，找出该元素</p>
+<p>思路：碰碰对</p>
+<p>联系：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def singleNumber(self, nums):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type nums: List[int]</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+		<span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># 		for num in nums:</span>
+<span class="c1"># 			res ^= num</span>
+<span class="c1"># 		return res</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="389-find-the-difference-easy">389. Find the Difference (easy)</h2>
+<p>简述：字符串shuffle后添加一个字符，找出该字符</p>
+<p>思路：碰碰对</p>
+<p>联系：出自136</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def findTheDifference(self, s, t):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type s: str</span>
+<span class="c1"># 		:type t: str</span>
+<span class="c1"># 		:rtype: str</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		res = 0</span>
+<span class="c1"># 		# 要点1-1: python中ord与chr的使用</span>
+<span class="c1"># 		for c in s:</span>
+<span class="c1"># 			res = res ^ ord(c)</span>
+<span class="c1"># 		for c in t:</span>
+<span class="c1"># 			res = res ^ ord(c)</span>
+<span class="c1"># 		return chr(res)</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-07-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/leetcode-bit-manipulation/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://xuwenzhe.github.io/leetcode-bit-manipulation/" data-title="Leetcode：位运算" data-hashtags="leetcode"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://xuwenzhe.github.io/leetcode-bit-manipulation/" data-hashtag="leetcode"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://xuwenzhe.github.io/leetcode-bit-manipulation/" data-title="Leetcode：位运算"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://xuwenzhe.github.io/leetcode-bit-manipulation/" data-title="Leetcode：位运算"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://xuwenzhe.github.io/leetcode-bit-manipulation/" data-title="Leetcode：位运算"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/leetcode/">leetcode</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/leetcode-tree-traversal/" class="prev" rel="prev" title="Leetcode：树的Traversal"><i class="fas fa-angle-left fa-fw"></i>Leetcode：树的Traversal</a>
+            <a href="/git-github/" class="next" rel="next" title="Git与Github使用">Git与Github使用<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wenzhe</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

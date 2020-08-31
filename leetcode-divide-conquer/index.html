@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Leetcode：树的Divide &amp; Conquer - Wenzhe&#39;s Blog</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="Leetcode：树的Divide &amp; Conquer" />
+<meta property="og:description" content="Title   --  100. Same Tree (easy) 简述：判断两棵二叉树是否相同
+思路：分治法
+联系：模板题
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  # Definition for a binary tree node. # class TreeNode(object): # def __init__(self, x): # self.val = x # self.left = None # self.right = None # class Solution(object): # def isSameTree(self, p, q): # &#34;&#34;&#34; # :type p: TreeNode # :type q: TreeNode # :rtype: bool # &#34;&#34;&#34; # if p is None and q is None: # return True # if p is None or q is None: # return False return p." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xuwenzhe.github.io/leetcode-divide-conquer/" />
+<meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
+<meta property="article:published_time" content="2020-07-10T00:20:03-07:00" />
+<meta property="article:modified_time" content="2020-07-10T00:20:03-07:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Leetcode：树的Divide &amp; Conquer"/>
+<meta name="twitter:description" content="Title   --  100. Same Tree (easy) 简述：判断两棵二叉树是否相同
+思路：分治法
+联系：模板题
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  # Definition for a binary tree node. # class TreeNode(object): # def __init__(self, x): # self.val = x # self.left = None # self.right = None # class Solution(object): # def isSameTree(self, p, q): # &#34;&#34;&#34; # :type p: TreeNode # :type q: TreeNode # :rtype: bool # &#34;&#34;&#34; # if p is None and q is None: # return True # if p is None or q is None: # return False return p."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://xuwenzhe.github.io/leetcode-divide-conquer/" /><link rel="prev" href="https://xuwenzhe.github.io/leetcode-binary-search/" /><link rel="next" href="https://xuwenzhe.github.io/leetcode-tree-traversal/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Leetcode：树的Divide \u0026 Conquer",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/xuwenzhe.github.io\/leetcode-divide-conquer\/"
+        },"image": ["https:\/\/xuwenzhe.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "leetcode","wordcount":  3098 ,
+        "url": "https:\/\/xuwenzhe.github.io\/leetcode-divide-conquer\/","datePublished": "2020-07-10T00:20:03-07:00","dateModified": "2020-07-10T00:20:03-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/xuwenzhe.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "wenzhe"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Wenzhe&#39;s Blog">Wenzhe&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Wenzhe&#39;s Blog">Wenzhe&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Leetcode：树的Divide &amp; Conquer</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-10">2020-07-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3098 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;15 minutes&nbsp;<span id="/leetcode-divide-conquer/" class="leancloud_visitors" data-flag-title="Leetcode：树的Divide &amp; Conquer">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#100-same-tree-easy">100. Same Tree (easy)</a></li>
+    <li><a href="#572-subtree-of-another-tree-easy">572. Subtree of Another Tree (easy)</a></li>
+    <li><a href="#101-symmetric-tree-easy">101. Symmetric Tree (easy)</a></li>
+    <li><a href="#270-closest-binary-search-tree-value-easy">270. Closest Binary Search Tree Value (easy)</a></li>
+    <li><a href="#104-maximum-depth-of-binary-tree-easy">104. Maximum Depth of Binary Tree (easy)</a></li>
+    <li><a href="#111-minimum-depth-of-binary-tree-easy">111. Minimum Depth of Binary Tree (easy)</a></li>
+    <li><a href="#226-invert-binary-tree-easy">226. Invert Binary Tree (easy)</a></li>
+    <li><a href="#669-trim-a-binary-search-tree-easy">669. Trim a Binary Search Tree (easy)</a></li>
+    <li><a href="#110-balanced-binary-tree-easy">110. Balanced Binary Tree (easy)</a></li>
+    <li><a href="#543-diameter-of-binary-tree-easy">543. Diameter of Binary Tree (easy)</a></li>
+    <li><a href="#124-binary-tree-maximum-path-sum-hard">124. Binary Tree Maximum Path Sum (hard)</a></li>
+    <li><a href="#257-binary-tree-paths-easy">257. Binary Tree Paths (easy)</a></li>
+    <li><a href="#654-maximum-binary-tree-medium">654. Maximum Binary Tree (medium)</a></li>
+    <li><a href="#108-convert-sorted-array-to-binary-search-tree-easy">108. Convert Sorted Array to Binary Search Tree (easy)</a></li>
+    <li><a href="#606-construct-string-from-binary-tree-easy">606. Construct String from Binary Tree (easy)</a></li>
+    <li><a href="#1120-maximum-average-subtree-medium">1120. Maximum Average Subtree (medium)</a></li>
+    <li><a href="#563-binary-tree-tilt-easy">563. Binary Tree Tilt (easy)</a></li>
+    <li><a href="#366-find-leaves-of-binary-tree-medium">366. Find Leaves of Binary Tree (medium)</a></li>
+    <li><a href="#617-merge-two-binary-trees-easy">617. Merge Two Binary Trees (easy)</a></li>
+    <li><a href="#1490-clone-n-ary-tree-medium">1490. Clone N-ary Tree (medium)</a></li>
+    <li><a href="#814-binary-tree-pruning-medium">814. Binary Tree Pruning (medium)</a></li>
+    <li><a href="#236-lowest-common-ancestor-of-a-binary-tree-medium">236. Lowest Common Ancestor of a Binary Tree (medium)</a></li>
+    <li><a href="#235-lowest-common-ancestor-of-a-binary-search-tree-easy">235. Lowest Common Ancestor of a Binary Search Tree (easy)</a></li>
+    <li><a href="#156-binary-tree-upside-down-medium">156. Binary Tree Upside Down (medium)</a></li>
+    <li><a href="#114-flatten-binary-tree-to-linked-list-medium">114. Flatten Binary Tree to Linked List (medium)</a></li>
+    <li><a href="#298-binary-tree-longest-consecutive-sequence-medium">298. Binary Tree Longest Consecutive Sequence (medium)</a></li>
+    <li><a href="#285-inorder-successor-in-bst-medium">285. Inorder Successor in BST (medium)</a></li>
+    <li><a href="#671-second-minimum-node-in-a-binary-tree-easy">671. Second Minimum Node In a Binary Tree (easy)</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- <figure class="center">
+    <img src="/leetcode-divide-conquer/mindmaster.png" width="220" height="196"/> <figcaption>
+            <h4>Title</h4>
+        </figcaption>
+</figure>
+ -->
+<figure class="center">
+    <img src="/leetcode-divide-conquer/mindmaster.png" width="600"/> 
+</figure>
+
+<h2 id="100-same-tree-easy">100. Same Tree (easy)</h2>
+<p>简述：判断两棵二叉树是否相同</p>
+<p>思路：分治法</p>
+<p>联系：模板题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Definition for a binary tree node.</span>
+<span class="c1"># class TreeNode(object):</span>
+<span class="c1">#     def __init__(self, x):</span>
+<span class="c1">#         self.val = x</span>
+<span class="c1">#         self.left = None</span>
+<span class="c1">#         self.right = None</span>
+
+<span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def isSameTree(self, p, q):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type p: TreeNode</span>
+<span class="c1"># 		:type q: TreeNode</span>
+<span class="c1"># 		:rtype: bool</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if p is None and q is None:</span>
+<span class="c1"># 			return True</span>
+<span class="c1"># 		if p is None or q is None:</span>
+<span class="c1"># 			return False</span>
+		<span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">q</span><span class="o">.</span><span class="n">val</span> <span class="ow">and</span> \
+				<span class="bp">self</span><span class="o">.</span><span class="n">isSameTree</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> \
+				<span class="bp">self</span><span class="o">.</span><span class="n">isSameTree</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="572-subtree-of-another-tree-easy">572. Subtree of Another Tree (easy)</h2>
+<p>简述：判断t是否为s的子树（相同也算子树）</p>
+<p>思路：构造<code>isSame()</code>辅助</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def isSubtree(self, s, t):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type s: TreeNode</span>
+<span class="c1"># 		:type t: TreeNode</span>
+<span class="c1"># 		:rtype: bool</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if s is None:</span>
+<span class="c1"># 			return False</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">isSame</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">isSubtree</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">isSubtree</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+		
+<span class="c1"># 	def isSame(self, s, t):</span>
+<span class="c1"># 		if s is None and t is None:</span>
+<span class="c1"># 			return True</span>
+<span class="c1"># 		if s is None or t is None:</span>
+<span class="c1"># 			return False</span>
+<span class="c1"># 		return s.val == t.val and \</span>
+<span class="c1"># 				self.isSame(s.left, t.left) and \</span>
+<span class="c1"># 				self.isSame(s.right, t.right)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="101-symmetric-tree-easy">101. Symmetric Tree (easy)</h2>
+<p>简述：判断二叉树是否对称</p>
+<p>思路：改造为判断两棵树是否对称</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def isSymmetric(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: bool</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return True</span>
+<span class="c1"># 		return self._isSymmetric(root.left, root.right)</span>
+	
+	<span class="c1"># 要点1-1: 下划线命名helper函数，添加参数</span>
+	<span class="k">def</span> <span class="nf">_isSymmetric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">):</span>
+<span class="c1"># 		if r1 is None and r2 is None:</span>
+<span class="c1"># 			return True</span>
+<span class="c1"># 		if r1 is None or r2 is None:</span>
+<span class="c1"># 			return False</span>
+<span class="c1"># 		return r1.val == r2.val and \</span>
+<span class="c1"># 				self._isSymmetric(r1.left, r2.right) and \</span>
+<span class="c1"># 				self._isSymmetric(r1.right, r2.left)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="270-closest-binary-search-tree-value-easy">270. Closest Binary Search Tree Value (easy)</h2>
+<p>简述：在BST里找最接近目标的值</p>
+<p>思路：分治</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def closestValue(self, root, target):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:type target: float</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			return root.val</span>
+<span class="c1"># 		if target == root.val:</span>
+<span class="c1"># 			return root.val</span>
+<span class="c1"># 		if target &gt; root.val:</span>
+<span class="c1"># 			if root.right is None:</span>
+<span class="c1"># 				return root.val</span>
+<span class="c1"># 			tmp_res = self.closestValue(root.right, target)</span>
+			<span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">tmp_res</span> <span class="o">-</span> <span class="n">target</span><span class="p">):</span>
+<span class="c1"># 				return root.val</span>
+<span class="c1"># 			else:</span>
+<span class="c1"># 				return tmp_res</span>
+<span class="c1"># 		else:</span>
+<span class="c1"># 			if root.left is None:</span>
+<span class="c1"># 				return root.val</span>
+<span class="c1"># 			tmp_res = self.closestValue(root.left, target)</span>
+			<span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">tmp_res</span> <span class="o">-</span> <span class="n">target</span><span class="p">):</span>
+<span class="c1"># 				return root.val</span>
+<span class="c1"># 			else:</span>
+<span class="c1"># 				return tmp_res</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="104-maximum-depth-of-binary-tree-easy">104. Maximum Depth of Binary Tree (easy)</h2>
+<p>简述：求二叉树最大深度, 通常定义如下 （此题按节点数量算深度）</p>
+<p>I learned that depth and height are properties of a node:</p>
+<ul>
+<li>The depth of a node is the number of edges from the node to the tree&rsquo;s root node.
+A root node will have a depth of 0.</li>
+<li>The height of a node is the number of edges on the longest path from the node to a leaf.
+A leaf node will have a height of 0.</li>
+</ul>
+<p>Properties of a tree:</p>
+<ul>
+<li>The height of a tree would be the height of its root node,
+or equivalently, the depth of its deepest node.</li>
+<li>The diameter (or width) of a tree is the number of nodes on the longest path between any two leaf nodes. The tree below has a diameter of 6 nodes.</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.stack.imgur.com/8yPi9.png"
+        data-srcset="https://i.stack.imgur.com/8yPi9.png, https://i.stack.imgur.com/8yPi9.png 1.5x, https://i.stack.imgur.com/8yPi9.png 2x"
+        data-sizes="auto"
+        alt="https://i.stack.imgur.com/8yPi9.png"
+        title="https://i.stack.imgur.com/8yPi9.png" /></p>
+<p>depth往根（上）数，height往最远的叶（下）数，height等于maxDepth</p>
+<p>思路：分治法，也可以遍历法</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def maxDepth(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return 0</span>
+<span class="c1"># 		return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="111-minimum-depth-of-binary-tree-easy">111. Minimum Depth of Binary Tree (easy)</h2>
+<p>简述：求二叉树最小深度</p>
+<p>思路：分治法</p>
+<p>联系：出自104</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def minDepth(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return 0</span>
+		<span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+			<span class="k">return</span> <span class="mi">1</span>
+		<span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">minDepth</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+		<span class="k">if</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">minDepth</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="c1"># 		return min(self.minDepth(root.left), self.minDepth(root.right)) + 1</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="226-invert-binary-tree-easy">226. Invert Binary Tree (easy)</h2>
+<p>简述：左右反转二叉树</p>
+<p>思路：分治</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def invertTree(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: TreeNode</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			return root</span>
+		<span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">invertTree</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">invertTree</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+<span class="c1"># 		return root</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="669-trim-a-binary-search-tree-easy">669. Trim a Binary Search Tree (easy)</h2>
+<p>简述：裁剪BST，使得裁剪后元素位于区间[L, R](R&gt;=L)内</p>
+<p>思路：根节点三种情况：&lt;L, &gt;R, LR之间</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def trimBST(self, root, L, R):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:type L: int</span>
+<span class="c1"># 		:type R: int</span>
+<span class="c1"># 		:rtype: TreeNode</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		if root.val &lt; L:</span>
+<span class="c1"># 			return self.trimBST(root.right, L, R)</span>
+<span class="c1"># 		if root.val &gt; R:</span>
+<span class="c1"># 			return self.trimBST(root.left, L, R)</span>
+		<span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trimBST</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">trimBST</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+<span class="c1"># 		return root</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="110-balanced-binary-tree-easy">110. Balanced Binary Tree (easy)</h2>
+<p>简述：判断二叉树是否平衡，即每个节点左右子树高度差不超过1</p>
+<p>思路：分治+全局变量</p>
+<p>联系：出自104</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def isBalanced(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: bool</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+		<span class="c1"># 要点2-1: 添加全局变量</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_isBalanced</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="c1"># 		height = self.findHeight(root)</span>
+<span class="c1"># 		return self._isBalanced</span>
+		
+<span class="c1"># 	def findHeight(self, root):</span>
+		<span class="c1"># 要点2-2: 添加短路判断</span>
+		<span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isBalanced</span><span class="p">:</span>
+			<span class="k">return</span> <span class="mi">0</span>
+		
+<span class="c1"># 		left_height = self.findHeight(root.left)</span>
+<span class="c1"># 		right_height = self.findHeight(root.right)</span>
+		
+<span class="c1"># 		if abs(left_height - right_height) &gt; 1:</span>
+<span class="c1"># 			self._isBalanced = False</span>
+			
+<span class="c1"># 		return max(left_height, right_height) + 1</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="543-diameter-of-binary-tree-easy">543. Diameter of Binary Tree (easy)</h2>
+<p>简述：求二叉树的直径，即节点间的最长路径（可不经过根节点）</p>
+<p>思路：分治+全局变量</p>
+<p>联系：出自110</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def diameterOfBinaryTree(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+		<span class="c1"># 要点1-1: 添加全局变量</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># 		self.findDepth(root)</span>
+<span class="c1"># 		return self.res</span>
+		
+<span class="c1"># 	def findDepth(self, root):</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return 0</span>
+<span class="c1"># 		left_depth = self.findDepth(root.left)</span>
+<span class="c1"># 		right_depth = self.findDepth(root.right)</span>
+		
+		<span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="p">,</span> <span class="n">left_depth</span> <span class="o">+</span> <span class="n">right_depth</span><span class="p">)</span>
+<span class="c1"># 		return max(left_depth, right_depth) + 1</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="124-binary-tree-maximum-path-sum-hard">124. Binary Tree Maximum Path Sum (hard)</h2>
+<p>简述：求二叉树中路径最大和（任意节点到任意节点，不必经过根节点）</p>
+<p>思路：分治+全局变量</p>
+<p>联系：出自110</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def maxPathSum(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+		<span class="c1"># 要点1-1: python最小整数</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="o">-</span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="c1"># 		self.maxSumFromRoot(root)</span>
+<span class="c1"># 		return self.res</span>
+		
+<span class="c1"># 	def maxSumFromRoot(self, root):</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return 0</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			self.res = max(self.res, root.val)</span>
+<span class="c1"># 			return root.val</span>
+<span class="c1"># 		left_max = self.maxSumFromRoot(root.left)</span>
+<span class="c1"># 		right_max = self.maxSumFromRoot(root.right)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">val</span> <span class="o">+</span> \
+					   <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">left_max</span><span class="p">,</span> <span class="n">right_max</span><span class="p">,</span> <span class="n">left_max</span> <span class="o">+</span> <span class="n">right_max</span><span class="p">))</span>
+<span class="c1"># 		return max(root.val, root.val + left_max, root.val + right_max)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="257-binary-tree-paths-easy">257. Binary Tree Paths (easy)</h2>
+<p>简述：打印二叉树所有根到叶路径</p>
+<p>思路：分治</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def binaryTreePaths(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: List[str]</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return []</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			return [str(root.val)]</span>
+<span class="c1"># 		left_paths = self.binaryTreePaths(root.left)</span>
+<span class="c1"># 		right_paths = self.binaryTreePaths(root.right)</span>
+		
+<span class="c1"># 		res = []</span>
+<span class="c1"># 		res += [str(root.val) + &#39;-&gt;&#39; + p for p in left_paths]</span>
+<span class="c1"># 		res += [str(root.val) + &#39;-&gt;&#39; + p for p in right_paths]</span>
+<span class="c1"># 		return res</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="654-maximum-binary-tree-medium">654. Maximum Binary Tree (medium)</h2>
+<p>简述：给数组，按规则构造树，规则：数组最大值为根，最大值左边为左子树，最大值右边为右子树，左右子树继续符合规则</p>
+<p>思路：递归定义，分治</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def constructMaximumBinaryTree(self, nums):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type nums: List[int]</span>
+<span class="c1"># 		:rtype: TreeNode</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if not nums:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		root = TreeNode(max(nums))</span>
+<span class="c1"># 		root.left = self.constructMaximumBinaryTree(nums[0:nums.index(max(nums))])</span>
+<span class="c1"># 		root.right = self.constructMaximumBinaryTree(nums[nums.index(max(nums))+1:])</span>
+<span class="c1"># 		return root</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="108-convert-sorted-array-to-binary-search-tree-easy">108. Convert Sorted Array to Binary Search Tree (easy)</h2>
+<p>简述：给已排序的数组，构造相应的平衡BST</p>
+<p>思路：中点作为pivot</p>
+<p>联系：出自654</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def sortedArrayToBST(self, nums):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type nums: List[int]</span>
+<span class="c1"># 		:rtype: TreeNode</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if not nums:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		mid = len(nums) // 2</span>
+<span class="c1"># 		root = TreeNode(nums[mid])</span>
+<span class="c1"># 		root.left = self.sortedArrayToBST(nums[0: mid])</span>
+<span class="c1"># 		root.right = self.sortedArrayToBST(nums[mid + 1:])</span>
+<span class="c1"># 		return root</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="606-construct-string-from-binary-tree-easy">606. Construct String from Binary Tree (easy)</h2>
+<p>简述：按preorder规则通过添加括号把二叉树转为字符串，以保证树与字符串的一一对应。</p>
+<p>思路：如果左子树为空，可添加一对空括号</p>
+<p>联系：出自654</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def tree2str(self, t):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type t: TreeNode</span>
+<span class="c1"># 		:rtype: str</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if t is None:</span>
+<span class="c1"># 			return &#34;&#34;</span>
+<span class="c1"># 		if t.left is None and t.right is None:</span>
+<span class="c1"># 			return str(t.val)</span>
+		<span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+			<span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;()(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree2str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">right</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+		<span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+			<span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">tree2str</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+<span class="c1"># 		return str(t.val) + &#39;(&#39; + self.tree2str(t.left) + &#39;)(&#39; + self.tree2str(t.right) + &#39;)&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="1120-maximum-average-subtree-medium">1120. Maximum Average Subtree (medium)</h2>
+<p>简述：求子树中最大平均值</p>
+<p>思路：维护平均值，辅助函数返回树的总和与总节点个数</p>
+<p>联系：出自110</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def maximumAverageSubtree(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: float</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+		<span class="c1"># 要点1-1: 初始为最小浮点数</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;-inf&#39;</span><span class="p">)</span>
+<span class="c1"># 		res_cnt, res_sum = self.findSum(root)</span>
+<span class="c1"># 		return self.res</span>
+		
+		
+<span class="c1"># 	def findSum(self, root):</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return 0, 0</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			self.res = max(self.res, root.val)</span>
+<span class="c1"># 			return 1, root.val</span>
+<span class="c1"># 		left_cnt, left_sum = self.findSum(root.left)</span>
+<span class="c1"># 		right_cnt, right_sum = self.findSum(root.right)</span>
+		
+<span class="c1"># 		res_cnt = left_cnt + right_cnt + 1</span>
+<span class="c1"># 		res_sum = left_sum + right_sum + root.val</span>
+<span class="c1"># 		self.res = max(self.res, res_sum * 1.0 / res_cnt)</span>
+<span class="c1"># 		return res_cnt, res_sum</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="563-binary-tree-tilt-easy">563. Binary Tree Tilt (easy)</h2>
+<p>简述：按定义求树的tilt，定义：节点tilt-左子树节点和与右子树节点和差值的绝对值，树的tilt-所有节点tilt的和</p>
+<p>思路：辅助函数<code>findSum()</code>, 维护全局变量</p>
+<p>联系：出自110</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def findTilt(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		self.res = 0</span>
+<span class="c1"># 		total_sum = self.findSum(root)</span>
+<span class="c1"># 		return self.res</span>
+		
+<span class="c1"># 	def findSum(self, root):</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return 0</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			return root.val</span>
+<span class="c1"># 		left_sum, right_sum = self.findSum(root.left), self.findSum(root.right)</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">+=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">left_sum</span> <span class="o">-</span> <span class="n">right_sum</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">left_sum</span> <span class="o">+</span> <span class="n">right_sum</span> <span class="o">+</span> <span class="n">root</span><span class="o">.</span><span class="n">val</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="366-find-leaves-of-binary-tree-medium">366. Find Leaves of Binary Tree (medium)</h2>
+<p>简述：二叉树剥洋葱，返回最外层（叶节点），然后次外层（倒数第二层节点），以此类推</p>
+<p>思路：标注节点高度，构造<code>节点-&gt;高度</code>映射，再返回反向索引</p>
+<p>联系：出自110</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def findLeaves(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: List[List[int]]</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+		<span class="c1"># 要点2-1: 全局变量，映射</span>
+		<span class="n">height_memo</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="c1"># 		self.label_height(root, height_memo)</span>
+
+<span class="c1"># 		# 要点2-2: 反向索引inverted index</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_memo</span><span class="p">(</span><span class="n">height_memo</span><span class="p">)</span>
+		
+<span class="c1"># 	def label_height(self, root, height_memo):</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return 0</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			height_memo[root] = 1</span>
+<span class="c1"># 			return 1</span>
+<span class="c1"># 		left_height = self.label_height(root.left, height_memo)</span>
+<span class="c1"># 		right_height = self.label_height(root.right, height_memo)</span>
+		
+<span class="c1"># 		res_height = max(left_height, right_height) + 1</span>
+<span class="c1"># 		height_memo[root] = res_height</span>
+<span class="c1"># 		return res_height</span>
+	
+<span class="c1"># 	def convert_memo(self, height_memo):</span>
+<span class="c1"># 		res = dict()</span>
+<span class="c1"># 		for k, v in height_memo.items():</span>
+<span class="c1"># 			if v not in res:</span>
+<span class="c1"># 				res[v] = list()</span>
+<span class="c1"># 			res[v].append(k.val)</span>
+<span class="c1"># 		ans = []</span>
+<span class="c1"># 		for i in range(len(res.keys())):</span>
+<span class="c1"># 			ans.append(res[i + 1])</span>
+<span class="c1"># 		return ans</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="617-merge-two-binary-trees-easy">617. Merge Two Binary Trees (easy)</h2>
+<p>简述：合并两棵二叉树，合并后节点为两棵对应节点之和</p>
+<p>思路：分治</p>
+<p>联系：出自669</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def mergeTrees(self, t1, t2):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type t1: TreeNode</span>
+<span class="c1"># 		:type t2: TreeNode</span>
+<span class="c1"># 		:rtype: TreeNode</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if t1 is None:</span>
+<span class="c1"># 			return t2</span>
+<span class="c1"># 		if t2 is None:</span>
+<span class="c1"># 			return t1</span>
+<span class="c1"># 		root = TreeNode(t1.val + t2.val)</span>
+<span class="c1"># 		root.left = self.mergeTrees(t1.left, t2.left)</span>
+<span class="c1"># 		root.right = self.mergeTrees(t1.right, t2.right)</span>
+<span class="c1"># 		return root</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="1490-clone-n-ary-tree-medium">1490. Clone N-ary Tree (medium)</h2>
+<p>简述：深拷贝N元树</p>
+<p>思路：递归定义，分治</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def cloneTree(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: Node</span>
+<span class="c1"># 		:rtype: Node</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		root_copy = Node(val=root.val)</span>
+<span class="c1"># 		for el in root.children:</span>
+<span class="c1"># 			root_copy.children.append(self.cloneTree(el))</span>
+<span class="c1"># 		return root_copy</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="814-binary-tree-pruning-medium">814. Binary Tree Pruning (medium)</h2>
+<p>简述：二叉树树中节点只能为0或1，裁剪二叉树，使得最后没有全为0的子树</p>
+<p>思路：分治</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def pruneTree(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: TreeNode</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			if root.val == 0:</span>
+<span class="c1"># 				return None</span>
+<span class="c1"># 			else:</span>
+<span class="c1"># 				return root</span>
+<span class="c1"># 		left_pruned = self.pruneTree(root.left)</span>
+<span class="c1"># 		right_pruned = self.pruneTree(root.right)</span>
+		
+		<span class="k">if</span> <span class="n">left_pruned</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">right_pruned</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">root</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+			<span class="k">return</span> <span class="bp">None</span>
+<span class="c1"># 		root.left, root.right = left_pruned, right_pruned</span>
+<span class="c1"># 		return root</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="236-lowest-common-ancestor-of-a-binary-tree-medium">236. Lowest Common Ancestor of a Binary Tree (medium)</h2>
+<p>简述：求两节点在二叉树里的LCA（假设两节点都在树中）</p>
+<p>思路：分治</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+	<span class="c1"># 要点1-1: 三种情况：1）两个节点都在树中返回lca， 2）一个在树中返回该节点，3）两个都不在返回None</span>
+	<span class="k">def</span> <span class="nf">lowestCommonAncestor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:type p: TreeNode</span>
+<span class="c1"># 		:type q: TreeNode</span>
+<span class="c1"># 		:rtype: TreeNode</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		if root == p or root == q:</span>
+<span class="c1"># 			return root</span>
+<span class="c1"># 		left_lca = self.lowestCommonAncestor(root.left, p, q)</span>
+<span class="c1"># 		right_lca = self.lowestCommonAncestor(root.right, p, q)</span>
+<span class="c1"># 		if left_lca and right_lca:</span>
+<span class="c1"># 			return root</span>
+<span class="c1"># 		if left_lca:</span>
+<span class="c1"># 			return left_lca</span>
+<span class="c1"># 		if right_lca:</span>
+<span class="c1"># 			return right_lca</span>
+<span class="c1"># 		return None</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="235-lowest-common-ancestor-of-a-binary-search-tree-easy">235. Lowest Common Ancestor of a Binary Search Tree (easy)</h2>
+<p>简述：求两节点在BST里的LCA（假设两节点都在树中）</p>
+<p>思路：分治，根据情况走一边子树</p>
+<p>联系：出自236</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def lowestCommonAncestor(self, root, p, q):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:type p: TreeNode</span>
+<span class="c1"># 		:type q: TreeNode</span>
+<span class="c1"># 		:rtype: TreeNode</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		if root == p or root == q:</span>
+<span class="c1"># 			return root</span>
+<span class="c1"># 		if p.val &lt; root.val &lt; q.val or q.val &lt; root.val &lt; p.val:</span>
+<span class="c1"># 			return root</span>
+<span class="c1"># 		if root.val &lt; p.val:</span>
+<span class="c1"># 			return self.lowestCommonAncestor(root.right, p, q)</span>
+<span class="c1"># 		else:</span>
+<span class="c1"># 			return self.lowestCommonAncestor(root.left, p, q)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="156-binary-tree-upside-down-medium">156. Binary Tree Upside Down (medium)</h2>
+<p>简述：上下翻转二叉树，所给二叉树的性质：右节点是空或是有兄弟节点的叶节点</p>
+<p>思路：画图按例子翻转</p>
+<p>联系：出自226</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def upsideDownBinaryTree(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: TreeNode</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			return root</span>
+<span class="c1"># 		res = self.upsideDownBinaryTree(root.left)</span>
+		<span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">root</span>
+<span class="c1"># 		root.left, root.right = None, None</span>
+<span class="c1"># 		return res</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="114-flatten-binary-tree-to-linked-list-medium">114. Flatten Binary Tree to Linked List (medium)</h2>
+<p>简述：in-place转化二叉树成链表结构</p>
+<p>思路：分治</p>
+<p>联系：出自226</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def flatten(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: None Do not return anything, modify root in-place instead.</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		tail = self.flatten_tail(root)</span>
+		
+<span class="c1"># 	def flatten_tail(self, root):</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			return root</span>
+<span class="c1"># 		if root.left is None:</span>
+<span class="c1"># 			return self.flatten_tail(root.right)</span>
+<span class="c1"># 		if root.right is None:</span>
+<span class="c1"># 			left_tail = self.flatten_tail(root.left)</span>
+<span class="c1"># 			root.left, root.right = None, root.left</span>
+<span class="c1"># 			return left_tail</span>
+<span class="c1"># 		left_tail = self.flatten_tail(root.left)</span>
+<span class="c1"># 		right_tail = self.flatten_tail(root.right)</span>
+		  
+<span class="c1"># 		root.left, root.right, left_tail.right = None, root.left, root.right</span>
+<span class="c1"># 		return right_tail</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>VERSION II (from <a href="https://leetcode.com/problems/flatten-binary-tree-to-linked-list/discuss/37154/8-lines-of-python-solution-%28reverse-preorder-traversal%29" target="_blank" rel="noopener noreffer">girikuncoro&rsquo;s post</a>)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def __init__(self):</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="bp">None</span>
+		
+<span class="c1"># 	def flatten(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: None Do not return anything, modify root in-place instead.</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return</span>
+<span class="c1"># 		self.flatten(root.right)</span>
+<span class="c1"># 		self.flatten(root.left)</span>
+		
+<span class="c1"># 		# 要点1-1: 先右子树再左子树，这样会把右子树通过prev移花接木到左子树尾部</span>
+		<span class="n">root</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prev</span>
+<span class="c1"># 		root.left = None</span>
+<span class="c1"># 		self.prev = root</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="298-binary-tree-longest-consecutive-sequence-medium">298. Binary Tree Longest Consecutive Sequence (medium)</h2>
+<p>简述：在二叉树中找连续值路径（路径这里指从父节点向下）</p>
+<p>思路：分治，维护全局变量</p>
+<p>联系：出自110</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def longestConsecutive(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		self.res = 0</span>
+<span class="c1"># 		self.longest_from_root(root)</span>
+<span class="c1"># 		return self.res</span>
+		
+<span class="c1"># 	def longest_from_root(self, root):</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return 0</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			self.res = max(self.res, 1)</span>
+<span class="c1"># 			return 1</span>
+		
+		<span class="c1"># 要点1-1: 无论当前节点与左右子节点是否差1，都要执行搜索</span>
+		<span class="n">left_longest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">longest_from_root</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+		<span class="n">right_longest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">longest_from_root</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+		
+<span class="c1"># 		curr = 1</span>
+<span class="c1"># 		if root.left and root.val + 1 == root.left.val:</span>
+<span class="c1"># 			curr = max(curr, left_longest + 1)</span>
+<span class="c1"># 		if root.right and root.val + 1 == root.right.val:</span>
+<span class="c1"># 			curr = max(curr, right_longest + 1)</span>
+			
+<span class="c1"># 		self.res = max(self.res, curr)</span>
+<span class="c1"># 		return curr</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="285-inorder-successor-in-bst-medium">285. Inorder Successor in BST (medium)</h2>
+<p>简述：BST中找所给节点的下一个按序节点，即比所给节点大的最小节点</p>
+<p>思路：分治</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def inorderSuccessor(self, root, p):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:type p: TreeNode</span>
+<span class="c1"># 		:rtype: TreeNode</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return None</span>
+<span class="c1"># 		if p.val &gt;= root.val:</span>
+<span class="c1"># 			return self.inorderSuccessor(root.right, p)</span>
+<span class="c1"># 		left_res = self.inorderSuccessor(root.left, p)</span>
+<span class="c1"># 		if left_res is None:</span>
+<span class="c1"># 			return root</span>
+<span class="c1"># 		return left_res</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="671-second-minimum-node-in-a-binary-tree-easy">671. Second Minimum Node In a Binary Tree (easy)</h2>
+<p>简述：二叉树满足：每个节点有0或2个子节点，当2个子节点时，<code>root.val = min(root.left.val, root.right.val)</code>，求树中第二小的节点值</p>
+<p>思路：分治，注意比较时的初始化</p>
+<p>联系：出自100</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># class Solution(object):</span>
+<span class="c1"># 	def findSecondMinimumValue(self, root):</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		:type root: TreeNode</span>
+<span class="c1"># 		:rtype: int</span>
+<span class="c1"># 		&#34;&#34;&#34;</span>
+<span class="c1"># 		if root is None:</span>
+<span class="c1"># 			return -1</span>
+<span class="c1"># 		if root.left is None and root.right is None:</span>
+<span class="c1"># 			return -1</span>
+		
+<span class="c1"># 		left_res = self.findSecondMinimumValue(root.left)</span>
+<span class="c1"># 		right_res = self.findSecondMinimumValue(root.right)</span>
+		
+		<span class="c1"># 要点1-1: 初始化比较值，题目要求无第二最小值，返回-1</span>
+		<span class="k">if</span> <span class="n">left_res</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+			<span class="n">left_res</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+		<span class="k">if</span> <span class="n">right_res</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+			<span class="n">right_res</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+		
+<span class="c1"># 		if root.val == root.left.val == root.right.val:</span>
+			<span class="n">res</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">left_res</span><span class="p">,</span> <span class="n">right_res</span><span class="p">)</span>
+			<span class="k">return</span> <span class="n">res</span> <span class="k">if</span> <span class="n">res</span> <span class="o">!=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+<span class="c1"># 		else:</span>
+<span class="c1"># 			if root.val == root.left.val:</span>
+<span class="c1"># 				return min(left_res, root.right.val)</span>
+<span class="c1"># 			else:</span>
+<span class="c1"># 				return min(right_res, root.left.val)</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-07-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/leetcode-divide-conquer/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://xuwenzhe.github.io/leetcode-divide-conquer/" data-title="Leetcode：树的Divide &amp; Conquer" data-hashtags="leetcode"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://xuwenzhe.github.io/leetcode-divide-conquer/" data-hashtag="leetcode"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://xuwenzhe.github.io/leetcode-divide-conquer/" data-title="Leetcode：树的Divide &amp; Conquer"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://xuwenzhe.github.io/leetcode-divide-conquer/" data-title="Leetcode：树的Divide &amp; Conquer"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://xuwenzhe.github.io/leetcode-divide-conquer/" data-title="Leetcode：树的Divide &amp; Conquer"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/leetcode/">leetcode</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/leetcode-binary-search/" class="prev" rel="prev" title="Leetcode：二分查找"><i class="fas fa-angle-left fa-fw"></i>Leetcode：二分查找</a>
+            <a href="/leetcode-tree-traversal/" class="next" rel="next" title="Leetcode：树的Traversal">Leetcode：树的Traversal<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wenzhe</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
