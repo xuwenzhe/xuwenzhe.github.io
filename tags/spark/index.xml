@@ -36,12 +36,5 @@ Arganzheng&rsquo;s Blog, Spark数据倾斜及其解决方案]]></description>
     <description><![CDATA[PySpark的特性 Immutable
  Changes create new object references Old versions are unchanged  Lazy
  Compute does not happen until output is requested  Pandas VS PySpark Load CSV 1 2 3 4 5  # Pandas df = pd.read_csv(&#34;datafile.csv&#34;) # PySpark df = spark.read.options(header=True, inferSchema=True).csv(&#34;datafile.csv&#34;)   View Dataframe 1 2 3 4 5  # Pandas df # PySpark df.show()   Columns &amp; Data Types 1 2 3 4 5 6 7  # Pandas df.]]></description>
-</item><item>
-    <title>Coursera Spark</title>
-    <link>https://xuwenzhe.github.io/coursera-spark/</link>
-    <pubDate>Wed, 05 Aug 2020 15:42:21 -0700</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/coursera-spark/</guid>
-    <description><![CDATA[]]></description>
 </item></channel>
 </rss>
