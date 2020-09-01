@@ -4,12 +4,18 @@
         <link>https://xuwenzhe.github.io/tags/spark/</link>
         <description>spark - Tag - Wenzhe&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 30 Aug 2020 02:45:00 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/tags/spark/" rel="self" type="application/rss+xml" /><item>
-    <title>Spark: Optimize Data Skew in N Ways</title>
+    <title>Spark: N Ways to Optimize Data Skew</title>
     <link>https://xuwenzhe.github.io/spark-data-skew/</link>
     <pubDate>Sun, 30 Aug 2020 02:45:00 -0700</pubDate>
     <author>Author</author>
     <guid>https://xuwenzhe.github.io/spark-data-skew/</guid>
-    <description><![CDATA[What is Data Skew? For distributed data computing engines like Spark/Hadoop, skewed data brings more pain than the big data. Ideally, for a cluster consisting of N machines, the wall time to finish an embarrassingly parallel job is reduced to 1/N. Unfortunately, perfect parallelism is not always achieved. In other words, the workload might not be evenly distributed across the cluster. For example, a machine might end up with computing 80% of the workload, while the other two machines are taking care of the remaining 20% of the workload (10% each).]]></description>
+    <description><![CDATA[什么是数据倾斜？ 对于Spark/Hadoop等分布式系统，机器间工作量的不均匀比单纯的工作量大更难处理，因为单纯的工作量大基本通过scale-out就可以解决。假设有100个任务并行处理，若任务间工作量相当，20台机器要比10台机器耗时减半（假设机器性能相当）。然而当任务间工作量相差巨大时（例如，任务中10个大任务，90个小任务，工作量差别1M倍），很难通过scale-out的方式充分利用并行优势，此时，完成总耗时取决于最慢的大任务何时完成（木桶原理）。
+对于Spark这种计算引擎，工作量主要在于所需处理的数据量。因此当任务划分时，数据分布不均匀，即发生了数据倾斜。
+数据是如何倾斜的？ 当Spark产生shuffle操作时，相同key的数据会被放在相同的partition。因此当某一个key的数据量过大（即popular key），会造成partition间工作量巨大差别，造成数据倾斜。这样不仅影响了并行效率，更加容易造成内存不足，产生OOM（Out Of Memory）报错使整个应用崩溃。
+常见会触发shuffle的算子：distinct, groupByKey, reduceByKey, aggregateByKey, join, cogroup, repartition。
+如何识别数据倾斜？   观察stage进度条，发现大多数task很快执行完，但是剩余task等待时间巨长甚至出现OOM报错。（如上图） 查看Spark Web UI里的Shuffle Read Size/Records，查看任务间数据量分布是否均匀。 计算key的分布。（如下）  1 2 3 4  df.select(&#34;key&#34;).sample(false, 0.1) // 数据采样  .(k =&gt; (k, 1)).reduceBykey(_ + _) // 统计 key 出现的次数  .map(k =&gt; (k._2, k._1)).sortByKey(false) // 根据 key 出现次数进行排序  .take(10) // 取前 10 个。   发生了数据倾斜怎么办？ 思路1 - 过滤异常数据 如果数据包含大量异常key，过滤掉就好了。
+异常key：
+ 空值 Null 无效数据，大量重复的测试数据或是对结果影响不大的有效数据 有效数据，业务导致的正常数据分布  对于情况1&amp;2，直接过滤即可。对于3，直接过滤不适用，尝试以下其他方法。]]></description>
 </item><item>
     <title>Spark FAQ</title>
     <link>https://xuwenzhe.github.io/spark-fundamentals/</link>
