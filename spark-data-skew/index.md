@@ -1,4 +1,4 @@
-# Spark: N Ways to Optimize Data Skew
+# Spark: 解决数据倾斜的N种姿势
 
 
 ## 什么是数据倾斜？

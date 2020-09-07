@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://xuwenzhe.github.io/" />
 <meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
-<meta property="og:updated_time" content="2020-08-30T02:45:00-07:00" />
+<meta property="og:updated_time" content="2020-09-03T01:08:40-07:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
 
@@ -103,7 +103,14 @@
         alt="/me/profile2.jpg"
         title="/me/profile2.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/xuwenzhe" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/wenzhexu" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:xxxx@xxxx.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/spark-data-skew/">Spark: N Ways to Optimize Data Skew</a>
+        <a href="/spark-practice-101/">Spark 101: DataFrame基本使用</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-09-03">2020-09-03</time></span></div><div class="content">Example 1. DataFrame的5种基本操作 1.筛选行，2.选取列，3.增加行列，4.分组总结，5.排序
+一个简单的工资数据集：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29  df = spark.createDataFrame([ (1, &#39;sales&#39;, 4200), (2, &#39;admin&#39;, 3100), (3, &#39;sales&#39;, 4000), (4, &#39;sales&#39;, 4000), (5, &#39;admin&#39;, 2700), (6, &#39;dev&#39;, 3400), (7, &#39;dev&#39;, 5200), (8, &#39;dev&#39;, 3700), (9, &#39;dev&#39;, 4400), (10, &#39;dev&#39;, 4400) ], schema=[&#39;id&#39;, &#39;dept&#39;, &#39;salary&#39;]) df.</div><div class="post-footer">
+        <a href="/spark-practice-101/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spark/">spark</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/spark-data-skew/">Spark: 解决数据倾斜的N种姿势</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-30">2020-08-30</time></span></div><div class="content">什么是数据倾斜？ 对于Spark/Hadoop等分布式系统，机器间工作量的不均匀比单纯的工作量大更难处理，因为单纯的工作量大基本通过scale-out就可以解决。假设有100个任务并行处理，若任务间工作量相当，20台机器要比10台机器耗时减半（假设机器性能相当）。然而当任务间工作量相差巨大时（例如，任务中10个大任务，90个小任务，工作量差别1M倍），很难通过scale-out的方式充分利用并行优势，此时，完成总耗时取决于最慢的大任务何时完成（木桶原理）。
 对于Spark这种计算引擎，工作量主要在于所需处理的数据量。因此当任务划分时，数据分布不均匀，即发生了数据倾斜。
 数据是如何倾斜的？ 当Spark产生shuffle操作时，相同key的数据会被放在相同的partition。因此当某一个key的数据量过大（即popular key），会造成partition间工作量巨大差别，造成数据倾斜。这样不仅影响了并行效率，更加容易造成内存不足，产生OOM（Out Of Memory）报错使整个应用崩溃。
@@ -189,14 +196,6 @@ ETP,ITP,NO-TP,是时候把第三方Cookie讲清楚了</div><div class="post-foot
 联系：模板题
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22  # class Solution(object): # def kthSmallest(self, root, k): # &#34;&#34;&#34; # :type root: TreeNode # :type k: int # :rtype: int # &#34;&#34;&#34; # self.idx, self.res = 0, None # self.k = k # self.</div><div class="post-footer">
         <a href="/leetcode-tree-traversal/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/leetcode/">leetcode</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/leetcode-divide-conquer/">Leetcode：树的Divide &amp; Conquer</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-10">2020-07-10</time></span></div><div class="content">Title   --  100. Same Tree (easy) 简述：判断两棵二叉树是否相同
-思路：分治法
-联系：模板题
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  # Definition for a binary tree node. # class TreeNode(object): # def __init__(self, x): # self.val = x # self.left = None # self.right = None # class Solution(object): # def isSameTree(self, p, q): # &#34;&#34;&#34; # :type p: TreeNode # :type q: TreeNode # :rtype: bool # &#34;&#34;&#34; # if p is None and q is None: # return True # if p is None or q is None: # return False return p.</div><div class="post-footer">
-        <a href="/leetcode-divide-conquer/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/leetcode/">leetcode</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
