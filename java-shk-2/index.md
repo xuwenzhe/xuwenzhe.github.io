@@ -514,7 +514,7 @@ public static void main(String[] args) {
 	// 1. 二维数组的声明和初始化
 	// 静态初始化
 	int[] arr = new int[]{1,2,3}; // 一维数组
-	int[][] arr1 = new int[][]{{1,2,3},{4,5},{6,7,8}}; // 二维数组
+	// int[][] arr1 = new int[][]{{1,2,3},{4,5},{6,7,8}}; // 二维数组
 	// 动态初始化1
 	String[][] arr2 = new String[3][2];
 	// 动态初始化2
@@ -524,7 +524,7 @@ public static void main(String[] args) {
 	// String[4][3] arr5 = new String[][];
 	// int[][] arr6 = new int[4][3]{{1,2,3},{4,5,{6,7,8}}};
 	// 正确：
-	int[] arr4[] = new int[][]{{1,2,3},{4,5},{6,7,8}};
+	// int[] arr4[] = new int[][]{{1,2,3},{4,5},{6,7,8}};
 }
 }
 ```
