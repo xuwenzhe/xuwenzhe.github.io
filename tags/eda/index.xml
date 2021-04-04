@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>eda - Tag - Wenzhe&#39;s Blog</title>
+        <link>https://xuwenzhe.github.io/tags/eda/</link>
+        <description>eda - Tag - Wenzhe&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 19 Oct 2020 18:40:30 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/tags/eda/" rel="self" type="application/rss+xml" /><item>
+    <title>Kaggle Regression Eda</title>
+    <link>https://xuwenzhe.github.io/kaggle-regression-eda/</link>
+    <pubDate>Mon, 19 Oct 2020 18:40:30 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/kaggle-regression-eda/</guid>
+    <description><![CDATA[数据的读入 特征的理解 特征的数据类型 1  df.info(verbose=True) # 查看每列缺省情况和数据类型      Pandas dtype Python type NumPy type Usage     object str or mixed string_, unicode_, mixedtypes 字符串文本   int64 int int_, int8, int16, int32, int64, uint8, uint16, uint32, uint64 整数   float64 float float_, float16, float32, float64 浮点数   bool bool bool_ 真假   datetime64 NA datetime64[ns] 日期与时间   timedelta[ns] NA NA 日期时间差   category NA NA Finite list of text values    特征类型 这个步骤是用来理解数据中每一列的具体含义，通过查看feature与label的关系，可以检查是否符合自己的直观感受。比如，通常情况下，房子越大，房子越新，房价越高，等等。可以通过数据类型将每个feature划归到对应的特征类型，便于后续的分析与建模。]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Java零基础教程（二.基本语法） - Wenzhe&#39;s Blog</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="Java零基础教程（二.基本语法）" />
+<meta property="og:description" content="1. 关键字 数据类型：class, interface, enum, byte, short, int, long, float, double, char, boolean, void
+数值：true, false, null
+流程控制：if, else, switch, case, default, while, do, for, break, continue, return
+访问权限：private, protected, public
+类，函数，变量的修饰符：abstract, final, static, synchronized
+类与类关系：extends, implements
+实例的创建，引用，判断：new, this, super, instanceof
+异常处理：try, catch, finally, throw, throws
+包：package, import
+其他：native, strictfp, transient, volatile, assert
+2. 标识符 标识符（aka变量方法类名）的命名规范：
+ 包：都小写 xxxyyy 类,接口：XxxYyy 变量方法：xxxYyy 常量：XXX_YYY_ZZZ  3. 变量 3.1 数据类型 包含变量类型，变量名，和存储的值。变量都定义在其作用域内，在作用域内，它是有效的，除了作用域就失效了。
+ 基本数据类型：整数类型byte（-128～127）, short（两字节-2^15～2^15-1）, int(四字节，-21亿～21亿), long（八字节，必须以小写或大写L结尾）； 浮点类型float（四字节，必须以f或F结尾，精确到7位有效数字，范围-3." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xuwenzhe.github.io/java-shk-2/" />
+<meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
+<meta property="article:published_time" content="2021-03-10T18:49:43-08:00" />
+<meta property="article:modified_time" content="2021-03-10T18:49:43-08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Java零基础教程（二.基本语法）"/>
+<meta name="twitter:description" content="1. 关键字 数据类型：class, interface, enum, byte, short, int, long, float, double, char, boolean, void
+数值：true, false, null
+流程控制：if, else, switch, case, default, while, do, for, break, continue, return
+访问权限：private, protected, public
+类，函数，变量的修饰符：abstract, final, static, synchronized
+类与类关系：extends, implements
+实例的创建，引用，判断：new, this, super, instanceof
+异常处理：try, catch, finally, throw, throws
+包：package, import
+其他：native, strictfp, transient, volatile, assert
+2. 标识符 标识符（aka变量方法类名）的命名规范：
+ 包：都小写 xxxyyy 类,接口：XxxYyy 变量方法：xxxYyy 常量：XXX_YYY_ZZZ  3. 变量 3.1 数据类型 包含变量类型，变量名，和存储的值。变量都定义在其作用域内，在作用域内，它是有效的，除了作用域就失效了。
+ 基本数据类型：整数类型byte（-128～127）, short（两字节-2^15～2^15-1）, int(四字节，-21亿～21亿), long（八字节，必须以小写或大写L结尾）； 浮点类型float（四字节，必须以f或F结尾，精确到7位有效数字，范围-3."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://xuwenzhe.github.io/java-shk-2/" /><link rel="prev" href="https://xuwenzhe.github.io/java-shk/" /><link rel="next" href="https://xuwenzhe.github.io/java-shk-3/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Java零基础教程（二.基本语法）",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/xuwenzhe.github.io\/java-shk-2\/"
+        },"image": ["https:\/\/xuwenzhe.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Java","wordcount":  1660 ,
+        "url": "https:\/\/xuwenzhe.github.io\/java-shk-2\/","datePublished": "2021-03-10T18:49:43-08:00","dateModified": "2021-03-10T18:49:43-08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/xuwenzhe.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "wenzhe"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Wenzhe&#39;s Blog">Wenzhe&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Wenzhe&#39;s Blog">Wenzhe&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Java零基础教程（二.基本语法）</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-10">2021-03-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1660 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;<span id="/java-shk-2/" class="leancloud_visitors" data-flag-title="Java零基础教程（二.基本语法）">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-关键字">1. 关键字</a></li>
+    <li><a href="#2-标识符">2. 标识符</a></li>
+    <li><a href="#3-变量">3. 变量</a>
+      <ul>
+        <li><a href="#31-数据类型">3.1 数据类型</a></li>
+        <li><a href="#32-基本数据类型之间的转换">3.2 基本数据类型之间的转换</a>
+          <ul>
+            <li><a href="#自动类型提升">自动类型提升</a></li>
+            <li><a href="#强制类型转换">强制类型转换</a></li>
+          </ul>
+        </li>
+        <li><a href="#33-string数据类型">3.3 String数据类型</a></li>
+        <li><a href="#34-进制转换">3.4 进制转换</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-运算符">4. 运算符</a>
+      <ul>
+        <li><a href="#41-算数运算符">4.1 算数运算符</a></li>
+        <li><a href="#42-赋值运算符">4.2 赋值运算符</a></li>
+        <li><a href="#43-比较运算符">4.3 比较运算符</a></li>
+        <li><a href="#44-逻辑运算符">4.4 逻辑运算符</a></li>
+        <li><a href="#45-位运算符">4.5 位运算符</a></li>
+        <li><a href="#46-三元运算符">4.6 三元运算符</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-流程控制">5. 流程控制</a></li>
+    <li><a href="#6-数组">6. 数组</a>
+      <ul>
+        <li><a href="#61-array的概念与基础使用">6.1 Array的概念与基础使用</a></li>
+        <li><a href="#62-arrays工具类的使用">6.2 Arrays工具类的使用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-关键字">1. 关键字</h2>
+<p>数据类型：<code>class</code>, <code>interface</code>, <code>enum</code>, <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>char</code>, <code>boolean</code>, <code>void</code></p>
+<p>数值：<code>true</code>, <code>false</code>, <code>null</code></p>
+<p>流程控制：<code>if</code>, <code>else</code>, <code>switch</code>, <code>case</code>, <code>default</code>, <code>while</code>, <code>do</code>, <code>for</code>, <code>break</code>, <code>continue</code>, <code>return</code></p>
+<p>访问权限：<code>private</code>, <code>protected</code>, <code>public</code></p>
+<p>类，函数，变量的修饰符：<code>abstract</code>, <code>final</code>, <code>static</code>, <code>synchronized</code></p>
+<p>类与类关系：<code>extends</code>, <code>implements</code></p>
+<p>实例的创建，引用，判断：<code>new</code>, <code>this</code>, <code>super</code>, <code>instanceof</code></p>
+<p>异常处理：<code>try</code>, <code>catch</code>, <code>finally</code>, <code>throw</code>, <code>throws</code></p>
+<p>包：<code>package</code>, <code>import</code></p>
+<p>其他：<code>native</code>, <code>strictfp</code>, <code>transient</code>, <code>volatile</code>, <code>assert</code></p>
+<h2 id="2-标识符">2. 标识符</h2>
+<p>标识符（aka变量方法类名）的命名规范：</p>
+<ul>
+<li>包：都小写 <code>xxxyyy</code></li>
+<li>类,接口：<code>XxxYyy</code></li>
+<li>变量方法：<code>xxxYyy</code></li>
+<li>常量：<code>XXX_YYY_ZZZ</code></li>
+</ul>
+<h2 id="3-变量">3. 变量</h2>
+<h3 id="31-数据类型">3.1 数据类型</h3>
+<p>包含变量类型，变量名，和存储的值。变量都定义在其作用域内，在作用域内，它是有效的，除了作用域就失效了。</p>
+<ul>
+<li>基本数据类型：整数类型<code>byte</code>（-128～127）, <code>short</code>（两字节-2^15～2^15-1）, <code>int</code>(四字节，-21亿～21亿), <code>long</code>（八字节，必须以小写或大写L结尾）； 浮点类型<code>float</code>（四字节，必须以f或F结尾，精确到7位有效数字，范围-3.403e38～3.403e38）, <code>double</code>（八字节，精度为float两倍，范围-1.798e308～1.798e308）;字符型<code>char</code>（两字节），布尔型<code>boolean</code>;</li>
+<li>引用数据类型：类（例如String类），接口，数组</li>
+</ul>
+<p>ASCII字符集：8bit表示</p>
+<p>Unicode字符集：将世界上所有的符号都纳入其中。每一个符号都给予一个独一无二的编码，使用Unicode没有乱码的问题。<code>char c = \u0043</code>(字母C)。</p>
+<p>UTF-8: 互联网上使用最广的一种Unicode的实现方式，采用变长编码方式，使用1～6个字节表示一个符号。</p>
+<h3 id="32-基本数据类型之间的转换">3.2 基本数据类型之间的转换</h3>
+<h4 id="自动类型提升">自动类型提升</h4>
+<p>当容量小的数据类型的变量与容量大的数据类型的变量做运算时，结果自动提升为容量大的数据类型。</p>
+<p>所表示数据范围（容量）排序：<code>byte</code>， <code>char</code>， <code>short</code> &lt; <code>int</code> &lt; <code>long</code> &lt; <code>float</code> &lt; <code>double</code>,注意这里是范围大小，而不是所占空间大小（float四字节小于long的八字节）。</p>
+<p>特别的，当<code>byte</code>，<code>char</code>，<code>short</code>之间做运算时，结果为<code>int</code>型。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// Example
+</span><span class="c1"></span><span class="kt">short</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="kt">char</span> <span class="n">c1</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="o">;</span>
+<span class="c1">// char c = c1 + s1; // 编译报错
+</span><span class="c1">// char c = c1 + b1; // 编译报错
+</span><span class="c1">// short s = b1 + s1; // 编译报错
+</span><span class="c1">// short s = b1 + b1; // 编译报错
+</span><span class="c1"></span><span class="kt">long</span> <span class="n">l</span> <span class="o">=</span> <span class="n">123213</span><span class="o">;</span> <span class="c1">// 成功，自动类型提升
+</span><span class="c1">// long l1 = 12313213123232; // 编译报错
+</span><span class="c1"></span><span class="kt">long</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">12313213123232L</span><span class="o">;</span> <span class="c1">// 成功
+</span><span class="c1">//float f = 12.3; // 编译报错，double往float转了
+</span><span class="c1">// 整形常量默认为int型，浮点型常量默认为double型
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="强制类型转换">强制类型转换</h4>
+<p>是自动类型提升的逆操作，将范围大的值向范围小的变量转换</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// Example
+</span><span class="c1"></span><span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="n">12</span><span class="o">.</span><span class="na">3</span><span class="o">;</span>
+<span class="c1">// int i = d; // 编译报错
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span><span class="n">d</span><span class="o">;</span> <span class="c1">// 成功，但截断损失精度
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">i2</span> <span class="o">=</span> <span class="n">128</span><span class="o">;</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="o">(</span><span class="kt">byte</span><span class="o">)</span><span class="n">i2</span><span class="o">;</span> <span class="c1">// 成功，但是b = -128 (二进制最高位的原因) 
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="33-string数据类型">3.3 String数据类型</h3>
+<p>String类型变量的使用：</p>
+<ol>
+<li>String属于引用数据类型</li>
+<li>声明String类型变量时，使用一对“”</li>
+<li>String可以和8种基本数据类型做运算，且运算只能是连接运算“+”</li>
+<li>运算的结果仍然是String类型。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">&#34;Hello World!&#34;</span><span class="o">;</span>
+<span class="c1">// 练习：判断+是相加还是连接
+</span><span class="c1"></span><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;hello&#34;</span><span class="o">;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">num</span> <span class="o">+</span> <span class="n">str</span><span class="o">);</span> <span class="c1">// 107hello
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">str</span> <span class="o">+</span> <span class="n">num</span><span class="o">);</span> <span class="c1">// ahello10
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span> <span class="o">+</span> <span class="o">(</span><span class="n">num</span> <span class="o">+</span> <span class="n">str</span><span class="o">));</span> <span class="c1">// a10hello
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">c</span> <span class="o">+</span> <span class="n">num</span><span class="o">)</span> <span class="o">+</span> <span class="n">str</span><span class="o">);</span> <span class="c1">// 107hello
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span> <span class="o">+</span> <span class="n">num</span> <span class="o">+</span> <span class="n">c</span><span class="o">);</span> <span class="c1">// hello10a
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;*    *&#34;</span><span class="o">);</span>           <span class="c1">// *    *
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="sc">&#39;*&#39;</span> <span class="o">+</span> <span class="sc">&#39;\t&#39;</span> <span class="o">+</span> <span class="sc">&#39;*&#39;</span><span class="o">);</span>   <span class="c1">// 93, 因为是char之间的数值运算
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="sc">&#39;*&#39;</span> <span class="o">+</span> <span class="s">&#34;\t&#34;</span> <span class="o">+</span> <span class="sc">&#39;*&#39;</span><span class="o">);</span>   <span class="c1">// *    *
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="sc">&#39;*&#39;</span> <span class="o">+</span> <span class="sc">&#39;\t&#39;</span> <span class="o">+</span> <span class="s">&#34;*&#34;</span><span class="o">);</span>   <span class="c1">// 51*, 第一个相加执行的是数值运算
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="sc">&#39;*&#39;</span> <span class="o">+</span> <span class="o">(</span><span class="sc">&#39;\t&#39;</span> <span class="o">+</span> <span class="s">&#34;*&#34;</span><span class="o">));</span> <span class="c1">// *    *
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="34-进制转换">3.4 进制转换</h3>
+<p>整数的四种常见进制：二进制（0b或0B），十进制，八进制（以数字0开头表示），十六进制（0x或0X）</p>
+<p>三码：</p>
+<ul>
+<li>原码：直接将一个数值换成二进制数，最高位是符号位。</li>
+<li>负数的反码：是对原码按位取反，只是最高位（符号位）确定为1。</li>
+<li>负数的补码：其反码加1。</li>
+<li>正数的原码，反码，补码相同。负数的补码是其反码+1。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">00001110: 十进制14
+10001110: -14的原码，第一位是符号位
+11110001: -14的反码，除第一位外按位取反
+11110010: -14的补码，计算机底层以补码形式存储数据。
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">求10111011储存的是什么数？
+去补10111010
+取反11000101
+所以储存的是-(64+4+1) = -69
+
+特别地，10000000储存的是-128
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4-运算符">4. 运算符</h2>
+<h3 id="41-算数运算符">4.1 算数运算符</h3>
+<p>加减乘除（/）取模（%），前自增，后自增，前自减，后自减，字符串连接（+）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">num1</span> <span class="o">=</span> <span class="n">12</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">num2</span> <span class="o">=</span> <span class="n">5</span><span class="o">;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span><span class="o">);</span> <span class="c1">// 2
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span> <span class="o">*</span> <span class="n">num2</span><span class="o">);</span> <span class="c1">// 10
+</span><span class="c1"></span><span class="kt">double</span> <span class="n">res</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">/</span> <span class="n">num2</span><span class="o">;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">res</span><span class="o">);</span> <span class="c1">// 2.0
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num1</span> <span class="o">/</span> <span class="o">(</span><span class="n">num2</span> <span class="o">+</span> <span class="n">0</span><span class="o">.</span><span class="na">0</span><span class="o">));</span> <span class="c1">// 2.4
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">12</span> <span class="o">%</span> <span class="n">5</span><span class="o">);</span> <span class="c1">// 2
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(-</span><span class="n">12</span> <span class="o">%</span> <span class="n">5</span><span class="o">);</span> <span class="c1">// -2
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">12</span> <span class="o">%</span> <span class="o">-</span><span class="n">5</span><span class="o">);</span> <span class="c1">// 2
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(-</span><span class="n">12</span> <span class="o">%</span> <span class="o">-</span><span class="n">5</span><span class="o">);</span> <span class="c1">// -2
+</span><span class="c1">// 取模的符号与被模数（12/-12）相同
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">b1</span> <span class="o">=</span> <span class="o">++</span><span class="n">a1</span><span class="o">;</span>
+
+<span class="kt">int</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">a2</span><span class="o">++;</span>
+
+<span class="c1">//执行后，a1是11，b1是11，a2是11，b2是10
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//注意点
+</span><span class="c1"></span><span class="kt">short</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="c1">// s1 = s1 + 1; // 编译失败，int值放入short变量
+</span><span class="c1"></span><span class="n">s1</span><span class="o">++;</span> <span class="c1">//编译通过，自增不改变本身变量数据类型
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">byte</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">127</span><span class="o">;</span>
+<span class="n">b1</span><span class="o">++;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b1</span><span class="o">);</span> <span class="c1">// -128
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="42-赋值运算符">4.2 赋值运算符</h3>
+<p><code>=</code>， <code>+=</code>， <code>-=</code>， <code>*=</code>， <code>/=</code>， <code>%=</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// option 1
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">j1</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="c1">// option 2
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">i2</span><span class="o">,</span> <span class="n">j2</span><span class="o">;</span>
+<span class="n">i2</span> <span class="o">=</span> <span class="n">j2</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="c1">// option 3
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">i3</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span> <span class="n">j3</span> <span class="o">=</span> <span class="n">20</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">short</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="c1">// s1 = s1 + 2; // 编译失败
+</span><span class="c1"></span><span class="n">s1</span> <span class="o">+=</span> <span class="n">2</span><span class="o">;</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span><span class="o">);</span> <span class="c1">// 12
+</span><span class="c1"></span>
+<span class="c1">// 所以开发中希望变量+2
+</span><span class="c1">// option1: num = num + 2;
+</span><span class="c1">// option2 (推荐): num += 2;
+</span><span class="c1"></span>
+<span class="c1">// 所以开发中希望变量+1
+</span><span class="c1">// option1: num = num + 1;
+</span><span class="c1">// option2: num += 1;
+</span><span class="c1">// option3 (推荐): num++;
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="n">n</span> <span class="o">+=</span> <span class="o">(</span><span class="n">n</span><span class="o">++)</span> <span class="o">+</span> <span class="o">(++</span><span class="n">n</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n</span><span class="o">);</span> <span class="c1">// n = n + (n++) + (++n) = 10 + 10 + 12 = 32
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="43-比较运算符">4.3 比较运算符</h3>
+<p><code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>instanceof</code></p>
+<h3 id="44-逻辑运算符">4.4 逻辑运算符</h3>
+<p><code>&amp;</code>, <code>&amp;&amp;</code>, <code>|</code>, <code>||</code>, <code>!</code>（非）, <code>^</code>（异或）</p>
+<h3 id="45-位运算符">4.5 位运算符</h3>
+<p><code>&lt;&lt;</code>, <code>&gt;&gt;</code>, <code>&gt;&gt;&gt;</code>, <code>&amp;</code>, <code>|</code>, <code>^</code>（异或运算）, <code>~</code>（取反）</p>
+<p>区分<code>逻辑&amp;</code>和<code>位运算&amp;</code>：<code>逻辑&amp;</code>计算的是boolean型，<code>位运算&amp;</code>计算的是数值。</p>
+<p>总结</p>
+<ol>
+<li>位运算符操作的都是整形的数据</li>
+<li>在一定范围内，每向左移一位，相当于 <code>*2</code></li>
+<li>在一定范围内，每向右移一位，相当于 <code>/2</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 交换两个变量的值
+</span><span class="c1">// option1: 推荐
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">num1</span><span class="o">;</span>
+<span class="n">num1</span> <span class="o">=</span> <span class="n">num2</span><span class="o">;</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="n">num1</span><span class="o">;</span>
+
+<span class="c1">// option2: 可能超出存储范围
+</span><span class="c1"></span><span class="n">num1</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span><span class="o">;</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">-</span> <span class="n">num2</span><span class="o">;</span>
+<span class="n">num1</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">-</span> <span class="n">num2</span><span class="o">;</span>
+
+<span class="c1">// option3: trick
+</span><span class="c1"></span><span class="n">num1</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">^</span> <span class="n">num2</span><span class="o">;</span>
+<span class="n">num2</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">^</span> <span class="n">num2</span><span class="o">;</span>
+<span class="n">num1</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">^</span> <span class="n">num2</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="46-三元运算符">4.6 三元运算符</h3>
+<p><code>(condition) ? caseTrue : caseFalse;</code></p>
+<h2 id="5-流程控制">5. 流程控制</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+<span class="kd">class</span> <span class="nc">IfTest</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Input exam score: (0-100)&#34;</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="n">scan</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+		<span class="k">if</span> <span class="o">(</span><span class="n">score</span> <span class="o">==</span> <span class="n">100</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;win a BMW&#34;</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">score</span> <span class="o">&gt;</span> <span class="n">80</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;win a iPhone&#34;</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="n">60</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;win a iPad&#34;</span><span class="o">);</span>
+		<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;no prize&#34;</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>总结：</p>
+<ol>
+<li>如果多个条件表达式之间互斥，哪个判断在上面在下面，无所谓。</li>
+<li>如果多个条件表达式之间有交集，需要考虑清楚谁在上。</li>
+<li>如果多个条件表达式之间有包含，通常情况下，范围小的在上面，否则范围小的可能没机会执行。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
+<span class="k">switch</span> <span class="o">(</span><span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+<span class="k">case</span> <span class="n">0</span><span class="o">:</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;zero&#34;</span><span class="o">);</span>
+	<span class="k">break</span><span class="o">;</span>
+<span class="k">case</span> <span class="n">1</span><span class="o">:</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;one&#34;</span><span class="o">);</span>
+	<span class="k">break</span><span class="o">;</span>
+<span class="k">case</span> <span class="n">2</span><span class="o">:</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;two&#34;</span><span class="o">);</span>
+	<span class="k">break</span><span class="o">;</span>
+<span class="k">default</span><span class="o">:</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;other&#34;</span><span class="o">);</span>
+	<span class="k">break</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>总结：</p>
+<ol>
+<li>根据switch的表达式中的值，依次匹配各个case的常量。一旦匹配成功，则进入相应的case结构中，调用其执行语句。当调用完执行语句以后，则依然继续向下执行其他case结构中的执行语句，直到遇到break关键字或此switch-case结构末尾结束为止。</li>
+<li>break可以使用在switch-case结构中，表示一旦执行到此关键字，就跳出switch-case结构。</li>
+<li>switch结构中的表达式，只能是如下的6种数据结构之一：byte，short，char，int，枚举类型（JDK5.0新增），String类型（JDK7.0新增）。</li>
+<li>case之后只能声明常量，不能声明范围。</li>
+<li>break关键字是可选的。</li>
+<li>default类似于if-else结构中的else。default结构是可选的。</li>
+<li>如果switch-case结构中的多个case执行语句相同，则可以考虑合并。</li>
+<li>凡是可以使用switch-case结构的地方，都可以转换为if-else。反之不成立。</li>
+<li>我们写分支结构时，当发现既可以使用switch-case，（同时，switch中表达式的取值情况不太多），又可以使用if-else时，我们优先选择使用switch-case。原因：switch-case执行效率稍高。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">for</span> <span class="o">(</span><span class="err">①；②；④</span><span class="o">)</span> <span class="o">{</span>
+	<span class="err">③</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="c1">// 1-2-3-4-2-3-4-...-2
+</span><span class="c1"></span>
+<span class="err">①</span><span class="o">;</span>
+<span class="k">while</span> <span class="o">(</span><span class="err">②</span><span class="o">)</span> <span class="o">{</span>
+	<span class="err">③</span><span class="o">;</span>
+	<span class="err">④</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="c1">// 1-2-3-4-2-3-4-...-2
+</span><span class="c1"></span>
+<span class="k">do</span> <span class="o">{</span>
+	<span class="err">③</span><span class="o">;</span>
+	<span class="err">④</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="err">②</span><span class="o">);</span>
+<span class="c1">// 1-3-4-2-3-4-...-2
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">PrimeNumberTest</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">boolean</span> <span class="n">isFlag</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+
+		<span class="c1">// 获取当前时间距离1970-01-01 00:00:00 的毫秒数
+</span><span class="c1"></span>		<span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">100000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+			<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+				<span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">j</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+					<span class="n">isFlag</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+					<span class="k">break</span><span class="o">;</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">isFlag</span> <span class="o">==</span> <span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+				<span class="n">count</span><span class="o">++;</span>
+			<span class="o">}</span>
+			<span class="n">isFlag</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;prime number count: &#34;</span> <span class="o">+</span> <span class="n">count</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;elapsed time: &#34;</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th></th>
+<th>使用范围</th>
+<th>不同</th>
+<th>相同</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>break</td>
+<td>switch-case，循环结构中</td>
+<td>结束当前循环</td>
+<td>关键字后面不能声明执行语句</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>循环结构中</td>
+<td>结束当次循环</td>
+<td>关键字后面不能声明执行语句</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nl">label:</span> <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">100000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">j</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+			<span class="c1">// break; 默认跳出包裹此关键字的最近一层循环。
+</span><span class="c1"></span>			<span class="c1">// continue;
+</span><span class="c1"></span>			<span class="c1">// break label; //结束指定标识的一层循环结构
+</span><span class="c1"></span>			<span class="c1">// continue label; //结束指定标识的一层循环结构的当次循环
+</span><span class="c1"></span>			<span class="k">continue</span> <span class="n">label</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="n">count</span><span class="o">++;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>循环语句的四个组成部分</p>
+<ol>
+<li>初始化部分</li>
+<li>循环条件部分</li>
+<li>循环体部分</li>
+<li>迭代部分</li>
+</ol>
+<p>总结：</p>
+<ol>
+<li>写while循环千万小心不要丢了迭代条件。一旦丢了，就可能导致死循环。</li>
+<li>我们写程序，要避免出现死循环。</li>
+<li>for循环和while循环是可以互相转化的。区别：for循环和while循环的初始化条件部分的作用范围不同。</li>
+<li>do-while循环至少会执行一次循环体。</li>
+</ol>
+<h2 id="6-数组">6. 数组</h2>
+<h3 id="61-array的概念与基础使用">6.1 Array的概念与基础使用</h3>
+<ol>
+<li>数组的理解： 数组（Array），是多个相同数据类型按照一定顺序排列的集合，并使用一个名字命名， 并通过编号的方式对这些数据进行统一管理。</li>
+<li>数据相关的概念：数组名，元素，下标（索引），数组的长度（元素的个数）</li>
+<li>数据的特点：
+<ul>
+<li>数组是有序排列的。</li>
+<li>数组属于引用数据类型的变量，引用数据类型有数组，类，接口。String是一个类。数组的元素，既可以是基本数据类型，也可以是引用数据类型。</li>
+<li>创建数组对象会在内存中开辟一整块连续的空间。</li>
+<li>数组的长度一旦确定，就不能修改。</li>
+</ul>
+</li>
+<li>数组的分类：
+<ul>
+<li>按照维数：一维数组，二维数组。。。</li>
+<li>按照元素类型：基本数据类型元素的数组，引用数据类型元素的数组</li>
+</ul>
+</li>
+<li>一维数组的使用
+<ul>
+<li>一维数组的声明和初始化</li>
+<li>如何调用数组的指定位置的元素</li>
+<li>如何获取数组的长度</li>
+<li>如何遍历数组</li>
+<li>数组元素的默认初始化值</li>
+<li>数组的内存解析</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.atguigu.java</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayTest</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">// 1. 一维数组的声明和初始化
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">num</span><span class="o">;</span> <span class="c1">// 声明
+</span><span class="c1"></span>	<span class="n">num</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span> <span class="c1">// 初始化
+</span><span class="c1"></span>	<span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="n">1001</span><span class="o">;</span> <span class="c1">//声明 + 初始化
+</span><span class="c1"></span>	
+	<span class="kt">int</span><span class="o">[]</span> <span class="n">ids</span><span class="o">;</span> <span class="c1">//声明
+</span><span class="c1"></span>	<span class="c1">// 1.1 静态初始化：数组的初始化和数组元素的赋值操作同时进行
+</span><span class="c1"></span>	<span class="n">ids</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">1001</span><span class="o">,</span> <span class="n">1002</span><span class="o">,</span> <span class="n">1003</span><span class="o">,</span> <span class="n">1004</span><span class="o">};</span>
+	<span class="c1">// 1.2 动态初始化：数组的初始化和数组元素的赋值操作分开进行
+</span><span class="c1"></span>	<span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">5</span><span class="o">];</span>
+	<span class="c1">// 也是正确的写法（类型推断）
+</span><span class="c1"></span>	<span class="kt">int</span><span class="o">[]</span> <span class="n">arr4</span> <span class="o">=</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">4</span><span class="o">,</span><span class="n">5</span><span class="o">};</span>
+	
+	<span class="c1">// 错误的写法：
+</span><span class="c1"></span>	<span class="c1">// int[] arr1 = new int[];
+</span><span class="c1"></span>	<span class="c1">// int[5] arr2 = new int[5];
+</span><span class="c1"></span>	<span class="c1">// int[] arr3 = new int[3]{1,2,3};
+</span><span class="c1"></span>	
+	<span class="c1">// 总结：数组一旦初始化完成，其长度就确定了。
+</span><span class="c1"></span>	
+	<span class="c1">// 2. 如何调用数组的指定位置的元素：通过角标的方式调用。
+</span><span class="c1"></span>	<span class="c1">// 数组的角标（或索引）从0开始，到数组的长度-1结束。
+</span><span class="c1"></span>	<span class="n">names</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="s">&#34;aaa&#34;</span><span class="o">;</span>
+	<span class="n">names</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="s">&#34;bbb&#34;</span><span class="o">;</span>
+	<span class="n">names</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="s">&#34;ccc&#34;</span><span class="o">;</span>
+	<span class="n">names</span><span class="o">[</span><span class="n">3</span><span class="o">]</span> <span class="o">=</span> <span class="s">&#34;ddd&#34;</span><span class="o">;</span>
+	<span class="n">names</span><span class="o">[</span><span class="n">4</span><span class="o">]</span> <span class="o">=</span> <span class="s">&#34;eee&#34;</span><span class="o">;</span>
+	
+	<span class="c1">// 3. 如何获取数组的长度。
+</span><span class="c1"></span>	<span class="c1">// 属性：length
+</span><span class="c1"></span>	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">names</span><span class="o">.</span><span class="na">length</span><span class="o">);</span> <span class="c1">// 5
+</span><span class="c1"></span>	
+	<span class="c1">// 4. 如何遍历数组
+</span><span class="c1"></span>	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">names</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">names</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.atguigu.java</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayTest1</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="c1">//	5. 数组元素的默认初始化值
+</span><span class="c1">//	       &gt; 数组元素是整型：0
+</span><span class="c1">//	       &gt; 数组元素是浮点型：0.0
+</span><span class="c1">//	       &gt; 数组元素是char型：ASCII0的char或&#39;\u0000&#39;(null)
+</span><span class="c1">//	       &gt; 数组元素是boolean型：false
+</span><span class="c1">//	       &gt; 数组元素是引用数据类型：null，String时也是null，而不是空字符串
+</span><span class="c1">//	
+</span><span class="c1"></span>	
+	<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">4</span><span class="o">];</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+	<span class="o">}</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;************&#34;</span><span class="o">);</span>
+	<span class="kt">float</span><span class="o">[]</span> <span class="n">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">float</span><span class="o">[</span><span class="n">4</span><span class="o">];</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr1</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr1</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+	<span class="o">}</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;************&#34;</span><span class="o">);</span>
+	<span class="kt">char</span><span class="o">[]</span> <span class="n">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="o">[</span><span class="n">4</span><span class="o">];</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr2</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;----&#34;</span> <span class="o">+</span> <span class="n">arr2</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;====&#34;</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;************&#34;</span><span class="o">);</span>
+	<span class="kt">boolean</span><span class="o">[]</span> <span class="n">arr3</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">4</span><span class="o">];</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr3</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;----&#34;</span> <span class="o">+</span> <span class="n">arr3</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;====&#34;</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.atguigu.java</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayTest2</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">// 1. 二维数组的声明和初始化
+</span><span class="c1"></span>	<span class="c1">// 静态初始化
+</span><span class="c1"></span>	<span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">};</span> <span class="c1">// 一维数组
+</span><span class="c1"></span>	<span class="kt">int</span><span class="o">[][]</span> <span class="n">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[][]{{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">},{</span><span class="n">4</span><span class="o">,</span><span class="n">5</span><span class="o">},{</span><span class="n">6</span><span class="o">,</span><span class="n">7</span><span class="o">,</span><span class="n">8</span><span class="o">}};</span> <span class="c1">// 二维数组
+</span><span class="c1"></span>	<span class="c1">// 动态初始化1
+</span><span class="c1"></span>	<span class="n">String</span><span class="o">[][]</span> <span class="n">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">3</span><span class="o">][</span><span class="n">2</span><span class="o">];</span>
+	<span class="c1">// 动态初始化2
+</span><span class="c1"></span>	<span class="n">String</span><span class="o">[][]</span> <span class="n">arr3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">3</span><span class="o">][];</span>
+	<span class="c1">// 错误的情况
+</span><span class="c1"></span>	<span class="c1">// String[][] arr4 = new String[][4];
+</span><span class="c1"></span>	<span class="c1">// String[4][3] arr5 = new String[][];
+</span><span class="c1"></span>	<span class="c1">// int[][] arr6 = new int[4][3]{{1,2,3},{4,5,{6,7,8}}};
+</span><span class="c1"></span>	<span class="c1">// 正确：
+</span><span class="c1"></span>	<span class="kt">int</span><span class="o">[]</span> <span class="n">arr4</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[][]{{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">},{</span><span class="n">4</span><span class="o">,</span><span class="n">5</span><span class="o">},{</span><span class="n">6</span><span class="o">,</span><span class="n">7</span><span class="o">,</span><span class="n">8</span><span class="o">}};</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>内存解析：</p>
+<ol>
+<li>栈（stack）：局部变量</li>
+<li>堆（heap）：new出来的结构，对象，数组</li>
+<li>方法区：常量池，静态域</li>
+</ol>
+<h3 id="62-arrays工具类的使用">6.2 Arrays工具类的使用</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.atguigu.java</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="c1">// java.util.Arrays: 操作数组的工具类，包含了用来操作数组的方法
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArraysTest</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">// 1. 判断两个数组是否相等。
+</span><span class="c1"></span>	<span class="kt">int</span><span class="o">[]</span> <span class="n">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">4</span><span class="o">};</span>
+	<span class="kt">int</span><span class="o">[]</span> <span class="n">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]{</span><span class="n">1</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">4</span><span class="o">};</span>
+	<span class="kt">boolean</span> <span class="n">isEquals</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">arr1</span><span class="o">,</span>  <span class="n">arr2</span><span class="o">);</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">isEquals</span><span class="o">);</span>
+	
+	<span class="c1">// 2. 输出数组信息
+</span><span class="c1"></span>	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">arr1</span><span class="o">));</span>
+	
+	<span class="c1">// 3. 将指定值填充到数组之中
+</span><span class="c1"></span>	<span class="n">Arrays</span><span class="o">.</span><span class="na">fill</span><span class="o">(</span><span class="n">arr1</span><span class="o">,</span>  <span class="n">10</span><span class="o">);</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">arr1</span><span class="o">));</span>
+	
+	<span class="c1">// 4. 对数组排序
+</span><span class="c1"></span>	<span class="n">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">arr2</span><span class="o">);</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">arr2</span><span class="o">));</span>
+	
+	<span class="c1">// 5. 二分查找
+</span><span class="c1"></span>	<span class="kt">int</span><span class="o">[]</span> <span class="n">arr3</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{-</span><span class="n">98</span><span class="o">,</span> <span class="o">-</span><span class="n">34</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">34</span><span class="o">,</span> <span class="n">54</span><span class="o">,</span> <span class="n">66</span><span class="o">,</span> <span class="n">79</span><span class="o">,</span> <span class="n">105</span><span class="o">,</span> <span class="n">210</span><span class="o">,</span> <span class="n">333</span><span class="o">};</span>
+	<span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">binarySearch</span><span class="o">(</span><span class="n">arr3</span><span class="o">,</span> <span class="n">211</span><span class="o">);</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-03-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/java-shk-2/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://xuwenzhe.github.io/java-shk-2/" data-title="Java零基础教程（二.基本语法）" data-hashtags="Java"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://xuwenzhe.github.io/java-shk-2/" data-hashtag="Java"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://xuwenzhe.github.io/java-shk-2/" data-title="Java零基础教程（二.基本语法）"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://xuwenzhe.github.io/java-shk-2/" data-title="Java零基础教程（二.基本语法）"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://xuwenzhe.github.io/java-shk-2/" data-title="Java零基础教程（二.基本语法）"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/java-shk/" class="prev" rel="prev" title="Java零基础教程（一.概论）"><i class="fas fa-angle-left fa-fw"></i>Java零基础教程（一.概论）</a>
+            <a href="/java-shk-3/" class="next" rel="next" title="Java零基础教程（三.面向对象-封装Encapsulation）">Java零基础教程（三.面向对象-封装Encapsulation）<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wenzhe</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

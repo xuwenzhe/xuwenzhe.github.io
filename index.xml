@@ -3,9 +3,83 @@
         <title>Wenzhe&#39;s Blog</title>
         <link>https://xuwenzhe.github.io/</link>
         <description>About LoveIt Theme</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 03 Sep 2020 01:08:40 -0700</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 03 Apr 2021 10:47:49 -0700</lastBuildDate>
             <atom:link href="https://xuwenzhe.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Java零基础教程（三.面向对象-封装Encapsulation）</title>
+    <link>https://xuwenzhe.github.io/java-shk-3/</link>
+    <pubDate>Sat, 03 Apr 2021 10:47:49 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/java-shk-3/</guid>
+    <description><![CDATA[1. 类和对象 1.1 面向对象的思想 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52  package com.atguigu.java; /* * 一· Java面向对象学习的三条主线 * 1. Java类及类的成员：属性，方法，构造器，代码块，内部类 * 2. 面向对象的三大特征：封装性，继承性，多态性，（抽象性） * 3.]]></description>
+</item><item>
+    <title>Java零基础教程（二.基本语法）</title>
+    <link>https://xuwenzhe.github.io/java-shk-2/</link>
+    <pubDate>Wed, 10 Mar 2021 18:49:43 -0800</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/java-shk-2/</guid>
+    <description><![CDATA[1. 关键字 数据类型：class, interface, enum, byte, short, int, long, float, double, char, boolean, void
+数值：true, false, null
+流程控制：if, else, switch, case, default, while, do, for, break, continue, return
+访问权限：private, protected, public
+类，函数，变量的修饰符：abstract, final, static, synchronized
+类与类关系：extends, implements
+实例的创建，引用，判断：new, this, super, instanceof
+异常处理：try, catch, finally, throw, throws
+包：package, import
+其他：native, strictfp, transient, volatile, assert
+2. 标识符 标识符（aka变量方法类名）的命名规范：
+ 包：都小写 xxxyyy 类,接口：XxxYyy 变量方法：xxxYyy 常量：XXX_YYY_ZZZ  3. 变量 3.1 数据类型 包含变量类型，变量名，和存储的值。变量都定义在其作用域内，在作用域内，它是有效的，除了作用域就失效了。
+ 基本数据类型：整数类型byte（-128～127）, short（两字节-2^15～2^15-1）, int(四字节，-21亿～21亿), long（八字节，必须以小写或大写L结尾）； 浮点类型float（四字节，必须以f或F结尾，精确到7位有效数字，范围-3.]]></description>
+</item><item>
+    <title>Java零基础教程（一.概论）</title>
+    <link>https://xuwenzhe.github.io/java-shk/</link>
+    <pubDate>Wed, 18 Nov 2020 21:36:11 -0800</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/java-shk/</guid>
+    <description><![CDATA[1. 硬件介绍 1.1 CPU（中央处理器） 冯诺伊曼体系结构：冯诺伊曼被人们称为“计算机之父”。计算机由输入设备，输出设备，存储器，运算器，控制器构成。现代计算机中的CPU负责其中的运算与控制功能。
+赫兹：现代计算机的计算速度以千兆赫（GHz）来表述。英文进制：KHz，MHz，GHz
+Intel i7-6700HQ：“6”第六代，HQ标压版本，U低压版本
+摩尔定律：每一美元所能买到的电脑性能，每隔18-24个月翻一倍以上。
+1.2 存储 硬盘 硬盘存储的数据断电不丢失（持久化设备）。在windows系统中，A/B盘的位置是预留给软驱的（软驱已经淘汰）。
+内存 Read-Access Memory，内存存储数据速度比硬盘快10倍以上，其部分解决了CPU运算过快，而硬盘数据存取太慢的问题。断电会导致数据丢失
+bit：二进制表示0/1
+byte：8 bits，内存中每个byte拥有唯一的地址。
+进制：1KB = 1024B, 1MB = 1024KB, 1GB = 1024MB, 1T = 1024GB, 1PB = 1024TB, EB,ZB,YB,以此类推。
+ROM：手机的“硬盘”，例如16GB，128GB。但是经常被大众（误）叫做手机内存。
+1.3 输入输出 输入设备： 鼠标键盘； 输出设备： 显示器打印机
+1920x1080：像素矩阵
+2K屏幕：比如2244x1080（2244&gt;2000）
+屏幕尺寸：屏幕对角线长度
+像素密度：sqrt(长度像素数^2 + 宽度像素数^2) / 屏幕尺寸
+1.4 通信设备 2. 计算机发展史 图灵：计算机之父，人工智能之父
+冯诺伊曼：计算机之父，博弈论之父
+www（万维网）：简称web。www可以让Web客户端（如浏览器）访问浏览Web服务器上的页面。是一个由许多互相连接的超文本组成的系统，通过互联网访问。在这个系统中，每个有用的事物，称为一样资源，并且由一个全局统一资源标识符（URI）标识；这些资源通过超文本传输协议HTTP（Hypertext Transfer Protocol）传送给用户，用户通过点击链接来获得资源。
+万维网vs因特网vs互联网：他们是包含关系。万维网是无数个网络站点和网页集合。因特网除了万维网，还包括电子邮件等。
+BS架构，CS架构：browser server（例如百度搜索）； client server（例如QQ）
+3. Java语言概述 3.1 编程语言 机器语言 -&gt; 汇编语言 -&gt; 高级语言（面向过程）-&gt; 高级语言（面向对象）]]></description>
+</item><item>
+    <title>《机器学习实战（第二版）》-读书笔记1</title>
+    <link>https://xuwenzhe.github.io/handson-ml2-1/</link>
+    <pubDate>Sun, 25 Oct 2020 22:06:32 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/handson-ml2-1/</guid>
+    <description><![CDATA[Chapter 1: The Machine Learning Landscape 下载github库中csv数据集: 1 2 3 4 5 6 7  import urllib.request DOWNLOAD_ROOT = &#34;https://raw.githubusercontent.com/ageron/handson-ml2/master/&#34; os.makedirs(datapath, exist_ok=True) for filename in (&#34;oecd_bli_2015.csv&#34;, &#34;gdp_per_capita.csv&#34;): print(&#34;Downloading&#34;, filename) url = DOWNLOAD_ROOT + &#34;datasets/lifesat/&#34; + filename urllib.request.urlretrieve(url, datapath + filename)   预处理pivot: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25  def prepare_country_stats(oecd_bli, gdp_per_capita): # 筛选行 oecd_bli = oecd_bli[oecd_bli[&#34;INEQUALITY&#34;]==&#34;TOT&#34;] # 抽取多行数据为多列数据 oecd_bli = oecd_bli.]]></description>
+</item><item>
+    <title>Kaggle Regression Eda</title>
+    <link>https://xuwenzhe.github.io/kaggle-regression-eda/</link>
+    <pubDate>Mon, 19 Oct 2020 18:40:30 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/kaggle-regression-eda/</guid>
+    <description><![CDATA[数据的读入 特征的理解 特征的数据类型 1  df.info(verbose=True) # 查看每列缺省情况和数据类型      Pandas dtype Python type NumPy type Usage     object str or mixed string_, unicode_, mixedtypes 字符串文本   int64 int int_, int8, int16, int32, int64, uint8, uint16, uint32, uint64 整数   float64 float float_, float16, float32, float64 浮点数   bool bool bool_ 真假   datetime64 NA datetime64[ns] 日期与时间   timedelta[ns] NA NA 日期时间差   category NA NA Finite list of text values    特征类型 这个步骤是用来理解数据中每一列的具体含义，通过查看feature与label的关系，可以检查是否符合自己的直观感受。比如，通常情况下，房子越大，房子越新，房价越高，等等。可以通过数据类型将每个feature划归到对应的特征类型，便于后续的分析与建模。]]></description>
+</item><item>
+    <title>Jenkins 基础</title>
+    <link>https://xuwenzhe.github.io/jenkins-intro/</link>
+    <pubDate>Sat, 26 Sep 2020 18:46:55 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/jenkins-intro/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Spark 101: DataFrame基本使用</title>
     <link>https://xuwenzhe.github.io/spark-practice-101/</link>
     <pubDate>Thu, 03 Sep 2020 01:08:40 -0700</pubDate>
@@ -51,74 +125,5 @@ Arganzheng&rsquo;s Blog, Spark数据倾斜及其解决方案]]></description>
     <author>Author</author>
     <guid>https://xuwenzhe.github.io/linux-intro/</guid>
     <description><![CDATA[目录结构  /bin (/usr/bin, /usr/local/bin): binary,存放最经常使用的命令 /sbin (/usr/sbin, /usr/local/sbin): s: super user, 存放系统管理员使用的系统管理程序 /home: 存放普通用户的主目录，每个用户都有一个自己的目录 /root: 超级权限者的用户主目录(This is not the root (/) filesystem. It is the home directory for the root user.) /lib: 系统开机所需要最基本的动态连接共享库，类似Windows的DLL文件。几乎所有应用程序都需要用到这些共享库 /etc: 系统管理所需要的配置文件和子目录 /usr: 用户的很多应用程序和文件都放在这个目录下，类似Windows的program files目录 /proc,/srv,/sys: 内核相关目录（不要轻易修改） /dev: 硬件以文件的形式存放在该处 /media: U盘，光驱，等等 /mnt: 用户临时挂载的文件系统 /opt: 存放安装软件 /usr/local: 存放安装软件所安装的目录，一般是通过编译源码的方式安装的程序 /var: 存放经常被修改的东西，比如日志文件   Vi/Vim快捷键  拷贝当前行yy, 拷贝当前行以下的5行5yy,粘贴p 删除当前行dd, 删除当前行以下的5行5dd 查找关键词/keyword,下一个出现n 显示行号:set nu,隐藏行号:set nonu 阅览最首行gg最末行G 撤销输入动作u 移动光标至第20行20+shift g  开关重启命令 1 2 3 4 5 6  sync # 把内存数据同步到磁盘，以下操作前先执行该命令 shutdown -h now # 立即关机 shutdown -h 1 # 1min 关机 shutdown -r now # 立即重启 halt # 等同于关机 reboot # 立即重启   用户管理 1 2 3 4 5 6 7 8 9 10  useradd xiaoming # 自动创建home下同名目录 passwd xiaoming # 指定密码 userdel xiaoming # 删除用户xiaoming，home下其目录会保留 userdel -r xiaoming # 删除用户xiaoming，home下其目录不会保留 su - xiaoming # 切换用户登陆， 权限不足会给提示，exit返回到原先用户 groupadd zuming # 创建组 groupdel zuming # 删除组 useradd -g zuming xiaoming # 创建用户时，指定组 id xiaoming # 查询用户信息 usermod -g zuming2 xiaoming # 修改用户所在组    用户配置文件在： /etc/passwd （用户id，组id，家目录，shell） 组配置文件在：/etc/group 口令配置文件（密码，登录信息）：/etc/shadow(加密的)  实用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  man ls # 显示ls用法 help cd # 显示cd用法 touch filename # 创建空文件 cat -n filename ｜ more # 打开文件内容（只读方式）, -n 显示行号，more分页显示 more filename # 按页显示文件，空格翻页，Enter下一行，ctrl+f/b less filename # 分页查看，lazy加载，利于显示大文件 &#34;less is more&#34; ls -l &gt; filename # 重定向（覆盖） ls -l &gt;&gt; filename # 追加（append到尾部） head -n 5 filename # 只显示文件前5行（默认10行） tail -n 5 filename # 只显示文件后5行（默认10行） -f追踪文件更新，日志监控经常用 date &#34;+%Y-%m-%d %H:%M:%S&#34; # 按格式显示当前年月日时分秒，“+”必要， -s设定 cal # 显示当前日历 find [scope] [-name 文件名, -user 用户, -size 文件大小] grep [-n 显示匹配行行号， -i 忽略大小写] 查找内容 源文件 cat hello.]]></description>
-</item><item>
-    <title>Precision和Recall</title>
-    <link>https://xuwenzhe.github.io/precision-recall/</link>
-    <pubDate>Wed, 12 Aug 2020 22:00:55 -0700</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/precision-recall/</guid>
-    <description><![CDATA[什么是精确率（precision）与召回率（recall）？ Precision和Recall是衡量模型预测能力的指标。在简单的分类问题（种类数=2）中，根据实际答案与模型预测，可分为如下4种情况：
- True Positive (TP) - 正确预测了阳类 True Negative (TN) - 正确预测了阴类 False Positive (FP) - 错误预测了阳类（实际为阴类） False Negative (FN) - 错误预测了阴类（实际为阳类）  注：True和False表示预测是否正确，Positive和Negative表示预测结果
-精准率和召回率定义：
-Precision = TP / (TP + FP)
-Recall = TP / (TP + FN)
-他们区别在分母不同，所取值范围均为0～1
-如何理解Precision和Recall？ 信息检索中，Precision又叫查准率（找得对），Recall又叫查全率（找得全）。
-举个例子，池塘有大龙虾30只，小龙虾70只。我们发明了一只捕大龙虾神器专捕大龙虾。神器一网下去，捕到大龙虾20只，小龙虾5只。那么：
-精准率 = 20 /（20 + 5） = 0.80
-召回率 = 20 / 30 = 0.67
-我们来看3个极端神器的Precision和Recall。
- 神器谨慎版：只捕了一只，且为大龙虾。Precision = 1/1 = 1.0, Recall = 1/30 = 0.]]></description>
-</item><item>
-    <title>网络广告是如何用cookie来追踪用户的？</title>
-    <link>https://xuwenzhe.github.io/cookie-track-user/</link>
-    <pubDate>Sun, 09 Aug 2020 23:51:42 -0700</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/cookie-track-user/</guid>
-    <description><![CDATA[什么是Cookie 参考 Web客户端追踪(上)-Cookie追踪
-网络广告代理商是如何通过 cookie 收集用户信息的？ - LO的回答 - 知乎
-RTB广告竞价系统的算法介绍
-你是如何被广告跟踪的？ - 巴伐利亚啤酒馆的文章 - 知乎
-第一方Cookie和第三方Cookie
-第一方Cookie与第三方Cookie的区别
-第一方和第三方cookie是什么？
-ETP,ITP,NO-TP,是时候把第三方Cookie讲清楚了]]></description>
-</item><item>
-    <title>从Pandas到PySpark</title>
-    <link>https://xuwenzhe.github.io/from-pandas-to-pyspark/</link>
-    <pubDate>Sun, 09 Aug 2020 22:25:25 -0700</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/from-pandas-to-pyspark/</guid>
-    <description><![CDATA[PySpark的特性 Immutable
- Changes create new object references Old versions are unchanged  Lazy
- Compute does not happen until output is requested  Pandas VS PySpark Load CSV 1 2 3 4 5  # Pandas df = pd.read_csv(&#34;datafile.csv&#34;) # PySpark df = spark.read.options(header=True, inferSchema=True).csv(&#34;datafile.csv&#34;)   View Dataframe 1 2 3 4 5  # Pandas df # PySpark df.show()   Columns &amp; Data Types 1 2 3 4 5 6 7  # Pandas df.]]></description>
-</item><item>
-    <title>Git与Github使用</title>
-    <link>https://xuwenzhe.github.io/git-github/</link>
-    <pubDate>Tue, 28 Jul 2020 12:31:43 -0700</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/git-github/</guid>
-    <description><![CDATA[The git directory acts as a database for all the changes tracked in Git and the working tree acts as a sandbox where we can edit the current versions of the files.
-1. 基本操作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  git init # 创建仓库 # 登陆当前操作系统的用户范围 (否则为项目级别) git config --global user.name &#34;My Name&#34; git config --global user.]]></description>
-</item><item>
-    <title>Leetcode：位运算</title>
-    <link>https://xuwenzhe.github.io/leetcode-bit-manipulation/</link>
-    <pubDate>Sun, 26 Jul 2020 23:50:06 -0700</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/leetcode-bit-manipulation/</guid>
-    <description><![CDATA[while位 342. Power of Four (easy) 简述：判断是否为4的幂
-思路：mask挪位置
-联系：出自693
-1 2 3 4 5 6 7 8 9 10 11 12 13  # class Solution(object): # def isPowerOfFour(self, num): # &#34;&#34;&#34; # :type num: int # :rtype: bool # &#34;&#34;&#34; # base = 1 while base &lt;= num: # if base == num: # return True # 要点1-1: 偶数位为1 base &lt;&lt;= 2 # return False   476. Number Complement (easy) 简述：将所给数二进制取反输出对应十进制]]></description>
-</item><item>
-    <title>Leetcode：树的Traversal</title>
-    <link>https://xuwenzhe.github.io/leetcode-tree-traversal/</link>
-    <pubDate>Thu, 16 Jul 2020 12:46:49 -0700</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/leetcode-tree-traversal/</guid>
-    <description><![CDATA[In-Order 230. Kth Smallest Element in a BST (medium) 简述：在BST中，求第k小的值
-思路：inorder，记录遍历idx
-联系：模板题
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22  # class Solution(object): # def kthSmallest(self, root, k): # &#34;&#34;&#34; # :type root: TreeNode # :type k: int # :rtype: int # &#34;&#34;&#34; # self.idx, self.res = 0, None # self.k = k # self.]]></description>
 </item></channel>
 </rss>

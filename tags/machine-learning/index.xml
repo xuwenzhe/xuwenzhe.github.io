@@ -1,9 +1,16 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Machine Learning - Tag - Wenzhe&#39;s Blog</title>
+        <title>machine learning - Tag - Wenzhe&#39;s Blog</title>
         <link>https://xuwenzhe.github.io/tags/machine-learning/</link>
-        <description>Machine Learning - Tag - Wenzhe&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 12 Aug 2020 22:00:55 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/tags/machine-learning/" rel="self" type="application/rss+xml" /><item>
+        <description>machine learning - Tag - Wenzhe&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 25 Oct 2020 22:06:32 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/tags/machine-learning/" rel="self" type="application/rss+xml" /><item>
+    <title>《机器学习实战（第二版）》-读书笔记1</title>
+    <link>https://xuwenzhe.github.io/handson-ml2-1/</link>
+    <pubDate>Sun, 25 Oct 2020 22:06:32 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/handson-ml2-1/</guid>
+    <description><![CDATA[Chapter 1: The Machine Learning Landscape 下载github库中csv数据集: 1 2 3 4 5 6 7  import urllib.request DOWNLOAD_ROOT = &#34;https://raw.githubusercontent.com/ageron/handson-ml2/master/&#34; os.makedirs(datapath, exist_ok=True) for filename in (&#34;oecd_bli_2015.csv&#34;, &#34;gdp_per_capita.csv&#34;): print(&#34;Downloading&#34;, filename) url = DOWNLOAD_ROOT + &#34;datasets/lifesat/&#34; + filename urllib.request.urlretrieve(url, datapath + filename)   预处理pivot: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25  def prepare_country_stats(oecd_bli, gdp_per_capita): # 筛选行 oecd_bli = oecd_bli[oecd_bli[&#34;INEQUALITY&#34;]==&#34;TOT&#34;] # 抽取多行数据为多列数据 oecd_bli = oecd_bli.]]></description>
+</item><item>
     <title>Precision和Recall</title>
     <link>https://xuwenzhe.github.io/precision-recall/</link>
     <pubDate>Wed, 12 Aug 2020 22:00:55 -0700</pubDate>

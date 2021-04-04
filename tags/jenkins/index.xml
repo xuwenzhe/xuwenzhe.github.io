@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Jenkins - Tag - Wenzhe&#39;s Blog</title>
+        <link>https://xuwenzhe.github.io/tags/jenkins/</link>
+        <description>Jenkins - Tag - Wenzhe&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 26 Sep 2020 18:46:55 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/tags/jenkins/" rel="self" type="application/rss+xml" /><item>
+    <title>Jenkins 基础</title>
+    <link>https://xuwenzhe.github.io/jenkins-intro/</link>
+    <pubDate>Sat, 26 Sep 2020 18:46:55 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/jenkins-intro/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
+</rss>

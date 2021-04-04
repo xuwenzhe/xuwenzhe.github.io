@@ -288,7 +288,28 @@ sales.groupby(['product_id']).count().sort('count', ascending=False).limit(1).sh
 # +----------+--------+
 ```
 
-###### Q4: 每天各卖多少种商品？(`countDistinct`)
+###### Q4: 统计`sales`中`product_id`的分布情况 (`groupby, groupby`)
+
+```python
+key_stats = sales.groupby('product_id').count().withColumnRenamed('count', 'pid_count')\
+        .groupby('pid_count').count().toPandas()
+
+key_stats = key_stats.sort_values('pid_count')
+key_stats['frequency'] = key_stats['count'] / sum(key_stats['count'])
+key_stats['cum_freq'] = np.cumsum(key_stats['frequency'])
+key_stats
+
+# 先通过groupby得到key size， 再按照小key到大key排列，最后通过groupby统计每个key size的数量
+# 	pid_count	count	frequency	cum_freq
+# 0	1	986847	0.993374	0.993374
+# 2	2	6550	0.006593	0.999968
+# 1	3	31	0.000031	0.999999
+# 3	19000000	1	0.000001	1.000000
+
+plt.plot(np.log10(key_stats['pid_count']), key_stats['cum_freq'])
+```
+
+###### Q5: 每天各卖多少种商品？(`countDistinct`)
 
 ```python
 sales.groupby(['date']).agg(F.countDistinct("product_id").alias("cnt")).sort("cnt", ascending=False).show()
@@ -309,7 +330,7 @@ sales.groupby(['date']).agg(F.countDistinct("product_id").alias("cnt")).sort("cn
 # +----------+------+
 ```
 
-###### Q5: 求订单盈利（数量x价格）的平均值。(`join`, skewed data)
+###### Q6: 求订单盈利（数量x价格）的平均值。(`join`, skewed data)
 
 由于订单中的商品集中在少数商品ID，使用product_id进行join会造成skewed data,降低并行效率。
 
@@ -366,7 +387,7 @@ df.select(F.avg('revenue')).show()
 
 {{< figure src="/spark-practice-101/exercise1-salt.png" class="center" width="1000" >}}
 
-###### Q6: 对每个销售员，求一个订单对其目标的平均贡献。(`broadcast`)
+###### Q7: 对每个销售员，求一个订单对其目标的平均贡献。(`broadcast`)
 
 注：比如销售员0目标250件总共拥有三笔订单，订单1卖10件，订单2卖8件，订单3卖7件。那么每张订单贡献为（10/250， 8/250， 7/250），平均贡献为avg(10/250, 8/250, 7/250)=25/250/3 = 0.033
 
@@ -425,6 +446,18 @@ sales.withColumn('hashed_bill', fancy_hash_udf(sales['order_id'], sales['bill_ra
 
 # 返回为空，即无哈希冲突
 ```
+
+## Example 5. UDF
+
+数据集`DataFrame [startDate: timestamp, binaryIds: array<bigint>]`
+
+寻找最新的100个binaryId
+
+```python
+
+```
+
+
 
 
 
