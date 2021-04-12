@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://xuwenzhe.github.io/" />
 <meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
-<meta property="og:updated_time" content="2021-04-03T10:47:49-07:00" />
+<meta property="og:updated_time" content="2021-04-10T12:21:34-07:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
 
@@ -103,8 +103,49 @@
         alt="/me/profile2.jpg"
         title="/me/profile2.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/xuwenzhe" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/wenzhexu" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:xxxx@xxxx.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/java-shk-6/">Java零基础教程（六.面向对象-重要补充）</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-10">2021-04-10</time></span></div><div class="content">1. static关键字 1.1 static关键字的使用   static: 静态
+  static可以用来修饰：属性，方法，代码块，内部类
+  使用static修饰属性: 静态变量（是属性，不是局部变量）或者叫类变量
+  属性，按是否使用static修饰，有分为静态属性 vs 非静态属性（实例变量）
+ 实例变量：我们创建类类的多个对象，每个对象都独立的拥有一套类中的非静态属性。当修改其中一个对象中的非静态属性时，不会导致其他对象中同样的属性值的修改。 静态变量：我们创建类类的多个对象，多个对象共享同一个静态变量。当通过某一个对象修改静态变量时，会导致其他对象调用此静态变量时，是修改过了的。    static修饰属性的其他说明：
+ 静态变量随着类的加载而加载。可以通过“类.静态变量”的方式进行调用 静态变量的加载要早于对象的创建。 由于类只会加载一次，则静态变量在内存中也只会存在一份：存在方法区的静态域中。   调用 类变量 实例变量 类 yes no 对象 yes yes      静态属性举例： System.out; Math.PI;
+    使用static修饰方法: 静态方法
+  随着类的加载而加载，可以通过“类.静态方法”的方式进行调用
+   调用 静态方法 非静态方法 类 yes no 对象 yes yes    静态方法中，只能调用静态的方法或属性; 非静态方法中，既可以调用非静态的方法或属性，也可以调用静态的方法或属性</div><div class="post-footer">
+        <a href="/java-shk-6/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/java-shk-5/">Java零基础教程（五.面向对象-多态Polymorphism）</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-06">2021-04-06</time></span></div><div class="content">1. 多态性使用和理解 面向对象特征之三：多态性
+  理解多态性：可以理解为一个事物的多种形态。
+  何为多态性：对象的多态性，父类的引用指向子类的对象（或子类的对象赋给父类的引用）
+  多态的使用：虚拟方法调用
+有了对象的多态性以后，我们在编译期，只能调用父类中声明的方法，但在运行期，我们实际执行的是子类重写父类的方法。
+总结：编译看左边，运行看右边。
+便于站在高处(more generalized)指挥，而不局限于实施细节
+  多态性的使用前提：1）类的继承关系 2）方法的重写
+  对象的多态性，只适用于方法，不适用于属性。子类不会覆盖父类的同名属性，而是内存都有，编译和运行都看左边。
+  虚拟方法调用：（Virtual Method Invocation）
+子类中定义了与父类同名同参数的方法，在多态情况下，将此时父类的方法称为虚拟方法，父类根据赋给它的不同子类对象，动态调用属于子类的该方法。这样的方法调用在编译期是无法确定的。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25  package com.atguigu.java4; public class PersonTest { public static void main(String[] args) { Person p1 = new Person(); p1.</div><div class="post-footer">
+        <a href="/java-shk-5/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/java-shk-4/">Java零基础教程（四.面向对象-继承inheritance）</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-04">2021-04-04</time></span></div><div class="content">1. 继承性的使用 面向对象的特征之二：继承性 一·继承性的好处 why？
+ 减少了代码的冗余，提高了代码的复用性 便于功能的扩展 为之后多态性的使用，提供了前提  二·继承性的格式：class A extends B{}
+ A: 子类，派生类，subclass B: 父类，超类，基类，superclass   体现：一旦子类A继承父类B以后，子类A中就获取了父类B中声明的所有的结构：属性，方法。 特别地，父类中声明为private的属性或方法，子类继承父类以后，仍然认为获取了父类中私有的结构。 只是因为封装性的影响，使得子类不能直接调用父类的结构而已。权限修饰符解决的是调用的问题。继承性解决的是能不能获取的问题。 子类继承父类以后，还可以声明自己特有的属性或方法，实现功能的扩展。 子类和父类的关系，不同于子集和集合的关系。  extends：扩展
+三·Java中关于继承性的规定
+ 一个类可以被多个子类继承 Java中类的单继承性：一个类只能有一个父类 子父类是相对的概念。 子类直接继承的父类，称为直接父类。间接继承的父类，称为间接父类。 子类继承父类以后，就获取了直接父类以及所有间接父类中声明的属性和方法。  四· Object类
+ 如果我们没有显式地声明一个类的父类的话，则此类继承于java.lang.Object类 所有的java类（除java.lang.Object类之外）都直接或间接的继承于java.lang.Object类 意味着，所有的java类具有java.lang.Object类声明的功能。  1 2 3 4 5 6 7 8 9 10 11 12 13  package com.atguigu.java; public class ExtendsTest { public static void main(String[] args) { Person p1 = new Person(); p1.</div><div class="post-footer">
+        <a href="/java-shk-4/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/java-shk-3/">Java零基础教程（三.面向对象-封装Encapsulation）</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-03">2021-04-03</time></span></div><div class="content">1. 类和对象 1.1 面向对象的思想 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52  package com.atguigu.java; /* * 一· Java面向对象学习的三条主线 * 1. Java类及类的成员：属性，方法，构造器，代码块，内部类 * 2. 面向对象的三大特征：封装性，继承性，多态性，（抽象性） * 3.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-03">2021-04-03</time></span></div><div class="content">1. 类和对象 1.1 面向对象的思想 一· Java面向对象学习的三条主线
+ Java类及类的成员：属性，方法，构造器，代码块，内部类 面向对象的三大特征：封装性，继承性，多态性，（抽象性） 其他关键字：this, super, static, final, abstract, interface, package, import等。  二·“人把大象装进冰箱”
+ 面向对象：强调的是功能行为，以函数为最小单位，考虑怎么做。  把冰箱门打开 抬起大象，塞进冰箱 把冰箱门关闭   面向对象：强调具备了功能的对象，以类/对象为最小单位，考虑谁来做。  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  人 { 打开(冰箱) { 冰箱.开开(); } 抬起(大象) { 大象.进入(冰箱); } 关闭(冰箱) { 冰箱.闭合(); } } 冰箱 { 开开(){} 闭合(){} } 大象 { 进入(冰箱){} }   程序员从面向过程的执行者转化成了面向对象的指挥者。</div><div class="post-footer">
         <a href="/java-shk-3/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
@@ -171,37 +212,6 @@ BS架构，CS架构：browser server（例如百度搜索）； client server（
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29  df = spark.createDataFrame([ (1, &#39;sales&#39;, 4200), (2, &#39;admin&#39;, 3100), (3, &#39;sales&#39;, 4000), (4, &#39;sales&#39;, 4000), (5, &#39;admin&#39;, 2700), (6, &#39;dev&#39;, 3400), (7, &#39;dev&#39;, 5200), (8, &#39;dev&#39;, 3700), (9, &#39;dev&#39;, 4400), (10, &#39;dev&#39;, 4400) ], schema=[&#39;id&#39;, &#39;dept&#39;, &#39;salary&#39;]) df.</div><div class="post-footer">
         <a href="/spark-practice-101/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spark/">spark</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/spark-data-skew/">Spark: 解决数据倾斜的N种姿势</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-30">2020-08-30</time></span></div><div class="content">什么是数据倾斜？ 对于Spark/Hadoop等分布式系统，机器间工作量的不均匀比单纯的工作量大更难处理，因为单纯的工作量大基本通过scale-out就可以解决。假设有100个任务并行处理，若任务间工作量相当，20台机器要比10台机器耗时减半（假设机器性能相当）。然而当任务间工作量相差巨大时（例如，任务中10个大任务，90个小任务，工作量差别1M倍），很难通过scale-out的方式充分利用并行优势，此时，完成总耗时取决于最慢的大任务何时完成（木桶原理）。
-对于Spark这种计算引擎，工作量主要在于所需处理的数据量。因此当任务划分时，数据分布不均匀，即发生了数据倾斜。
-数据是如何倾斜的？ 当Spark产生shuffle操作时，相同key的数据会被放在相同的partition。因此当某一个key的数据量过大（即popular key），会造成partition间工作量巨大差别，造成数据倾斜。这样不仅影响了并行效率，更加容易造成内存不足，产生OOM（Out Of Memory）报错使整个应用崩溃。
-常见会触发shuffle的算子：distinct, groupByKey, reduceByKey, aggregateByKey, join, cogroup, repartition。
-如何识别数据倾斜？   观察stage进度条，发现大多数task很快执行完，但是剩余task等待时间巨长甚至出现OOM报错。（如上图） 查看Spark Web UI里的Shuffle Read Size/Records，查看任务间数据量分布是否均匀。 计算key的分布。（如下）  1 2 3 4  df.select(&#34;key&#34;).sample(false, 0.1) // 数据采样  .(k =&gt; (k, 1)).reduceBykey(_ + _) // 统计 key 出现的次数  .map(k =&gt; (k._2, k._1)).sortByKey(false) // 根据 key 出现次数进行排序  .take(10) // 取前 10 个。   发生了数据倾斜怎么办？ 思路1 - 过滤异常数据 如果数据包含大量异常key，过滤掉就好了。
-异常key：
- 空值 Null 无效数据，大量重复的测试数据或是对结果影响不大的有效数据 有效数据，业务导致的正常数据分布  对于情况1&amp;2，直接过滤即可。对于3，直接过滤不适用，尝试以下其他方法。</div><div class="post-footer">
-        <a href="/spark-data-skew/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spark/">spark</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/spark-fundamentals/">Spark FAQ</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-29">2020-08-29</time></span></div><div class="content">什么是Job, Stage, Task? Spark数据处理是像流水线一样，通过一系列操作（算子）完成对RDD的处理, 即RDD1 -&gt; RDD2 -&gt; ...。操作分为两类：Transformation和Action。Spark使用lazy evaluation模式，即Transformation操作下达后，实际并不立刻运行，只有当遇到Action时才把之前所有的Transformation和当前Action运行完毕。每当一个Action触发，就会生成一个Job。因此Job以Action划分。Job之间是串行的，只有当前job结束，才会启动下一个job。
- 一个Job会被划分为一个或多个stage。在一个stage中，任务是可以并行计算的。stage是按照ShuffleDependency来进行划分的。两种依赖方式为窄依赖（narrow dependency）与宽依赖（wide dependency）。区分两种依赖的方法是看：父RDD的partition是否被多个（&gt;1）子RDD的partition使用，若未被多个子RDD的partition使用，则为窄依赖，不需shuffle，不划分stage； 否则为宽依赖，划分stage。上图对比了两种依赖方式的不同。具体划分stage的算法是: 从最后一个RDD开始，从后往前推，找该RDD和父RDD之间的依赖关系，如果是窄依赖，会继续找父RDD的父RDD，如果是宽依赖，就会从该RDD开始到前面所有的RDD划分为一个stage，递归的出口是直到找不到父RDD，最后把所有的RDD划分为一个stage。
-一个例子：
- 一个stage并行的任务称为task，对应一个partition的处理，即task总数为stage的partition总数。
-参考 Wide vs Narrow Dependencies github blog
-stackoverflow, Does stages in an application run parallel in spark
-Queirozf Apache Spark Architecture Overview: Jobs, Stages, Tasks, etc
-cnblogs, qingyunzong
-csdn, Z_Data
-Spark by Examples, Spark Repartition vs Coalesce
-Arganzheng&rsquo;s Blog, Spark数据倾斜及其解决方案</div><div class="post-footer">
-        <a href="/spark-fundamentals/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spark/">spark</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/linux-intro/">Linux入门</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-19">2020-08-19</time></span></div><div class="content">目录结构  /bin (/usr/bin, /usr/local/bin): binary,存放最经常使用的命令 /sbin (/usr/sbin, /usr/local/sbin): s: super user, 存放系统管理员使用的系统管理程序 /home: 存放普通用户的主目录，每个用户都有一个自己的目录 /root: 超级权限者的用户主目录(This is not the root (/) filesystem. It is the home directory for the root user.) /lib: 系统开机所需要最基本的动态连接共享库，类似Windows的DLL文件。几乎所有应用程序都需要用到这些共享库 /etc: 系统管理所需要的配置文件和子目录 /usr: 用户的很多应用程序和文件都放在这个目录下，类似Windows的program files目录 /proc,/srv,/sys: 内核相关目录（不要轻易修改） /dev: 硬件以文件的形式存放在该处 /media: U盘，光驱，等等 /mnt: 用户临时挂载的文件系统 /opt: 存放安装软件 /usr/local: 存放安装软件所安装的目录，一般是通过编译源码的方式安装的程序 /var: 存放经常被修改的东西，比如日志文件   Vi/Vim快捷键  拷贝当前行yy, 拷贝当前行以下的5行5yy,粘贴p 删除当前行dd, 删除当前行以下的5行5dd 查找关键词/keyword,下一个出现n 显示行号:set nu,隐藏行号:set nonu 阅览最首行gg最末行G 撤销输入动作u 移动光标至第20行20+shift g  开关重启命令 1 2 3 4 5 6  sync # 把内存数据同步到磁盘，以下操作前先执行该命令 shutdown -h now # 立即关机 shutdown -h 1 # 1min 关机 shutdown -r now # 立即重启 halt # 等同于关机 reboot # 立即重启   用户管理 1 2 3 4 5 6 7 8 9 10  useradd xiaoming # 自动创建home下同名目录 passwd xiaoming # 指定密码 userdel xiaoming # 删除用户xiaoming，home下其目录会保留 userdel -r xiaoming # 删除用户xiaoming，home下其目录不会保留 su - xiaoming # 切换用户登陆， 权限不足会给提示，exit返回到原先用户 groupadd zuming # 创建组 groupdel zuming # 删除组 useradd -g zuming xiaoming # 创建用户时，指定组 id xiaoming # 查询用户信息 usermod -g zuming2 xiaoming # 修改用户所在组    用户配置文件在： /etc/passwd （用户id，组id，家目录，shell） 组配置文件在：/etc/group 口令配置文件（密码，登录信息）：/etc/shadow(加密的)  实用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  man ls # 显示ls用法 help cd # 显示cd用法 touch filename # 创建空文件 cat -n filename ｜ more # 打开文件内容（只读方式）, -n 显示行号，more分页显示 more filename # 按页显示文件，空格翻页，Enter下一行，ctrl+f/b less filename # 分页查看，lazy加载，利于显示大文件 &#34;less is more&#34; ls -l &gt; filename # 重定向（覆盖） ls -l &gt;&gt; filename # 追加（append到尾部） head -n 5 filename # 只显示文件前5行（默认10行） tail -n 5 filename # 只显示文件后5行（默认10行） -f追踪文件更新，日志监控经常用 date &#34;+%Y-%m-%d %H:%M:%S&#34; # 按格式显示当前年月日时分秒，“+”必要， -s设定 cal # 显示当前日历 find [scope] [-name 文件名, -user 用户, -size 文件大小] grep [-n 显示匹配行行号， -i 忽略大小写] 查找内容 源文件 cat hello.</div><div class="post-footer">
-        <a href="/linux-intro/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -209,6 +219,10 @@ Arganzheng&rsquo;s Blog, Spark数据倾斜及其解决方案</div><div class="po
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/2/">2</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/3/">3</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

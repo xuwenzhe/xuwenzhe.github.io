@@ -143,20 +143,77 @@ class HelloChina {
 
 快捷键
 
-1. 补全代码的声明：`alt + /`
-2. 快速修复：`ctrl + 1`
-3. 单行注释：`ctrl + /`
-4. 多行注释：`ctrl + shift + /`
-5. 取消多行注释：`ctrl + shift + \`
-6. 复制指定行的代码：`command + option + down`或`command + option + up`
-7. 删除指定行的代码：`command + d`
-8. 上下移动代码：`option + up`或`option + down` 
-9. 切换到下一行代码空位：`shift + enter`
-10. 切换到上一行代码空位：`ctrl + shift + enter`
-11. 查看原码：`command + 选中`
-12. 退回到前一个编辑的页面：`alt + left`
-13. 自动补全main，sysout：`ctrl + space`
-14. 使用定义好的注释模版: `/** + Enter`
+```java
+package com.atguigu.java;
+
+import java.util.ArrayList;
+
+/*
+ * Eclipse中的快捷键
+ * 1. 补全代码的声明: alt + /; ctrl + space
+ * 2. 快速修复: ctrl + 1; cmd + 1
+ * 3. 批量导包: ctrl + shift + o; cmd + shift + o
+ * 4. 单行注释: ctrl + /; cmd + /
+ * 5. 多行注释: ctrl + shift + /; ?
+ * 6. 取消多行注释: ctrl + shift + \; ?
+ * 7. 复制指定行的代码: ctrl + alt + down/up; cmd + alt + down/up
+ * 8. 删除指定行: ctrl + d; cmd + d
+ * 9. 上下移动行: alt + up/down; alt + up/down
+ * 10. 切换到下一行代码空位: shift + enter; shift + enter
+ * 11. 切换到上一行代码空位: ctrl + shift + enter; cmd + shift + enter
+ * 12. 如何查看源码: ctrl + 选中指定结构; cmd + 选中指定结构
+ *     如何搜索源码: ctrl + shift + t; cmd + shift + t
+ * 13. 退回到前一个编辑的页面: alt + left; 
+ * 14. 进入到下一个编辑的页面: alt + right;
+ * 15. 光标选中指定的类，查看继承树结构: ctrl + t; cmd + t
+ * 16. 复制代码: ctrl + c; cmd + c
+ * 17. 撤销: ctrl + z; cmd + z
+ * 18. 反撤销: ctrl + y; cmd + y
+ * 19. 剪切: ctrl + x; cmd + x
+ * 20. 粘贴: ctrl + v; cmd + v
+ * 21. 保存: ctrl + s; cmd + s
+ * 22. 全选: ctrl + a; cmd + a
+ * 23. 格式化代码: ctrl + shift + f; cmd + shift + f
+ * 24. 选中数行，整体往后移动: tab; tab
+ * 25. 选中数行，整体往前移动: shift + tab; shift + tab
+ * 26. 在当前类中，现实类结构，并支持搜索指定的方法，属性等: ctrl + o; cmd + o
+ * 27. 批量修改指定的变量名，方法名，类名等: alt + shift + r; ?
+ * 28. 选中的结构大小写切换，变成大写: ctrl + shift + x; cmd + shift + x
+ * 29. 选中的结构大小写切换，变成小写: ctrl + shift + y; cmd + shift + y
+ * 30. 调出生成getter/setter/构造器结构: alt + shift + s; ?
+ * 31. 显式当前选择资源（工程或文件）的属性: alt + enter; cmd + enter
+ * 
+ * 
+ * 32. 快速查找， 参照选中的word快速定位到下一个: ctrl + k; cmd + k
+ * 33. 关闭当前窗口: ctrl + w
+ * 34. 关闭所有窗口: ctrl + shift + w
+ * 35. 查看指定的结构使用过的地方: ctrl + alt + g; cmd + alt + g
+ * 36. 查找和替换: ctrl + f; cmd + f
+ * 37. 最大化当前的view: ctrl + m
+ * 38. 直接定位到当前行首位: home
+ * 39. 直接定位到当前行末尾：end
+ * 
+ * 
+ */
+public class EclipseKeys {
+	
+	final double PROJECT_ACCCOUNT_ID = 3.14;
+	public static void main(String[] args) {
+
+		ArrayList list = new ArrayList();
+
+		int n = 1;
+		n = 2;
+		n = 3;
+	}
+}
+
+class User {
+	private int id;
+	private String name;
+	
+}
+```
 
 添加注释模版
 Window -> Preferences -> Java -> Code Style -> Code Templates

@@ -69,7 +69,7 @@ BS架构，CS架构：browser server（例如百度搜索）； client server（
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/xuwenzhe.github.io\/java-shk\/"
-        },"image": ["https:\/\/xuwenzhe.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Java","wordcount":  267 ,
+        },"image": ["https:\/\/xuwenzhe.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Java","wordcount":  697 ,
         "url": "https:\/\/xuwenzhe.github.io\/java-shk\/","datePublished": "2020-11-18T21:36:11-08:00","dateModified": "2020-11-18T21:36:11-08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/xuwenzhe.github.io\/images\/avatar.png"},"author": {
@@ -146,8 +146,8 @@ BS架构，CS架构：browser server（例如百度搜索）； client server（
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java零基础教程（一.概论）</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-18">2020-11-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;267 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;<span id="/java-shk/" class="leancloud_visitors" data-flag-title="Java零基础教程（一.概论）">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-18">2020-11-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;697 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;<span id="/java-shk/" class="leancloud_visitors" data-flag-title="Java零基础教程（一.概论）">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -302,23 +302,151 @@ $ java HelloChina
 <p>先创建包（例如：<code>com.atguigu.contact</code>）,再创建类（例如<code>HelloWorld.java</code>）。
 运行，右键<code>Run As</code></p>
 <p>快捷键</p>
-<ol>
-<li>补全代码的声明：<code>alt + /</code></li>
-<li>快速修复：<code>ctrl + 1</code></li>
-<li>单行注释：<code>ctrl + /</code></li>
-<li>多行注释：<code>ctrl + shift + /</code></li>
-<li>取消多行注释：<code>ctrl + shift + \</code></li>
-<li>复制指定行的代码：<code>command + option + down</code>或<code>command + option + up</code></li>
-<li>删除指定行的代码：<code>command + d</code></li>
-<li>上下移动代码：<code>option + up</code>或<code>option + down</code></li>
-<li>切换到下一行代码空位：<code>shift + enter</code></li>
-<li>切换到上一行代码空位：<code>ctrl + shift + enter</code></li>
-<li>查看原码：<code>command + 选中</code></li>
-<li>退回到前一个编辑的页面：<code>alt + left</code></li>
-<li>自动补全main，sysout：<code>ctrl + space</code></li>
-<li>使用定义好的注释模版: <code>/** + Enter</code></li>
-</ol>
-<p>添加注释模版
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.atguigu.java</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+
+<span class="cm">/*
+</span><span class="cm"> * Eclipse中的快捷键
+</span><span class="cm"> * 1. 补全代码的声明: alt + /; ctrl + space
+</span><span class="cm"> * 2. 快速修复: ctrl + 1; cmd + 1
+</span><span class="cm"> * 3. 批量导包: ctrl + shift + o; cmd + shift + o
+</span><span class="cm"> * 4. 单行注释: ctrl + /; cmd + /
+</span><span class="cm"> * 5. 多行注释: ctrl + shift + /; ?
+</span><span class="cm"> * 6. 取消多行注释: ctrl + shift + \; ?
+</span><span class="cm"> * 7. 复制指定行的代码: ctrl + alt + down/up; cmd + alt + down/up
+</span><span class="cm"> * 8. 删除指定行: ctrl + d; cmd + d
+</span><span class="cm"> * 9. 上下移动行: alt + up/down; alt + up/down
+</span><span class="cm"> * 10. 切换到下一行代码空位: shift + enter; shift + enter
+</span><span class="cm"> * 11. 切换到上一行代码空位: ctrl + shift + enter; cmd + shift + enter
+</span><span class="cm"> * 12. 如何查看源码: ctrl + 选中指定结构; cmd + 选中指定结构
+</span><span class="cm"> *     如何搜索源码: ctrl + shift + t; cmd + shift + t
+</span><span class="cm"> * 13. 退回到前一个编辑的页面: alt + left; 
+</span><span class="cm"> * 14. 进入到下一个编辑的页面: alt + right;
+</span><span class="cm"> * 15. 光标选中指定的类，查看继承树结构: ctrl + t; cmd + t
+</span><span class="cm"> * 16. 复制代码: ctrl + c; cmd + c
+</span><span class="cm"> * 17. 撤销: ctrl + z; cmd + z
+</span><span class="cm"> * 18. 反撤销: ctrl + y; cmd + y
+</span><span class="cm"> * 19. 剪切: ctrl + x; cmd + x
+</span><span class="cm"> * 20. 粘贴: ctrl + v; cmd + v
+</span><span class="cm"> * 21. 保存: ctrl + s; cmd + s
+</span><span class="cm"> * 22. 全选: ctrl + a; cmd + a
+</span><span class="cm"> * 23. 格式化代码: ctrl + shift + f; cmd + shift + f
+</span><span class="cm"> * 24. 选中数行，整体往后移动: tab; tab
+</span><span class="cm"> * 25. 选中数行，整体往前移动: shift + tab; shift + tab
+</span><span class="cm"> * 26. 在当前类中，现实类结构，并支持搜索指定的方法，属性等: ctrl + o; cmd + o
+</span><span class="cm"> * 27. 批量修改指定的变量名，方法名，类名等: alt + shift + r; ?
+</span><span class="cm"> * 28. 选中的结构大小写切换，变成大写: ctrl + shift + x; cmd + shift + x
+</span><span class="cm"> * 29. 选中的结构大小写切换，变成小写: ctrl + shift + y; cmd + shift + y
+</span><span class="cm"> * 30. 调出生成getter/setter/构造器结构: alt + shift + s; ?
+</span><span class="cm"> * 31. 显式当前选择资源（工程或文件）的属性: alt + enter; cmd + enter
+</span><span class="cm"> * 
+</span><span class="cm"> * 
+</span><span class="cm"> * 32. 快速查找， 参照选中的word快速定位到下一个: ctrl + k; cmd + k
+</span><span class="cm"> * 33. 关闭当前窗口: ctrl + w
+</span><span class="cm"> * 34. 关闭所有窗口: ctrl + shift + w
+</span><span class="cm"> * 35. 查看指定的结构使用过的地方: ctrl + alt + g; cmd + alt + g
+</span><span class="cm"> * 36. 查找和替换: ctrl + f; cmd + f
+</span><span class="cm"> * 37. 最大化当前的view: ctrl + m
+</span><span class="cm"> * 38. 直接定位到当前行首位: home
+</span><span class="cm"> * 39. 直接定位到当前行末尾：end
+</span><span class="cm"> * 
+</span><span class="cm"> * 
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EclipseKeys</span> <span class="o">{</span>
+	
+	<span class="kd">final</span> <span class="kt">double</span> <span class="n">PROJECT_ACCCOUNT_ID</span> <span class="o">=</span> <span class="n">3</span><span class="o">.</span><span class="na">14</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+		<span class="n">ArrayList</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+
+		<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+		<span class="n">n</span> <span class="o">=</span> <span class="n">2</span><span class="o">;</span>
+		<span class="n">n</span> <span class="o">=</span> <span class="n">3</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+	
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>添加注释模版
 Window -&gt; Preferences -&gt; Java -&gt; Code Style -&gt; Code Templates</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">

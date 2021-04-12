@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://xuwenzhe.github.io/" />
 <meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
-<meta property="og:updated_time" content="2021-04-03T10:47:49-07:00" />
+<meta property="og:updated_time" content="2021-04-10T12:21:34-07:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
 
@@ -103,6 +103,37 @@
         alt="/me/profile2.jpg"
         title="/me/profile2.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/xuwenzhe" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/wenzhexu" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:xxxx@xxxx.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/spark-data-skew/">Spark: 解决数据倾斜的N种姿势</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-30">2020-08-30</time></span></div><div class="content">什么是数据倾斜？ 对于Spark/Hadoop等分布式系统，机器间工作量的不均匀比单纯的工作量大更难处理，因为单纯的工作量大基本通过scale-out就可以解决。假设有100个任务并行处理，若任务间工作量相当，20台机器要比10台机器耗时减半（假设机器性能相当）。然而当任务间工作量相差巨大时（例如，任务中10个大任务，90个小任务，工作量差别1M倍），很难通过scale-out的方式充分利用并行优势，此时，完成总耗时取决于最慢的大任务何时完成（木桶原理）。
+对于Spark这种计算引擎，工作量主要在于所需处理的数据量。因此当任务划分时，数据分布不均匀，即发生了数据倾斜。
+数据是如何倾斜的？ 当Spark产生shuffle操作时，相同key的数据会被放在相同的partition。因此当某一个key的数据量过大（即popular key），会造成partition间工作量巨大差别，造成数据倾斜。这样不仅影响了并行效率，更加容易造成内存不足，产生OOM（Out Of Memory）报错使整个应用崩溃。
+常见会触发shuffle的算子：distinct, groupByKey, reduceByKey, aggregateByKey, join, cogroup, repartition。
+如何识别数据倾斜？   观察stage进度条，发现大多数task很快执行完，但是剩余task等待时间巨长甚至出现OOM报错。（如上图） 查看Spark Web UI里的Shuffle Read Size/Records，查看任务间数据量分布是否均匀。 计算key的分布。（如下）  1 2 3 4  df.select(&#34;key&#34;).sample(false, 0.1) // 数据采样  .(k =&gt; (k, 1)).reduceBykey(_ + _) // 统计 key 出现的次数  .map(k =&gt; (k._2, k._1)).sortByKey(false) // 根据 key 出现次数进行排序  .take(10) // 取前 10 个。   发生了数据倾斜怎么办？ 思路1 - 过滤异常数据 如果数据包含大量异常key，过滤掉就好了。
+异常key：
+ 空值 Null 无效数据，大量重复的测试数据或是对结果影响不大的有效数据 有效数据，业务导致的正常数据分布  对于情况1&amp;2，直接过滤即可。对于3，直接过滤不适用，尝试以下其他方法。</div><div class="post-footer">
+        <a href="/spark-data-skew/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spark/">spark</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/spark-fundamentals/">Spark FAQ</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-29">2020-08-29</time></span></div><div class="content">什么是Job, Stage, Task? Spark数据处理是像流水线一样，通过一系列操作（算子）完成对RDD的处理, 即RDD1 -&gt; RDD2 -&gt; ...。操作分为两类：Transformation和Action。Spark使用lazy evaluation模式，即Transformation操作下达后，实际并不立刻运行，只有当遇到Action时才把之前所有的Transformation和当前Action运行完毕。每当一个Action触发，就会生成一个Job。因此Job以Action划分。Job之间是串行的，只有当前job结束，才会启动下一个job。
+ 一个Job会被划分为一个或多个stage。在一个stage中，任务是可以并行计算的。stage是按照ShuffleDependency来进行划分的。两种依赖方式为窄依赖（narrow dependency）与宽依赖（wide dependency）。区分两种依赖的方法是看：父RDD的partition是否被多个（&gt;1）子RDD的partition使用，若未被多个子RDD的partition使用，则为窄依赖，不需shuffle，不划分stage； 否则为宽依赖，划分stage。上图对比了两种依赖方式的不同。具体划分stage的算法是: 从最后一个RDD开始，从后往前推，找该RDD和父RDD之间的依赖关系，如果是窄依赖，会继续找父RDD的父RDD，如果是宽依赖，就会从该RDD开始到前面所有的RDD划分为一个stage，递归的出口是直到找不到父RDD，最后把所有的RDD划分为一个stage。
+一个例子：
+ 一个stage并行的任务称为task，对应一个partition的处理，即task总数为stage的partition总数。
+参考 Wide vs Narrow Dependencies github blog
+stackoverflow, Does stages in an application run parallel in spark
+Queirozf Apache Spark Architecture Overview: Jobs, Stages, Tasks, etc
+cnblogs, qingyunzong
+csdn, Z_Data
+Spark by Examples, Spark Repartition vs Coalesce
+Arganzheng&rsquo;s Blog, Spark数据倾斜及其解决方案</div><div class="post-footer">
+        <a href="/spark-fundamentals/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spark/">spark</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/linux-intro/">Linux入门</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-19">2020-08-19</time></span></div><div class="content">目录结构  /bin (/usr/bin, /usr/local/bin): binary,存放最经常使用的命令 /sbin (/usr/sbin, /usr/local/sbin): s: super user, 存放系统管理员使用的系统管理程序 /home: 存放普通用户的主目录，每个用户都有一个自己的目录 /root: 超级权限者的用户主目录(This is not the root (/) filesystem. It is the home directory for the root user.) /lib: 系统开机所需要最基本的动态连接共享库，类似Windows的DLL文件。几乎所有应用程序都需要用到这些共享库 /etc: 系统管理所需要的配置文件和子目录 /usr: 用户的很多应用程序和文件都放在这个目录下，类似Windows的program files目录 /proc,/srv,/sys: 内核相关目录（不要轻易修改） /dev: 硬件以文件的形式存放在该处 /media: U盘，光驱，等等 /mnt: 用户临时挂载的文件系统 /opt: 存放安装软件 /usr/local: 存放安装软件所安装的目录，一般是通过编译源码的方式安装的程序 /var: 存放经常被修改的东西，比如日志文件   Vi/Vim快捷键  拷贝当前行yy, 拷贝当前行以下的5行5yy,粘贴p 删除当前行dd, 删除当前行以下的5行5dd 查找关键词/keyword,下一个出现n 显示行号:set nu,隐藏行号:set nonu 阅览最首行gg最末行G 撤销输入动作u 移动光标至第20行20+shift g  开关重启命令 1 2 3 4 5 6  sync # 把内存数据同步到磁盘，以下操作前先执行该命令 shutdown -h now # 立即关机 shutdown -h 1 # 1min 关机 shutdown -r now # 立即重启 halt # 等同于关机 reboot # 立即重启   用户管理 1 2 3 4 5 6 7 8 9 10  useradd xiaoming # 自动创建home下同名目录 passwd xiaoming # 指定密码 userdel xiaoming # 删除用户xiaoming，home下其目录会保留 userdel -r xiaoming # 删除用户xiaoming，home下其目录不会保留 su - xiaoming # 切换用户登陆， 权限不足会给提示，exit返回到原先用户 groupadd zuming # 创建组 groupdel zuming # 删除组 useradd -g zuming xiaoming # 创建用户时，指定组 id xiaoming # 查询用户信息 usermod -g zuming2 xiaoming # 修改用户所在组    用户配置文件在： /etc/passwd （用户id，组id，家目录，shell） 组配置文件在：/etc/group 口令配置文件（密码，登录信息）：/etc/shadow(加密的)  实用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  man ls # 显示ls用法 help cd # 显示cd用法 touch filename # 创建空文件 cat -n filename ｜ more # 打开文件内容（只读方式）, -n 显示行号，more分页显示 more filename # 按页显示文件，空格翻页，Enter下一行，ctrl+f/b less filename # 分页查看，lazy加载，利于显示大文件 &#34;less is more&#34; ls -l &gt; filename # 重定向（覆盖） ls -l &gt;&gt; filename # 追加（append到尾部） head -n 5 filename # 只显示文件前5行（默认10行） tail -n 5 filename # 只显示文件后5行（默认10行） -f追踪文件更新，日志监控经常用 date &#34;+%Y-%m-%d %H:%M:%S&#34; # 按格式显示当前年月日时分秒，“+”必要， -s设定 cal # 显示当前日历 find [scope] [-name 文件名, -user 用户, -size 文件大小] grep [-n 显示匹配行行号， -i 忽略大小写] 查找内容 源文件 cat hello.</div><div class="post-footer">
+        <a href="/linux-intro/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/precision-recall/">Precision和Recall</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-12">2020-08-12</time></span></div><div class="content">什么是精确率（precision）与召回率（recall）？ Precision和Recall是衡量模型预测能力的指标。在简单的分类问题（种类数=2）中，根据实际答案与模型预测，可分为如下4种情况：
  True Positive (TP) - 正确预测了阳类 True Negative (TN) - 正确预测了阴类 False Positive (FP) - 错误预测了阳类（实际为阴类） False Negative (FN) - 错误预测了阴类（实际为阳类）  注：True和False表示预测是否正确，Positive和Negative表示预测结果
@@ -167,33 +198,6 @@ ETP,ITP,NO-TP,是时候把第三方Cookie讲清楚了</div><div class="post-foot
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  # Definition for a binary tree node. # class TreeNode(object): # def __init__(self, x): # self.val = x # self.left = None # self.right = None # class Solution(object): # def isSameTree(self, p, q): # &#34;&#34;&#34; # :type p: TreeNode # :type q: TreeNode # :rtype: bool # &#34;&#34;&#34; # if p is None and q is None: # return True # if p is None or q is None: # return False return p.</div><div class="post-footer">
         <a href="/leetcode-divide-conquer/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/leetcode/">leetcode</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/leetcode-binary-search/">Leetcode：二分查找</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-07">2020-07-07</time></span></div><div class="content">模板 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  # def binarySearch(nums, target): # if len(nums) == 0: # return -1 # start, end = 0, len(nums) - 1 while start + 1 &lt; end: # 要点3-1 mid = (start + end) // 2 # 要点3-2: python动态数据类型 # if nums[start] &lt; target: start = mid # 要点3-3: mid不+-1 # else: # end = mid # if nums[start] == target: # return start # if nums[end] == target: # return end # return -1   找位置 34.</div><div class="post-footer">
-        <a href="/leetcode-binary-search/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/leetcode/">leetcode</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/coursera-umich-fffsdm/">Foundational Finance for Strategic Decision Making</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-06">2020-07-06</time></span></div><div class="content">Coursera specializations offered by UM
-Course I Time Value of Money Simple Future Value (FV)  PV = Present Value (unit: $) FV = Present Value (unit: $) n = # of Periods (#) r = Interest Rate (%, not $) &gt; 0 (assumption)  Insight: A dollar today is worth more than a dollar tomorrow.
-You cannot compare money across time.
-Example: Power of Compounding!
-Peter Minuit bought the Manhattan Island from Native Americans for $24 in 1626.</div><div class="post-footer">
-        <a href="/coursera-umich-fffsdm/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/hugo-blog-site/">使用 Hugo &#43; Github Pages 搭建个人博客</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-03">2020-07-03</time></span></div><div class="content">Hugo: 一个静态网页生成器，将markdown格式的博文编译为HTML，CSS，JavaScript
-Github Pages: 静态网页托管服务，将hugo转化后的博客公开给读者访问
-reference: Mogeko博客《使用 Hugo + GitHub Pages 搭建个人博客》
-Step 1 - 创建Github Pages对应的repo repo name: [username].github.io
-reference: Github Pages official page
-Step 2 - 安装Hugo (Mac系统)
-1  brew install hugo   reference: Hugo official quickstart
-Step 3 - 使用Hugo创建本地博客文件夹 1 2  hugo new site myBlog cd myBlog   创建myBlog文件夹来存放博客站点。其中：
- content存放markdown博文 themes存放皮肤主题 config.toml配置站点  Step 4 - 安装皮肤主题 此博客使用mogege主题，原repo
-安装主题至themes下
-1  git clone https://github.</div><div class="post-footer">
-        <a href="/hugo-blog-site/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -201,6 +205,10 @@ Step 3 - 使用Hugo创建本地博客文件夹 1 2  hugo new site myBlog cd myBl
                 </li><li class="page-item active">
                     <span class="page-link">
                         <a href="/page/2/">2</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/3/">3</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
