@@ -218,7 +218,42 @@ class User {
 添加注释模版
 Window -> Preferences -> Java -> Code Style -> Code Templates
 
+## IntelliJ IDEA的使用
+IntelliJ模块的概念：IntelliJ的project相当于Eclipse的workspace，IntelliJ的module相当于Eclipse的project。在IntelliJ中，一个project可以是一个电商项目，其中秒杀，登陆，等都可以作为其中的模块module。
 
+module下在自动产生的src下创建package，在package内创建java文件。
+
+常用配置：
+
+* 设置自动导包：Auto Import: 勾选Add unambiguous imports on the fly，勾选Optimize imports on the fly
+* 方法分隔符：show method separators
+* 自动完成代码时忽略大小写：case sensitive completion
+* 多个tab放到多行：show tabs in single row
+* 自动编译：勾选build project automatically, 勾选compile independent modules in parallel
+
+[快捷键：](https://www.jetbrains.com/help/rider/Reference_Keymap_Rider_OSX.html#top_shortcuts)
+
+* 复制行：`command + d`
+* 下面添加行：`shift + enter`
+* 上面添加行：`alt + command + enter`
+* 删除行：`command + delete`
+* 左/右选中：`shift + left/right`
+* 左/右选中词：`alt + shift + left/right`
+* 移动光标到行首行尾：`command + left/right`
+* 移动光标到前后词：`alt + left/right`
+* 快速修复：`alt + enter`
+* 查询类成员：`fn + command + f12`
+* 调整缩进：`tab, shift + tab`
+* surround with：`option + command + t`
+* 查看函数参数选项：`command + p`
+* 生成构造器，get set方法：`command + n`
+
+
+`psvm`或`main`: `public static void main()`快捷插入
+
+`sout`: `System.out.println()`
+
+其他模版：postfix completion, live templates
 
 
 

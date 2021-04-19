@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://xuwenzhe.github.io/" />
 <meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
-<meta property="og:updated_time" content="2021-04-10T12:21:34-07:00" />
+<meta property="og:updated_time" content="2021-04-16T12:47:14-07:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
 
@@ -103,6 +103,14 @@
         alt="/me/profile2.jpg"
         title="/me/profile2.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/xuwenzhe" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/wenzhexu" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:xxxx@xxxx.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/java-shk-7/">Java零基础教程（七.多线程）</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-16">2021-04-16</time></span></div><div class="content">1. 基本概念理解 1.1 程序 vs 进程 vs 线程  程序（program）是为完成特定任务，用某种语言编写的一组指令的集合。即指一段静态的代码，静态对象。 进程（process）是程序的一次执行过程，或是正在运行的一个程序。是一个动态的过程：有它自身的产生，存在和消亡的过程。 - 生命周期  如：运行中的QQ，运行中的MP3播放器 程序是静态的，进程是动态的 进程作为资源分配的单位，系统在运行时会为每个进程分配不同的内存区域。 再比如一个运行中的杀毒软件（进程），其中清理文件，查杀木马的运行分别对应一个线程。   线程（thread），进程可进一步细化为线程，是一个程序内部的一条执行路径。  若一个进程同一时间并行执行多个线程，就是支持多线程的 线程作为调度和执行的单位，每个线程拥有独立的运行栈和程序计数器(pc)，线程切换的开销小。 一个进程中的多个线程共享相同的内存单元/内存地址空间，他们从同一堆中分配对象，可以访问相同的变量和对象。这就使得线程间通信更简便，高效。但多个线程操作共享的系统资源可能就会带来安全的隐患。     1.2 单核CPU vs. 多核CPU  单核CPU，其实是一种假的多线程，因为在一个时间单元内，也只能执行一个线程的任务。例如：虽然有多车道，但是收费站只有一个工作人员在收费，只有收了费才能通过，那么CPU就好比收费人员。如果有某个人不想交钱，那么收费人员可以把他“挂起”（晾着他，等他想通了，准备好了钱，再去收费）。但是因为CPU时间单元特别短，因此感觉不出来。 如果是多核的话，才能更好的发挥多线程的效率。（现在的服务器都是多核的） 一个Java应用程序java.exe，其实至少有三个线程：main()主线程，gc()垃圾回收线程，异常处理线程。当然如果发生异常，会影响主线程。  1.3 并行与并发   并行：多个CPU同时执行多个任务。比如：多个人同时做不同的事。 并发：一个CPU（采用时间片）同时执行多个任务。比如：秒杀，多个人做同一件事。（Quicksilver changes F1 tires?）  1.4 多线程的优点 背景：以单核CPU为例，只使用单核线程先后完成多个任务（调用多个方法），肯定比用多个线程来完成用的时间更短，为何仍需多线程呢？
+多线程程序的优点：
+ 提高应用程序的响应。对图形化界面更有意义，可增强用户体验。 提高计算机系统CPU的利用率 改善程序结构。将既长又复杂的进程分为多个线程，独立运行，利于理解和修改。  何时需要多线程
+ 程序需要同时执行两个或多个任务 程序需要实现一些需要等待的任务时，如用户输入，文件读写操作，网络操作，搜索等。 需要一些后台运行的程序时。  2. 线程的创建和使用 2.1 多线程的创建方式一：继承Thread类  创建一个继承于Thread类的子类 重写Thread类的run() -&gt; 将此线程执行的操作声明在run()中 创建Thread类的子类的对象 通过此对象调用start()  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35  package com.</div><div class="post-footer">
+        <a href="/java-shk-7/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/java-shk-6/">Java零基础教程（六.面向对象-重要补充）</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-10">2021-04-10</time></span></div><div class="content">1. static关键字 1.1 static关键字的使用   static: 静态
   static可以用来修饰：属性，方法，代码块，内部类
@@ -205,13 +213,6 @@ BS架构，CS架构：browser server（例如百度搜索）； client server（
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-09-26">2020-09-26</time></span></div><div class="content"></div><div class="post-footer">
         <a href="/jenkins-intro/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jenkins/">Jenkins</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/spark-practice-101/">Spark 101: DataFrame基本使用</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-09-03">2020-09-03</time></span></div><div class="content">Example 1. DataFrame的5种基本操作 1.筛选行，2.选取列，3.增加行列，4.分组总结，5.排序
-一个简单的工资数据集：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29  df = spark.createDataFrame([ (1, &#39;sales&#39;, 4200), (2, &#39;admin&#39;, 3100), (3, &#39;sales&#39;, 4000), (4, &#39;sales&#39;, 4000), (5, &#39;admin&#39;, 2700), (6, &#39;dev&#39;, 3400), (7, &#39;dev&#39;, 5200), (8, &#39;dev&#39;, 3700), (9, &#39;dev&#39;, 4400), (10, &#39;dev&#39;, 4400) ], schema=[&#39;id&#39;, &#39;dept&#39;, &#39;salary&#39;]) df.</div><div class="post-footer">
-        <a href="/spark-practice-101/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spark/">spark</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

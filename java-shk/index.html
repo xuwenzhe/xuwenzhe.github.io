@@ -69,7 +69,7 @@ BS架构，CS架构：browser server（例如百度搜索）； client server（
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/xuwenzhe.github.io\/java-shk\/"
-        },"image": ["https:\/\/xuwenzhe.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Java","wordcount":  697 ,
+        },"image": ["https:\/\/xuwenzhe.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "Java","wordcount":  798 ,
         "url": "https:\/\/xuwenzhe.github.io\/java-shk\/","datePublished": "2020-11-18T21:36:11-08:00","dateModified": "2020-11-18T21:36:11-08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": "https:\/\/xuwenzhe.github.io\/images\/avatar.png"},"author": {
@@ -146,7 +146,7 @@ BS架构，CS架构：browser server（例如百度搜索）； client server（
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java零基础教程（一.概论）</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-18">2020-11-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;697 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-18">2020-11-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;798 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;<span id="/java-shk/" class="leancloud_visitors" data-flag-title="Java零基础教程（一.概论）">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
                     </span>&nbsp;</div>
@@ -181,6 +181,7 @@ BS架构，CS架构：browser server（例如百度搜索）； client server（
     </li>
     <li><a href="#4-第一个程序helloworld">4. 第一个程序<code>HelloWorld</code></a></li>
     <li><a href="#5-eclipse使用">5. Eclipse使用</a></li>
+    <li><a href="#intellij-idea的使用">IntelliJ IDEA的使用</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="1-硬件介绍">1. 硬件介绍</h2>
@@ -448,6 +449,37 @@ $ java HelloChina
 </div>
 </div><p>添加注释模版
 Window -&gt; Preferences -&gt; Java -&gt; Code Style -&gt; Code Templates</p>
+<h2 id="intellij-idea的使用">IntelliJ IDEA的使用</h2>
+<p>IntelliJ模块的概念：IntelliJ的project相当于Eclipse的workspace，IntelliJ的module相当于Eclipse的project。在IntelliJ中，一个project可以是一个电商项目，其中秒杀，登陆，等都可以作为其中的模块module。</p>
+<p>module下在自动产生的src下创建package，在package内创建java文件。</p>
+<p>常用配置：</p>
+<ul>
+<li>设置自动导包：Auto Import: 勾选Add unambiguous imports on the fly，勾选Optimize imports on the fly</li>
+<li>方法分隔符：show method separators</li>
+<li>自动完成代码时忽略大小写：case sensitive completion</li>
+<li>多个tab放到多行：show tabs in single row</li>
+<li>自动编译：勾选build project automatically, 勾选compile independent modules in parallel</li>
+</ul>
+<p><a href="https://www.jetbrains.com/help/rider/Reference_Keymap_Rider_OSX.html#top_shortcuts" target="_blank" rel="noopener noreffer">快捷键：</a></p>
+<ul>
+<li>复制行：<code>command + d</code></li>
+<li>下面添加行：<code>shift + enter</code></li>
+<li>上面添加行：<code>alt + command + enter</code></li>
+<li>删除行：<code>command + delete</code></li>
+<li>左/右选中：<code>shift + left/right</code></li>
+<li>左/右选中词：<code>alt + shift + left/right</code></li>
+<li>移动光标到行首行尾：<code>command + left/right</code></li>
+<li>移动光标到前后词：<code>alt + left/right</code></li>
+<li>快速修复：<code>alt + enter</code></li>
+<li>查询类成员：<code>fn + command + f12</code></li>
+<li>调整缩进：<code>tab, shift + tab</code></li>
+<li>surround with：<code>option + command + t</code></li>
+<li>查看函数参数选项：<code>command + p</code></li>
+<li>生成构造器，get set方法：<code>command + n</code></li>
+</ul>
+<p><code>psvm</code>或<code>main</code>: <code>public static void main()</code>快捷插入</p>
+<p><code>sout</code>: <code>System.out.println()</code></p>
+<p>其他模版：postfix completion, live templates</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
