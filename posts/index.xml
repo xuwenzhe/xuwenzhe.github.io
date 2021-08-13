@@ -3,7 +3,14 @@
         <title>All Posts - Wenzhe&#39;s Blog</title>
         <link>https://xuwenzhe.github.io/posts/</link>
         <description>All Posts | Wenzhe&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 19 Apr 2021 21:43:52 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 11 Aug 2021 22:52:40 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Java零基础教程（九.范型与File）</title>
+    <link>https://xuwenzhe.github.io/java-shk-9/</link>
+    <pubDate>Wed, 11 Aug 2021 22:52:40 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/java-shk-9/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Java零基础教程（八.常用类）</title>
     <link>https://xuwenzhe.github.io/java-shk-8/</link>
     <pubDate>Mon, 19 Apr 2021 21:43:52 -0700</pubDate>
@@ -132,12 +139,5 @@ BS架构，CS架构：browser server（例如百度搜索）； client server（
     <author>Author</author>
     <guid>https://xuwenzhe.github.io/handson-ml2-1/</guid>
     <description><![CDATA[Chapter 1: The Machine Learning Landscape 下载github库中csv数据集: 1 2 3 4 5 6 7  import urllib.request DOWNLOAD_ROOT = &#34;https://raw.githubusercontent.com/ageron/handson-ml2/master/&#34; os.makedirs(datapath, exist_ok=True) for filename in (&#34;oecd_bli_2015.csv&#34;, &#34;gdp_per_capita.csv&#34;): print(&#34;Downloading&#34;, filename) url = DOWNLOAD_ROOT + &#34;datasets/lifesat/&#34; + filename urllib.request.urlretrieve(url, datapath + filename)   预处理pivot: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25  def prepare_country_stats(oecd_bli, gdp_per_capita): # 筛选行 oecd_bli = oecd_bli[oecd_bli[&#34;INEQUALITY&#34;]==&#34;TOT&#34;] # 抽取多行数据为多列数据 oecd_bli = oecd_bli.]]></description>
-</item><item>
-    <title>Kaggle Regression Eda</title>
-    <link>https://xuwenzhe.github.io/kaggle-regression-eda/</link>
-    <pubDate>Mon, 19 Oct 2020 18:40:30 -0700</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/kaggle-regression-eda/</guid>
-    <description><![CDATA[数据的读入 特征的理解 特征的数据类型 1  df.info(verbose=True) # 查看每列缺省情况和数据类型      Pandas dtype Python type NumPy type Usage     object str or mixed string_, unicode_, mixedtypes 字符串文本   int64 int int_, int8, int16, int32, int64, uint8, uint16, uint32, uint64 整数   float64 float float_, float16, float32, float64 浮点数   bool bool bool_ 真假   datetime64 NA datetime64[ns] 日期与时间   timedelta[ns] NA NA 日期时间差   category NA NA Finite list of text values    特征类型 这个步骤是用来理解数据中每一列的具体含义，通过查看feature与label的关系，可以检查是否符合自己的直观感受。比如，通常情况下，房子越大，房子越新，房价越高，等等。可以通过数据类型将每个feature划归到对应的特征类型，便于后续的分析与建模。]]></description>
 </item></channel>
 </rss>

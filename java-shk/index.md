@@ -218,7 +218,7 @@ class User {
 添加注释模版
 Window -> Preferences -> Java -> Code Style -> Code Templates
 
-## IntelliJ IDEA的使用
+## 6. IntelliJ IDEA的使用
 IntelliJ模块的概念：IntelliJ的project相当于Eclipse的workspace，IntelliJ的module相当于Eclipse的project。在IntelliJ中，一个project可以是一个电商项目，其中秒杀，登陆，等都可以作为其中的模块module。
 
 module下在自动产生的src下创建package，在package内创建java文件。

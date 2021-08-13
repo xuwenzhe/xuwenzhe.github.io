@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://xuwenzhe.github.io/" />
 <meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
-<meta property="og:updated_time" content="2021-04-19T21:43:52-07:00" />
+<meta property="og:updated_time" content="2021-08-11T22:52:40-07:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
 
@@ -103,6 +103,11 @@
         alt="/me/profile2.jpg"
         title="/me/profile2.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/xuwenzhe" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/wenzhexu" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:xxxx@xxxx.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/kaggle-regression-eda/">Kaggle Regression Eda</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-19">2020-10-19</time></span></div><div class="content">数据的读入 特征的理解 特征的数据类型 1  df.info(verbose=True) # 查看每列缺省情况和数据类型      Pandas dtype Python type NumPy type Usage     object str or mixed string_, unicode_, mixedtypes 字符串文本   int64 int int_, int8, int16, int32, int64, uint8, uint16, uint32, uint64 整数   float64 float float_, float16, float32, float64 浮点数   bool bool bool_ 真假   datetime64 NA datetime64[ns] 日期与时间   timedelta[ns] NA NA 日期时间差   category NA NA Finite list of text values    特征类型 这个步骤是用来理解数据中每一列的具体含义，通过查看feature与label的关系，可以检查是否符合自己的直观感受。比如，通常情况下，房子越大，房子越新，房价越高，等等。可以通过数据类型将每个feature划归到对应的特征类型，便于后续的分析与建模。</div><div class="post-footer">
+        <a href="/kaggle-regression-eda/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kaggle/">kaggle</a>,&nbsp;<a href="/tags/eda/">eda</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/jenkins-intro/">Jenkins 基础</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-09-26">2020-09-26</time></span></div><div class="content"></div><div class="post-footer">
         <a href="/jenkins-intro/">Read More</a><div class="post-tags">
@@ -182,18 +187,13 @@ ETP,ITP,NO-TP,是时候把第三方Cookie讲清楚了</div><div class="post-foot
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spark/">spark</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/git-github/">Git与Github使用</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-28">2020-07-28</time></span></div><div class="content">The git directory acts as a database for all the changes tracked in Git and the working tree acts as a sandbox where we can edit the current versions of the files.
-1. 基本操作 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  git init # 创建仓库 # 登陆当前操作系统的用户范围 (否则为项目级别) git config --global user.name &#34;My Name&#34; git config --global user.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-28">2020-07-28</time></span></div><div class="content">1. Git概述 Git这种分布式版本控制工具，客户端提取的不是最新版本的文件快照，而是把代码仓库完整地镜像下来（本地库）。这样任何一处协同工作用的文件发生故障，事后都可以用其他客户端的本地仓库进行恢复。因为每个客户端的每一次文件提取操作，实际上都是一次对整个文件仓库的完整备份。
+ 2. 常用命令  设置用户签名 git config --global user.name 用户名 设置用户签名 git config --global user.email 邮箱  注意：这里设置用户签名和将来登陆Github的账号没有任何关系。
+ 初始化本地库 git init 查看本地库状态 git status 将工作区的文件添加到暂存区 git add 文件名 将暂存区的文件提交到本地库 git commit -m &quot;日志信息&quot; 文件名    查看版本信息（HEAD经过的历史记录） git reflog 查看版本详细信息 git log 版本穿梭 git reset --hard 版本号 （版本号可以通过git reflog查询）通过HEAD^或HEAD~移动HEAD到相对位置     注意：上图中，链表结构从新版本指向旧版本，merge情况下指向两个父（旧）版本。
+勘误：命令行结果中版本号应为i8fe5。左图中未显示8d83a版本号。
+3. 分支操作  查看分支 git branch -v 创建分支 git branch 分支名 切换分支 git checkout 分支名 合并分支 git merge 分支名（在master分支上，合并hot-fix分支） 删除分支 git branch -d 分支名  冲突产生的原因：合并分支时，两个分支在同一个文件的同一个位置有两套完全不同的修改。Git无法替我们决定使用哪一个。必须人为决定新代码内容。</div><div class="post-footer">
         <a href="/git-github/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/git/">git</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/leetcode-bit-manipulation/">Leetcode：位运算</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-26">2020-07-26</time></span></div><div class="content">while位 342. Power of Four (easy) 简述：判断是否为4的幂
-思路：mask挪位置
-联系：出自693
-1 2 3 4 5 6 7 8 9 10 11 12 13  # class Solution(object): # def isPowerOfFour(self, num): # &#34;&#34;&#34; # :type num: int # :rtype: bool # &#34;&#34;&#34; # base = 1 while base &lt;= num: # if base == num: # return True # 要点1-1: 偶数位为1 base &lt;&lt;= 2 # return False   476. Number Complement (easy) 简述：将所给数二进制取反输出对应十进制</div><div class="post-footer">
-        <a href="/leetcode-bit-manipulation/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/leetcode/">leetcode</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

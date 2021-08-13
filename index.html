@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://xuwenzhe.github.io/" />
 <meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
-<meta property="og:updated_time" content="2021-04-19T21:43:52-07:00" />
+<meta property="og:updated_time" content="2021-08-11T22:52:40-07:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
 
@@ -103,6 +103,10 @@
         alt="/me/profile2.jpg"
         title="/me/profile2.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/xuwenzhe" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/wenzhexu" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:xxxx@xxxx.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/java-shk-9/">Java零基础教程（九.范型与File）</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-11">2021-08-11</time></span></div><div class="content"></div><div class="post-footer">
+        <a href="/java-shk-9/">Read More</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/java-shk-8/">Java零基础教程（八.常用类）</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-19">2021-04-19</time></span></div><div class="content">1. 字符串相关的类 1.1 String的使用 String：字符串，使用一对&quot;&quot;引起来表示。
  String声明为final的，不可被继承 String实现了Serializable接口：表示字符串是支持序列化的。实现了Comparable接口：表示String可以比较大小。 String内部定义了final char[] value用于存储字符串数据 String：代表不可变的字符序列。简称：不可变性。 体现：  当对字符串重新赋值时，需要重写指定内存区赋值，不能使用原有的value进行赋值。 当对现有的字符串进行连接操作时，也需要重新指定内存区域赋值，不能使用原有的value进行赋值（因为value是final的）。 当调用String的replace()方法修改指定字符或字符串时，也需要重新指定内存区域赋值，不能使用原有的value进行赋值。   通过字面量的方式（区别于new）给一个字符串赋值，此时的字符串值声明在方法区内的字符串常量池中。 字符串常量池中是不会存储相同内容的字符串的。  结论：
@@ -213,11 +217,6 @@ BS架构，CS架构：browser server（例如百度搜索）； client server（
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-25">2020-10-25</time></span></div><div class="content">Chapter 1: The Machine Learning Landscape 下载github库中csv数据集: 1 2 3 4 5 6 7  import urllib.request DOWNLOAD_ROOT = &#34;https://raw.githubusercontent.com/ageron/handson-ml2/master/&#34; os.makedirs(datapath, exist_ok=True) for filename in (&#34;oecd_bli_2015.csv&#34;, &#34;gdp_per_capita.csv&#34;): print(&#34;Downloading&#34;, filename) url = DOWNLOAD_ROOT + &#34;datasets/lifesat/&#34; + filename urllib.request.urlretrieve(url, datapath + filename)   预处理pivot: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25  def prepare_country_stats(oecd_bli, gdp_per_capita): # 筛选行 oecd_bli = oecd_bli[oecd_bli[&#34;INEQUALITY&#34;]==&#34;TOT&#34;] # 抽取多行数据为多列数据 oecd_bli = oecd_bli.</div><div class="post-footer">
         <a href="/handson-ml2-1/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/machine-learning/">machine learning</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/kaggle-regression-eda/">Kaggle Regression Eda</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-19">2020-10-19</time></span></div><div class="content">数据的读入 特征的理解 特征的数据类型 1  df.info(verbose=True) # 查看每列缺省情况和数据类型      Pandas dtype Python type NumPy type Usage     object str or mixed string_, unicode_, mixedtypes 字符串文本   int64 int int_, int8, int16, int32, int64, uint8, uint16, uint32, uint64 整数   float64 float float_, float16, float32, float64 浮点数   bool bool bool_ 真假   datetime64 NA datetime64[ns] 日期与时间   timedelta[ns] NA NA 日期时间差   category NA NA Finite list of text values    特征类型 这个步骤是用来理解数据中每一列的具体含义，通过查看feature与label的关系，可以检查是否符合自己的直观感受。比如，通常情况下，房子越大，房子越新，房价越高，等等。可以通过数据类型将每个feature划归到对应的特征类型，便于后续的分析与建模。</div><div class="post-footer">
-        <a href="/kaggle-regression-eda/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kaggle/">kaggle</a>,&nbsp;<a href="/tags/eda/">eda</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

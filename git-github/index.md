@@ -1,100 +1,91 @@
 # Git与Github使用
 
 
+## 1. Git概述
+Git这种分布式版本控制工具，客户端提取的不是最新版本的文件快照，而是把代码仓库完整地镜像下来（本地库）。这样任何一处协同工作用的文件发生故障，事后都可以用其他客户端的本地仓库进行恢复。因为每个客户端的每一次文件提取操作，实际上都是一次对整个文件仓库的完整备份。
+
 {{< figure src="/git-github/worktree-staging-gitdir.png" class="center" width="800" >}}
 
-The git directory acts as a database for all the changes tracked in Git and the working tree acts as a sandbox where we can edit the current versions of the files.
 
+## 2. 常用命令
 
-## 1. 基本操作
+* 设置用户签名 `git config --global user.name 用户名`
+* 设置用户签名 `git config --global user.email 邮箱`
 
-```bash
-git init # 创建仓库
+注意：这里设置用户签名和将来登陆Github的账号没有任何关系。
 
-# 登陆当前操作系统的用户范围 (否则为项目级别)
-git config --global user.name "My Name"
-git config --global user.email "me@example.com"
+* 初始化本地库 `git init`
+* 查看本地库状态 `git status`
+* 将工作区的文件添加到暂存区 `git add 文件名`
+* 将暂存区的文件提交到本地库 `git commit -m "日志信息" 文件名`
 
-git status # 显示 working tree, staging area
-# 创建文件new-file.py
-git add new-file.py
-git commit -m "[message]"
-git status
-# 修改new-file.py
-git commit -a -m "[messsage]" # -a: shortcut of "git add, git commit" for the modified
-git log # 查看提交(当前分支)
-git log --oneline # 查看提交（简洁显示）
-git reflog # 查看HEAD曾经经过的commit
+{{< figure src="/git-github/git-lifecycle.png" class="center" width="1000" >}}
 
-# throws away unstaged changes, younger commits becomes dangling (can be retrieved via reflog if within days)
-git reset --hard [commitID] 
-git reset --hard HEAD^^^ # back 3 commits
-git reset --hard HEAD~[n] # back n commits
-```
+* 查看版本信息（HEAD经过的历史记录） `git reflog`
+* 查看版本详细信息 `git log` 
+* 版本穿梭 `git reset --hard 版本号` （版本号可以通过git reflog查询）[通过`HEAD^`或`HEAD~`移动HEAD到相对位置](https://stackoverflow.com/a/2222920)
 
 {{< figure src="/git-github/reflog.gif" class="center" width="1000" >}}
 
-{{< figure src="/git-github/reflog-reset.gif" class="center" width="1000" >}}
-
 {{< figure src="/git-github/hard-reset.gif" class="center" width="1000" >}}
 
-```bash
-git diff file.py # compare file.py between work tree and staging area
-git diff HEAD file.py # compare between work tree and HEAD commit
-git show commitID # show details (+-) for one specific commit
-git mv file.py newname.py # rename a file
-git rm newname.py # remove a file
-```
+{{< figure src="/git-github/reflog-reset.gif" class="center" width="1000" >}}
 
-{{< figure src="https://git-scm.com/book/en/v2/images/lifecycle.png" class="center" width="800" >}}
+注意：上图中，链表结构从新版本指向旧版本，merge情况下指向两个父（旧）版本。
 
-## 2. 分支合并
+勘误：命令行结果中版本号应为i8fe5。左图中未显示8d83a版本号。
 
-```bash
-git branch -v # 查看分支
-git branch feature # 创建分支feature
-git checkout feature # 切换分支feature
-git checkout -b feature # 创建并切换分支feature
-git branch -d feature # 删除分支feature
+## 3. 分支操作
 
-# 合并： 切换到接受修改的分支（e.g. master）增加新内容(e.g. feature上的新内容)
-git checkout master
-git merge feature
+* 查看分支 `git branch -v`
+* 创建分支 `git branch 分支名`
+* 切换分支 `git checkout 分支名`
+* 合并分支 `git merge 分支名`（在master分支上，合并hot-fix分支）
+* 删除分支 `git branch -d 分支名`
 
-# 冲突
-# <<<<<<< HEAD
-# abc (当前分支修改)
-# =======
-# def (并入分支修改)
-# >>>>>>> feature
-git add files
-git commit -m "conflict resolved, merging -> merged"
-```
+冲突产生的原因：合并分支时，两个分支在**同一个文件的同一个位置**有两套完全不同的修改。Git无法替我们决定使用哪一个。必须**人为决定**新代码内容。
 
-## 3. 远程合作
+	冲突
+	<<<<<<< HEAD
+	abc (当前分支修改)
+	=======
+	def (并入分支修改)
+	>>>>>>> hot-fix
 
-```bash
-git remote -v # 查看本地保存的远程库地址
-git remote add origin https://github.com/[username]/[reponame].git
-git push origin master
+注意：人为决定采用哪种修改后，仍然需要git add与git commit使得合并过程从merging到merged状态。
 
-git clone https://github.com/[username]/[reponame].git
+理解底层指针：Head指针指向分支名（如master），master指针指向版本号
 
-# pull = fetch + merge
-git fetch origin master
-git checkout origin/master
-git merge origin/master
-git pull origin master
+{{< figure src="/git-github/fast-forward.gif" class="center" width="1000" >}}
 
-# 如果不是基于Github远程库的最新版所做的修改，不能推送，必须先pull
-# pull后如果进入冲突状态，则解决冲突后即可再推送(git commit, git push)
-```
+{{< figure src="/git-github/no-fast-forward.gif" class="center" width="1000" >}}
 
-```bash
-# 跨团队协作 1) fork 2) clone 3) modified 4) pull request
-```
+{{< figure src="/git-github/merge-conflict.gif" class="center" width="1000" >}}
 
-## 4. 工作流
+## 4. 团队协作机制
+
+* 查看本地保存到远程库地址 `git remove -v`
+* 给远程库起别名 `git remove add 别名 远程地址` 例如`git remote add origin https://github.com/[username]/[reponame].git`
+* 将本地当前分支推送到远程某分支 `git push 远程库别名 远程库分支` 例如 `git push origin master`
+* 将远程某分支拉取到本地当前分支 `git pull 远程库别名 远程库分支` 例如 `git pull origin master`
+* 取得远程库某分支 `git fetch 远程库别名 远程库分支` 例如 `git fetch origin master`
+* 克隆远程库到本地 `git clone 远程库地址` （clone会做三件事：1.拉取代码 2.初始化本地库 3. 创建别名）
+
+注意：push是将本地库代码推送到远程库，如果本地库代码跟远程库代码版本不一致，push的操作是会被拒绝的。也就是说，要想push成功，一定要保证本地库的版本要比远程库的版本高！因此一个成熟的程序员在动手改本地代码之前，一定会先检查下远程库跟本地代码的区别！如果本地的代码版本已经落后，切记要先pull拉取一下远程库的代码，将本地代码更新到最新以后，然后再修改，提交，推送！
+
+问题：What’s the main difference between git fetch and git pull? git fetch fetches remote updates but doesn’t merge; git pull fetches remote updates and merges.
+
+	git fetch origin master
+	git checkout origin/master
+	git merge origin/master
+
+注意："origin" is the default name for the remote repo.
+
+{{< figure src="/git-github/fetch.gif" class="center" width="1000" >}}
+
+{{< figure src="/git-github/pull.gif" class="center" width="1000" >}}
+
+## 5. 工作流
 
 {{< figure src="/git-github/git-workflow.png" class="center" width="1000" >}}
 
@@ -128,12 +119,6 @@ git revert HEAD # roll back to previous commit
 git revert commitID # roll back
 ```
 
-## 远程
-```bash
-git push # push changes to remote repo
-```
-
-"origin" is the default name for the remote repo
 
 ```bash
 git remote -v # list remote repos verbosely
@@ -141,28 +126,8 @@ git remote show origin # describe a single remote repo
 git branch -r # list remote branches
 ```
 
-What's the main difference between git fetch and git pull? `git fetch` fetches remote updates but doesn't merge; `git pull` fetches remote updates and merges.
-
-```bash
-git fetch
-git log origin/master
-git merge origin/master # merge into local
-```
 
 `git remote update` will update all of your branches set to track remote ones, but not merge any changes in.
-
-`git fetch` will update only the branch you're on, but not merge any changes in.
-
-`git pull` will update and merge any remote changes of the current branch you're on. This would be the one you use to update a local branch.
-
-```bash
-git log --graph --oneline --all
-git log -p origin/master
-```
-
-```bash
-git push -u origin new-feature # push to "origin" remote repo, with "new-feature" branch
-```
 
 Rebasing instead of merging rewrites history and maintains linearity, making for cleaner code.
 
@@ -188,11 +153,7 @@ git rebase --continue
 ```
 
 
-{{< figure src="/git-github/fast-forward.gif" class="center" width="1000" >}}
 
-{{< figure src="/git-github/no-fast-forward.gif" class="center" width="1000" >}}
-
-{{< figure src="/git-github/merge-conflict.gif" class="center" width="1000" >}}
 
 {{< figure src="/git-github/rebase.gif" class="center" width="1000" >}}
 
@@ -206,9 +167,7 @@ git rebase --continue
 
 {{< figure src="/git-github/cherry-pick.gif" class="center" width="1000" >}}
 
-{{< figure src="/git-github/fetch.gif" class="center" width="1000" >}}
 
-{{< figure src="/git-github/pull.gif" class="center" width="1000" >}}
 
 
 
@@ -228,4 +187,5 @@ git rebase --continue
 
 [How do I check out a remote Git branch?](https://stackoverflow.com/questions/1783405/how-do-i-check-out-a-remote-git-branch)
 
+[git 理解 Head指针&Branch指针--reset&checkout](https://blog.csdn.net/claroja/article/details/78858533)
 
