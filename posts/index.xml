@@ -3,13 +3,39 @@
         <title>All Posts - Wenzhe&#39;s Blog</title>
         <link>https://xuwenzhe.github.io/posts/</link>
         <description>All Posts | Wenzhe&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 11 Aug 2021 22:52:40 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Java零基础教程（九.范型与File）</title>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 23 Aug 2021 23:30:48 -0700</lastBuildDate><atom:link href="https://xuwenzhe.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Java零基础教程（十二.反射Reflection）</title>
+    <link>https://xuwenzhe.github.io/java-shk-12/</link>
+    <pubDate>Mon, 23 Aug 2021 23:30:48 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/java-shk-12/</guid>
+    <description><![CDATA[1. Java反射机制概述 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99  package com.]]></description>
+</item><item>
+    <title>Java零基础教程（十一.网络编程）</title>
+    <link>https://xuwenzhe.github.io/java-shk-11/</link>
+    <pubDate>Sun, 22 Aug 2021 20:26:13 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/java-shk-11/</guid>
+    <description><![CDATA[1. 网络编程概述 2. 网络通信要素概述 3. 通信要素1：IP和端口号 4. 通信要素2：网络协议 5. TCP网络编程 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109  package com.]]></description>
+</item><item>
+    <title>Java零基础教程（十.IO流）</title>
+    <link>https://xuwenzhe.github.io/java-shk-10/</link>
+    <pubDate>Sun, 15 Aug 2021 09:45:53 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://xuwenzhe.github.io/java-shk-10/</guid>
+    <description><![CDATA[1. File类 File类的使用
+ File类的一个对象，代表一个文件或一个文件目录（俗称：文件夹） File类的声明在java.io包下 File类中涉及到关于文件或文件目录的创建，删除，重命名，修改时间，文件大小等方法。并未涉及到写入或读取文件内容的操作。如果需要读取或写入文件内容，必须使用IO流来完成 后续File类的对象常会作为参数传递到流的构造器中，指明读取或写入的&quot;终点&rdquo;  1.1 File类的创建   如何创建File类的实例
+ File(String filePath) File(String parentPath, String childPath) File(File parentPath, String childPath)     相对路径：相较于某个路径下，指明的路径 绝对路径：包含盘符在内的文件或文件目录的路径    路径分隔符 windows:\\ unix:/
+  1.2 File类的API public String getAbsolutePath():获取绝对路径 public String getPath():获取路径 public String getName():获取名称 public String getParent():获取上层文件目录路径。若无，返回null public long length():获取文件长度（即，字节数）。不能获取目录的长度 public long lastModified():获取最后一次的修改时间，毫秒值 如下的两个方法适用于文件目录 public String[] list():获取指定目录下的所有文件或者文件目录的名称数组 public File[] listFiles:获取指定目录下的所有文件或者文件目录的File数组 public boolean renameTo(File dest):把文件重命名为指定的文件路径 比如：file1.]]></description>
+</item><item>
+    <title>Java零基础教程（九.泛型）</title>
     <link>https://xuwenzhe.github.io/java-shk-9/</link>
     <pubDate>Wed, 11 Aug 2021 22:52:40 -0700</pubDate>
     <author>Author</author>
     <guid>https://xuwenzhe.github.io/java-shk-9/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[1. 泛型的使用 jdk5.0新增的特性
+1.1. 在集合中使用泛型： 总结：
+ 集合接口或集合类在jdk5.0时都修改为带泛型的结构 在实例化集合类时，可以指明具体的泛型类型 指明完以后，在集合类或接口中凡是定义类或接口时，内部结构（比如：方法，构造器，属性）使用到类的泛型的位置，都指定为实例化的泛型类型。 比如：add(E e) &mdash;&gt; 实例化以后：add(Integer e) 注意点：泛型的类型必须是类，不能是基本数据类型。需要用到基本数据类型的位置，拿包装类来替换 如果实例化时，没有指明范型的类型，默认类型为java.lang.Object类型  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91  public class GenericTest { // 在集合中使用泛型  @Test public void test1() { ArrayList list = new ArrayList(); list.]]></description>
 </item><item>
     <title>Java零基础教程（八.常用类）</title>
     <link>https://xuwenzhe.github.io/java-shk-8/</link>
@@ -86,58 +112,5 @@
     <description><![CDATA[1. 类和对象 1.1 面向对象的思想 一· Java面向对象学习的三条主线
  Java类及类的成员：属性，方法，构造器，代码块，内部类 面向对象的三大特征：封装性，继承性，多态性，（抽象性） 其他关键字：this, super, static, final, abstract, interface, package, import等。  二·“人把大象装进冰箱”
  面向对象：强调的是功能行为，以函数为最小单位，考虑怎么做。  把冰箱门打开 抬起大象，塞进冰箱 把冰箱门关闭   面向对象：强调具备了功能的对象，以类/对象为最小单位，考虑谁来做。  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  人 { 打开(冰箱) { 冰箱.开开(); } 抬起(大象) { 大象.进入(冰箱); } 关闭(冰箱) { 冰箱.闭合(); } } 冰箱 { 开开(){} 闭合(){} } 大象 { 进入(冰箱){} }   程序员从面向过程的执行者转化成了面向对象的指挥者。]]></description>
-</item><item>
-    <title>Java零基础教程（二.基本语法）</title>
-    <link>https://xuwenzhe.github.io/java-shk-2/</link>
-    <pubDate>Wed, 10 Mar 2021 18:49:43 -0800</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/java-shk-2/</guid>
-    <description><![CDATA[1. 关键字 数据类型：class, interface, enum, byte, short, int, long, float, double, char, boolean, void
-数值：true, false, null
-流程控制：if, else, switch, case, default, while, do, for, break, continue, return
-访问权限：private, protected, public
-类，函数，变量的修饰符：abstract, final, static, synchronized
-类与类关系：extends, implements
-实例的创建，引用，判断：new, this, super, instanceof
-异常处理：try, catch, finally, throw, throws
-包：package, import
-其他：native, strictfp, transient, volatile, assert
-2. 标识符 标识符（aka变量方法类名）的命名规范：
- 包：都小写 xxxyyy 类,接口：XxxYyy 变量方法：xxxYyy 常量：XXX_YYY_ZZZ  3. 变量 3.1 数据类型 包含变量类型，变量名，和存储的值。变量都定义在其作用域内，在作用域内，它是有效的，除了作用域就失效了。
- 基本数据类型：整数类型byte（-128～127）, short（两字节-2^15～2^15-1）, int(四字节，-21亿～21亿), long（八字节，必须以小写或大写L结尾）； 浮点类型float（四字节，必须以f或F结尾，精确到7位有效数字，范围-3.]]></description>
-</item><item>
-    <title>Java零基础教程（一.概论）</title>
-    <link>https://xuwenzhe.github.io/java-shk/</link>
-    <pubDate>Wed, 18 Nov 2020 21:36:11 -0800</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/java-shk/</guid>
-    <description><![CDATA[1. 硬件介绍 1.1 CPU（中央处理器） 冯诺伊曼体系结构：冯诺伊曼被人们称为“计算机之父”。计算机由输入设备，输出设备，存储器，运算器，控制器构成。现代计算机中的CPU负责其中的运算与控制功能。
-赫兹：现代计算机的计算速度以千兆赫（GHz）来表述。英文进制：KHz，MHz，GHz
-Intel i7-6700HQ：“6”第六代，HQ标压版本，U低压版本
-摩尔定律：每一美元所能买到的电脑性能，每隔18-24个月翻一倍以上。
-1.2 存储 硬盘 硬盘存储的数据断电不丢失（持久化设备）。在windows系统中，A/B盘的位置是预留给软驱的（软驱已经淘汰）。
-内存 Read-Access Memory，内存存储数据速度比硬盘快10倍以上，其部分解决了CPU运算过快，而硬盘数据存取太慢的问题。断电会导致数据丢失
-bit：二进制表示0/1
-byte：8 bits，内存中每个byte拥有唯一的地址。
-进制：1KB = 1024B, 1MB = 1024KB, 1GB = 1024MB, 1T = 1024GB, 1PB = 1024TB, EB,ZB,YB,以此类推。
-ROM：手机的“硬盘”，例如16GB，128GB。但是经常被大众（误）叫做手机内存。
-1.3 输入输出 输入设备： 鼠标键盘； 输出设备： 显示器打印机
-1920x1080：像素矩阵
-2K屏幕：比如2244x1080（2244&gt;2000）
-屏幕尺寸：屏幕对角线长度
-像素密度：sqrt(长度像素数^2 + 宽度像素数^2) / 屏幕尺寸
-1.4 通信设备 2. 计算机发展史 图灵：计算机之父，人工智能之父
-冯诺伊曼：计算机之父，博弈论之父
-www（万维网）：简称web。www可以让Web客户端（如浏览器）访问浏览Web服务器上的页面。是一个由许多互相连接的超文本组成的系统，通过互联网访问。在这个系统中，每个有用的事物，称为一样资源，并且由一个全局统一资源标识符（URI）标识；这些资源通过超文本传输协议HTTP（Hypertext Transfer Protocol）传送给用户，用户通过点击链接来获得资源。
-万维网vs因特网vs互联网：他们是包含关系。万维网是无数个网络站点和网页集合。因特网除了万维网，还包括电子邮件等。
-BS架构，CS架构：browser server（例如百度搜索）； client server（例如QQ）
-3. Java语言概述 3.1 编程语言 机器语言 -&gt; 汇编语言 -&gt; 高级语言（面向过程）-&gt; 高级语言（面向对象）]]></description>
-</item><item>
-    <title>《机器学习实战（第二版）》-读书笔记1</title>
-    <link>https://xuwenzhe.github.io/handson-ml2-1/</link>
-    <pubDate>Sun, 25 Oct 2020 22:06:32 -0700</pubDate>
-    <author>Author</author>
-    <guid>https://xuwenzhe.github.io/handson-ml2-1/</guid>
-    <description><![CDATA[Chapter 1: The Machine Learning Landscape 下载github库中csv数据集: 1 2 3 4 5 6 7  import urllib.request DOWNLOAD_ROOT = &#34;https://raw.githubusercontent.com/ageron/handson-ml2/master/&#34; os.makedirs(datapath, exist_ok=True) for filename in (&#34;oecd_bli_2015.csv&#34;, &#34;gdp_per_capita.csv&#34;): print(&#34;Downloading&#34;, filename) url = DOWNLOAD_ROOT + &#34;datasets/lifesat/&#34; + filename urllib.request.urlretrieve(url, datapath + filename)   预处理pivot: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25  def prepare_country_stats(oecd_bli, gdp_per_capita): # 筛选行 oecd_bli = oecd_bli[oecd_bli[&#34;INEQUALITY&#34;]==&#34;TOT&#34;] # 抽取多行数据为多列数据 oecd_bli = oecd_bli.]]></description>
 </item></channel>
 </rss>
