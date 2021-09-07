@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>MySQL基础 - Wenzhe&#39;s Blog</title><meta name="Description" content="About LoveIt Theme"><meta property="og:title" content="MySQL基础" />
+<meta property="og:description" content="目录 一、为什么要学习数据库 二、数据库的相关概念 DBMS、DB、SQL 三、数据库存储数据的特点 四、初始MySQL MySQL产品的介绍 MySQL产品的安装 ★ MySQL服务的启动和停止 ★ MySQL服务的登录和退出 ★ MySQL的常见命令和语法规范 五、DQL语言的学习 ★ 基础查询 ★ 条件查询 ★	排序查询 ★	常见函数 ★ 分组函数 ★ 分组查询	★	连接查询	★	子查询 √ 分页查询 ★ union联合查询	√	六、DML语言的学习 ★ 插入语句	修改语句	删除语句	七、DDL语言的学习 库和表的管理	√	常见数据类型介绍 √ 常见约束 √	八、TCL语言的学习 事务和事务处理 九、视图的讲解 √ 十、变量 十一、存储过程和函数 十二、流程控制结构  1. 为什么要学习数据库  持久化数据到本地 可以实现结构化查询，方便管理  2. 数据库相关概念  DB：数据库，保存一组有组织的数据的容器 DBMS：数据库管理系统，又称为数据库软件（产品），用于管理DB中的数据 SQL:结构化查询语言，用于和DBMS通信的语言  3. 数据库存储数据的特点  将数据放到表中，表再放到库中 一个数据库中可以有多个表，每个表都有一个的名字，用来标识自己。表名具有唯一性。 表具有一些特性，这些特性定义了数据在表中如何存储，类似java中 “类”的设计。 表由列组成，我们也称为字段。所有表都是由一个或多个列组成的，每一列类似java 中的”属性” 表中的数据是按行存储的，每一行类似于java中的“对象”。  4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xuwenzhe.github.io/mysql-atguigu/" />
+<meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
+<meta property="article:published_time" content="2021-08-26T23:45:12-07:00" />
+<meta property="article:modified_time" content="2021-08-26T23:45:12-07:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
+
+<meta name="twitter:title" content="MySQL基础"/>
+<meta name="twitter:description" content="目录 一、为什么要学习数据库 二、数据库的相关概念 DBMS、DB、SQL 三、数据库存储数据的特点 四、初始MySQL MySQL产品的介绍 MySQL产品的安装 ★ MySQL服务的启动和停止 ★ MySQL服务的登录和退出 ★ MySQL的常见命令和语法规范 五、DQL语言的学习 ★ 基础查询 ★ 条件查询 ★	排序查询 ★	常见函数 ★ 分组函数 ★ 分组查询	★	连接查询	★	子查询 √ 分页查询 ★ union联合查询	√	六、DML语言的学习 ★ 插入语句	修改语句	删除语句	七、DDL语言的学习 库和表的管理	√	常见数据类型介绍 √ 常见约束 √	八、TCL语言的学习 事务和事务处理 九、视图的讲解 √ 十、变量 十一、存储过程和函数 十二、流程控制结构  1. 为什么要学习数据库  持久化数据到本地 可以实现结构化查询，方便管理  2. 数据库相关概念  DB：数据库，保存一组有组织的数据的容器 DBMS：数据库管理系统，又称为数据库软件（产品），用于管理DB中的数据 SQL:结构化查询语言，用于和DBMS通信的语言  3. 数据库存储数据的特点  将数据放到表中，表再放到库中 一个数据库中可以有多个表，每个表都有一个的名字，用来标识自己。表名具有唯一性。 表具有一些特性，这些特性定义了数据在表中如何存储，类似java中 “类”的设计。 表由列组成，我们也称为字段。所有表都是由一个或多个列组成的，每一列类似java 中的”属性” 表中的数据是按行存储的，每一行类似于java中的“对象”。  4."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://xuwenzhe.github.io/mysql-atguigu/" /><link rel="prev" href="https://xuwenzhe.github.io/java-shk-12/" /><link rel="next" href="https://xuwenzhe.github.io/jdbc-atguigu/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "MySQL基础",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/xuwenzhe.github.io\/mysql-atguigu\/"
+        },"image": ["https:\/\/xuwenzhe.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "mysql","wordcount":  1326 ,
+        "url": "https:\/\/xuwenzhe.github.io\/mysql-atguigu\/","datePublished": "2021-08-26T23:45:12-07:00","dateModified": "2021-08-26T23:45:12-07:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": "https:\/\/xuwenzhe.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "wenzhe"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Wenzhe&#39;s Blog">Wenzhe&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Wenzhe&#39;s Blog">Wenzhe&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">MySQL基础</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-26">2021-08-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1326 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;<span id="/mysql-atguigu/" class="leancloud_visitors" data-flag-title="MySQL基础">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#1-为什么要学习数据库">1. 为什么要学习数据库</a></li>
+    <li><a href="#2-数据库相关概念">2. 数据库相关概念</a></li>
+    <li><a href="#3-数据库存储数据的特点">3. 数据库存储数据的特点</a></li>
+    <li><a href="#4-mysql产品的介绍和安装">4. MySQL产品的介绍和安装</a>
+      <ul>
+        <li><a href="#41-mysql服务的启动和停止">4.1 MySQL服务的启动和停止</a></li>
+        <li><a href="#42-mysql服务的登录和退出">4.2 MySQL服务的登录和退出</a></li>
+        <li><a href="#43-mysql的常见命令">4.3 MySQL的常见命令</a></li>
+        <li><a href="#44-mysql的语法规范">4.4 MySQL的语法规范</a></li>
+        <li><a href="#45-sql的语言分类">4.5 SQL的语言分类</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-dql语言的学习">5. DQL语言的学习</a>
+      <ul>
+        <li><a href="#51-基础查询">5.1 基础查询</a></li>
+        <li><a href="#52-条件查询">5.2 条件查询</a></li>
+        <li><a href="#53-排序查询">5.3 排序查询</a></li>
+        <li><a href="#54-常见函数">5.4 常见函数</a></li>
+        <li><a href="#55-分组查询">5.5 分组查询</a></li>
+        <li><a href="#56-多表连接查询">5.6 多表连接查询</a>
+          <ul>
+            <li><a href="#561-传统模式下的连接-等值连接非等值连接">5.6.1 传统模式下的连接 ：等值连接——非等值连接</a></li>
+            <li><a href="#562-sql99语法通过join关键字实现连接">5.6.2 sql99语法：通过join关键字实现连接</a></li>
+            <li><a href="#563-自连接">5.6.3 自连接</a></li>
+          </ul>
+        </li>
+        <li><a href="#57-子查询">5.7 子查询</a></li>
+        <li><a href="#58-分页查询">5.8 分页查询</a></li>
+        <li><a href="#59-联合查询">5.9 联合查询</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-dml语言">6. DML语言</a>
+      <ul>
+        <li><a href="#61-插入">6.1 插入</a></li>
+        <li><a href="#62-修改">6.2 修改</a></li>
+        <li><a href="#63-删除">6.3 删除</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-ddl语句">7. DDL语句</a>
+      <ul>
+        <li><a href="#71-库和表的管理">7.1 库和表的管理</a></li>
+        <li><a href="#72-常见数据类型">7.2 常见数据类型</a></li>
+        <li><a href="#73-常见约束">7.3 常见约束</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-tcl语言">8. TCL语言</a></li>
+    <li><a href="#9-视图">9. 视图</a></li>
+    <li><a href="#10-变量">10. 变量</a>
+      <ul>
+        <li><a href="#101-系统变量">10.1 系统变量</a>
+          <ul>
+            <li><a href="#1011-全局变量">10.1.1 全局变量</a></li>
+            <li><a href="#1012-会话变量">10.1.2 会话变量</a></li>
+          </ul>
+        </li>
+        <li><a href="#102-自定义变量">10.2 自定义变量</a>
+          <ul>
+            <li><a href="#1021-用户变量">10.2.1 用户变量</a></li>
+            <li><a href="#1022-局部变量">10.2.2 局部变量</a></li>
+            <li><a href="#二者的区别">二者的区别：</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#11-存储过程和函数">11. 存储过程和函数</a>
+      <ul>
+        <li><a href="#存储过程">存储过程</a>
+          <ul>
+            <li><a href="#创建存储过程">创建存储过程</a></li>
+          </ul>
+        </li>
+        <li><a href="#函数">函数</a>
+          <ul>
+            <li><a href="#创建函数">创建函数</a></li>
+            <li><a href="#调用函数-select-函数名实参列表">调用函数 <code>SELECT 函数名（实参列表）</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#12-流程控制结构">12. 流程控制结构</a>
+      <ul>
+        <li><a href="#121-分支">12.1 分支</a>
+          <ul>
+            <li><a href="#if函数">if函数</a></li>
+            <li><a href="#case语句">case语句</a></li>
+            <li><a href="#if-elseif语句">if elseif语句</a></li>
+            <li><a href="#三者比较">三者比较：</a></li>
+          </ul>
+        </li>
+        <li><a href="#122-循环">12.2 循环</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="目录">目录</h2>
+<pre><code>一、为什么要学习数据库
+二、数据库的相关概念      
+    DBMS、DB、SQL
+三、数据库存储数据的特点
+四、初始MySQL
+    MySQL产品的介绍        
+    MySQL产品的安装          ★        
+    MySQL服务的启动和停止     ★
+    MySQL服务的登录和退出     ★      
+    MySQL的常见命令和语法规范      
+五、DQL语言的学习   ★              
+    基础查询        ★             
+    条件查询  	   ★			
+    排序查询  	   ★				
+    常见函数        ★               
+    分组函数        ★              
+    分组查询		   ★			
+    连接查询	 	★			
+    子查询       √                  
+    分页查询       ★              
+    union联合查询	√			
+	
+六、DML语言的学习    ★             
+    插入语句						
+    修改语句						
+    删除语句						
+七、DDL语言的学习  
+    库和表的管理	 √				
+    常见数据类型介绍  √          
+    常见约束  	  √			
+八、TCL语言的学习
+    事务和事务处理                 
+九、视图的讲解           √
+十、变量                      
+十一、存储过程和函数   
+十二、流程控制结构       
+</code></pre>
+<h2 id="1-为什么要学习数据库">1. 为什么要学习数据库</h2>
+<ol>
+<li>持久化数据到本地</li>
+<li>可以实现结构化查询，方便管理</li>
+</ol>
+<h2 id="2-数据库相关概念">2. 数据库相关概念</h2>
+<ul>
+<li>DB：数据库，保存一组有组织的数据的容器</li>
+<li>DBMS：数据库管理系统，又称为数据库软件（产品），用于管理DB中的数据</li>
+<li>SQL:结构化查询语言，用于和DBMS通信的语言</li>
+</ul>
+<h2 id="3-数据库存储数据的特点">3. 数据库存储数据的特点</h2>
+<ul>
+<li>将数据放到表中，表再放到库中</li>
+<li>一个数据库中可以有多个表，每个表都有一个的名字，用来标识自己。表名具有唯一性。</li>
+<li>表具有一些特性，这些特性定义了数据在表中如何存储，类似java中 “类”的设计。</li>
+<li>表由列组成，我们也称为字段。所有表都是由一个或多个列组成的，每一列类似java 中的”属性”</li>
+<li>表中的数据是按行存储的，每一行类似于java中的“对象”。</li>
+</ul>
+<h2 id="4-mysql产品的介绍和安装">4. MySQL产品的介绍和安装</h2>
+<h3 id="41-mysql服务的启动和停止">4.1 MySQL服务的启动和停止</h3>
+<ul>
+<li>
+<p>方式一：计算机——右击管理——服务</p>
+</li>
+<li>
+<p>方式二：通过管理员身份运行</p>
+<pre><code>  net start 服务名（启动服务）
+  net stop 服务名（停止服务）
+</code></pre>
+</li>
+</ul>
+<h3 id="42-mysql服务的登录和退出">4.2 MySQL服务的登录和退出</h3>
+<ul>
+<li>
+<p>方式一：通过mysql自带的客户端（只限于root用户）</p>
+</li>
+<li>
+<p>方式二：通过windows自带的客户端</p>
+<pre><code>  登录：
+  mysql 【-h主机名 -P端口号 】-u用户名 -p密码
+
+  退出：
+  exit或ctrl+C
+</code></pre>
+</li>
+</ul>
+<p>一个数据库中可以有多个表，每个表都有一个名字，用来标识自己。表名具有唯一性</p>
+<p><a href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a></p>
+<p>mysql -h主机名 -P端口号 -u用户名 -p密码
+mysql -h localhost -P 3306 -u root -p</p>
+<p>-h: host
+-P: port number
+-u: user
+-p: password</p>
+<p><code>mysql -u root -p</code></p>
+<p>exit 退出</p>
+<h3 id="43-mysql的常见命令">4.3 MySQL的常见命令</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">show</span> <span class="n">databases</span><span class="p">;</span> <span class="o">#</span> <span class="err">查看当前所有的数据库</span>
+<span class="n">use</span> <span class="err">库名</span> <span class="o">#</span> <span class="err">打开指定的库</span>
+<span class="k">show</span> <span class="n">tables</span><span class="p">;</span> <span class="o">#</span> <span class="err">查看当前库的所有表</span>
+<span class="k">show</span> <span class="n">tables</span> <span class="k">from</span> <span class="err">库名</span><span class="p">;</span> <span class="o">#</span> <span class="err">查看其它库的所有表</span>
+<span class="o">#</span> <span class="err">创建表</span>
+<span class="k">create</span> <span class="k">table</span> <span class="err">表名</span><span class="p">(</span>
+	<span class="err">列名</span> <span class="err">列类型</span><span class="p">,</span>
+	<span class="err">列名</span> <span class="err">列类型，</span>
+	<span class="err">。。。</span>
+<span class="p">);</span>
+<span class="k">desc</span> <span class="err">表名</span><span class="p">;</span> <span class="o">#</span> <span class="err">查看表结构</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="err">表名</span><span class="p">;</span> <span class="o">#</span> <span class="err">显示表中的所有数据</span>
+
+<span class="o">#</span> <span class="err">查看服务器的版本</span>
+<span class="o">#</span> <span class="err">方式一：登录到</span><span class="n">mysql服务端</span>
+<span class="k">select</span> <span class="k">version</span><span class="p">();</span>
+<span class="o">#</span> <span class="err">方式二：没有登录到</span><span class="n">mysql服务端</span>
+<span class="n">mysql</span> <span class="c1">--version
+</span><span class="c1"></span><span class="o">#</span> <span class="err">或</span>
+<span class="n">mysql</span> <span class="c1">--V
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="44-mysql的语法规范">4.4 MySQL的语法规范</h3>
+<ul>
+<li>不区分大小写,但建议关键字大写，表名、列名小写</li>
+<li>每条命令最好用分号结尾</li>
+<li>每条命令根据需要，可以进行缩进 或换行</li>
+<li>注释
+<ul>
+<li>单行注释：#注释文字</li>
+<li>单行注释：&ndash; 注释文字</li>
+<li>多行注释：<code>/* 注释文字  */</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="45-sql的语言分类">4.5 SQL的语言分类</h3>
+<ul>
+<li>DQL（Data Query Language）：数据查询语言 <code>select</code></li>
+<li>DML(Data Manipulate Language):数据操作语言 <code>insert</code> 、<code>update</code>、<code>delete</code></li>
+<li>DDL（Data Define Languge）：数据定义语言 <code>create</code>、<code>drop</code>、<code>alter</code></li>
+<li>TCL（Transaction Control Language）：事务控制语言 <code>commit</code>、<code>rollback</code></li>
+</ul>
+<h2 id="5-dql语言的学习">5. DQL语言的学习</h2>
+<h3 id="51-基础查询">5.1 基础查询</h3>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="err">要查询的东西</span>
+<span class="err">【</span><span class="k">FROM</span> <span class="err">表名】</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>类似于Java中 :System.out.println(要打印的东西);</p>
+<p>特点：</p>
+<ol>
+<li>通过select查询完的结果 ，是一个虚拟的表格，不是真实存在</li>
+<li>要查询的东西 可以是常量值、可以是表达式、可以是字段、可以是函数</li>
+</ol>
+<h3 id="52-条件查询">5.2 条件查询</h3>
+<p>条件查询：根据条件过滤原始表的数据，查询到想要的数据</p>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> 
+	<span class="err">要查询的字段</span><span class="o">|</span><span class="err">表达式</span><span class="o">|</span><span class="err">常量值</span><span class="o">|</span><span class="err">函数</span>
+<span class="k">from</span> 
+	<span class="err">表</span>
+<span class="k">where</span> 
+	<span class="err">条件</span> <span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>分类：</p>
+<ol>
+<li>
+<p>条件表达式. 示例：<code>salary&gt;10000</code> 条件运算符：<code>&gt; &lt; &gt;= &lt;= = != &lt;&gt;</code></p>
+</li>
+<li>
+<p>逻辑表达式. 示例：<code>salary&gt;10000 &amp;&amp; salary&lt;20000</code></p>
+</li>
+</ol>
+<p>逻辑运算符：</p>
+<ul>
+<li><code>and（&amp;&amp;）</code>:两个条件如果同时成立，结果为true，否则为false</li>
+<li><code>or(||)</code>：两个条件只要有一个成立，结果为true，否则为false</li>
+<li><code>not(!)</code>：如果条件成立，则not后为false，否则为true</li>
+</ul>
+<ol start="3">
+<li>模糊查询. 示例：<code>last_name like 'a%'</code></li>
+</ol>
+<h3 id="53-排序查询">5.3 排序查询</h3>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span>
+	<span class="err">要查询的东西</span>
+<span class="k">from</span>
+	<span class="err">表</span>
+<span class="k">where</span> 
+	<span class="err">条件</span>
+
+<span class="k">order</span> <span class="k">by</span> <span class="err">排序的字段</span><span class="o">|</span><span class="err">表达式</span><span class="o">|</span><span class="err">函数</span><span class="o">|</span><span class="err">别名</span> <span class="err">【</span><span class="k">asc</span><span class="o">|</span><span class="k">desc</span><span class="err">】</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="54-常见函数">5.4 常见函数</h3>
+<ul>
+<li>
+<p>单行函数</p>
+<ol>
+<li>
+<p>字符函数</p>
+<pre><code> concat拼接
+ substr截取子串
+ upper转换成大写
+ lower转换成小写
+ trim去前后指定的空格和字符
+ ltrim去左边空格
+ rtrim去右边空格
+ replace替换
+ lpad左填充
+ rpad右填充
+ instr返回子串第一次出现的索引
+ length 获取字节个数
+</code></pre>
+</li>
+<li>
+<p>数学函数</p>
+<pre><code> round 四舍五入
+ rand 随机数
+ floor向下取整
+ ceil向上取整
+ mod取余
+ truncate截断
+</code></pre>
+</li>
+<li>
+<p>日期函数</p>
+<pre><code> now当前系统日期+时间
+ curdate当前系统日期
+ curtime当前系统时间
+ str_to_date 将字符转换成日期
+ date_format将日期转换成字符
+</code></pre>
+</li>
+<li>
+<p>流程控制函数</p>
+<pre><code> if 处理双分支
+ case语句 处理多分支
+     情况1：处理等值判断
+     情况2：处理条件判断
+</code></pre>
+</li>
+<li>
+<p>其他函数</p>
+<pre><code> version版本
+ database当前库
+ user当前连接用户
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>分组函数</p>
+<pre><code>      sum 求和
+      max 最大值
+      min 最小值
+      avg 平均值
+      count 计数
+</code></pre>
+</li>
+</ul>
+<p>特点：</p>
+<ol>
+<li>以上五个分组函数都忽略null值，除了<code>count(*)</code></li>
+<li>sum和avg一般用于处理数值型. max、min、count可以处理任何数据类型</li>
+<li>都可以搭配distinct使用，用于统计去重后的结果</li>
+<li>count的参数可以支持：
+字段、<code>*</code>、常量值，一般放1; 建议使用 <code>count(*)</code></li>
+</ol>
+<h3 id="55-分组查询">5.5 分组查询</h3>
+<p>语法:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="err">查询的字段，分组函数</span>
+<span class="k">from</span> <span class="err">表</span>
+<span class="k">group</span> <span class="k">by</span> <span class="err">分组的字段</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>特点：</p>
+<ol>
+<li>可以按单个字段分组</li>
+<li>和分组函数一同查询的字段最好是分组后的字段</li>
+<li>分组筛选</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">针对的表</th>
+<th align="left">位置</th>
+<th align="left">关键字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">分组前筛选:</td>
+<td align="left">原始表</td>
+<td align="left">group by的前面</td>
+<td align="left">where</td>
+</tr>
+<tr>
+<td align="left">分组后筛选:</td>
+<td align="left">分组后的结果集</td>
+<td align="left">group by的后面</td>
+<td align="left">having</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>可以按多个字段分组，字段之间用逗号隔开</li>
+<li>可以支持排序</li>
+<li>having后可以支持别名</li>
+</ol>
+<h3 id="56-多表连接查询">5.6 多表连接查询</h3>
+<ul>
+<li>笛卡尔乘积：如果连接条件省略或无效则会出现</li>
+<li>解决办法：添加上连接条件</li>
+</ul>
+<h4 id="561-传统模式下的连接-等值连接非等值连接">5.6.1 传统模式下的连接 ：等值连接——非等值连接</h4>
+<ol>
+<li>等值连接的结果 = 多个表的交集</li>
+<li>n表连接，至少需要n-1个连接条件</li>
+<li>多个表不分主次，没有顺序要求</li>
+<li>一般为表起别名，提高阅读性和性能</li>
+</ol>
+<h4 id="562-sql99语法通过join关键字实现连接">5.6.2 sql99语法：通过join关键字实现连接</h4>
+<ul>
+<li>含义：1999年推出的sql语法</li>
+<li>支持：等值连接, 非等值连接 （内连接）, 外连接, 交叉连接</li>
+</ul>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="err">字段，</span><span class="p">...</span>
+<span class="k">from</span> <span class="err">表</span><span class="mi">1</span>
+<span class="err">【</span><span class="k">inner</span><span class="o">|</span><span class="k">left</span> <span class="k">outer</span><span class="o">|</span><span class="k">right</span> <span class="k">outer</span><span class="o">|</span><span class="k">cross</span><span class="err">】</span><span class="k">join</span> <span class="err">表</span><span class="mi">2</span> <span class="k">on</span>  <span class="err">连接条件</span>
+<span class="err">【</span><span class="k">inner</span><span class="o">|</span><span class="k">left</span> <span class="k">outer</span><span class="o">|</span><span class="k">right</span> <span class="k">outer</span><span class="o">|</span><span class="k">cross</span><span class="err">】</span><span class="k">join</span> <span class="err">表</span><span class="mi">3</span> <span class="k">on</span>  <span class="err">连接条件</span>
+<span class="err">【</span><span class="k">where</span> <span class="err">筛选条件】</span>
+<span class="err">【</span><span class="k">group</span> <span class="k">by</span> <span class="err">分组字段】</span>
+<span class="err">【</span><span class="k">having</span> <span class="err">分组后的筛选条件】</span>
+<span class="err">【</span><span class="k">order</span> <span class="k">by</span> <span class="err">排序的字段或表达式】</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>好处：语句上，连接条件和筛选条件实现了分离，简洁明了！</p>
+<h4 id="563-自连接">5.6.3 自连接</h4>
+<p>案例：查询员工名和直接上级的名称</p>
+<p>sql99</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span><span class="n">m</span><span class="p">.</span><span class="n">last_name</span>
+<span class="k">FROM</span> <span class="n">employees</span> <span class="n">e</span>
+<span class="k">JOIN</span> <span class="n">employees</span> <span class="n">m</span> <span class="k">ON</span> <span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">manager_id</span><span class="o">`=</span><span class="n">m</span><span class="p">.</span><span class="o">`</span><span class="n">employee_id</span><span class="o">`</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>sql92</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">e</span><span class="p">.</span><span class="n">last_name</span><span class="p">,</span><span class="n">m</span><span class="p">.</span><span class="n">last_name</span>
+<span class="k">FROM</span> <span class="n">employees</span> <span class="n">e</span><span class="p">,</span><span class="n">employees</span> <span class="n">m</span> 
+<span class="k">WHERE</span> <span class="n">e</span><span class="p">.</span><span class="o">`</span><span class="n">manager_id</span><span class="o">`=</span><span class="n">m</span><span class="p">.</span><span class="o">`</span><span class="n">employee_id</span><span class="o">`</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="57-子查询">5.7 子查询</h3>
+<p>含义：一条查询语句中又嵌套了另一条完整的select语句，其中被嵌套的select语句，称为子查询或内查询
+在外面的查询语句，称为主查询或外查询</p>
+<p>特点：</p>
+<ol>
+<li>子查询都放在小括号内</li>
+<li>子查询可以放在from后面、select后面、where后面、having后面，但一般放在条件的右侧</li>
+<li>子查询优先于主查询执行，主查询使用了子查询的执行结果</li>
+<li>子查询根据查询结果的行数不同分为以下两类：
+<ul>
+<li>
+<p>单行子查询: 结果集只有一行, 一般搭配单行操作符使用：<code>&gt; &lt; = &lt;&gt; &gt;= &lt;=</code></p>
+</li>
+<li>
+<p>非法使用子查询的情况：</p>
+<ul>
+<li>子查询的结果为一组值</li>
+<li>子查询的结果为空</li>
+</ul>
+</li>
+<li>
+<p>多行子查询: 结果集有多行, 一般搭配多行操作符使用：<code>any、all、in、not in</code></p>
+<ul>
+<li>in： 属于子查询结果中的任意一个就行</li>
+<li>any和all往往可以用其他查询代替</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="58-分页查询">5.8 分页查询</h3>
+<p>应用场景：实际的web项目中需要根据用户的需求提交对应的分页查询的sql语句</p>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="err">字段</span><span class="o">|</span><span class="err">表达式</span><span class="p">,...</span>
+<span class="k">from</span> <span class="err">表</span>
+<span class="err">【</span><span class="k">where</span> <span class="err">条件】</span>
+<span class="err">【</span><span class="k">group</span> <span class="k">by</span> <span class="err">分组字段】</span>
+<span class="err">【</span><span class="k">having</span> <span class="err">条件】</span>
+<span class="err">【</span><span class="k">order</span> <span class="k">by</span> <span class="err">排序的字段】</span>
+<span class="k">limit</span> <span class="err">【起始的条目索引，】条目数</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>特点：</p>
+<pre><code>1.起始条目索引从0开始
+
+2.limit子句放在查询语句的最后
+
+3.公式：select * from  表 limit （page-1）*sizePerPage,sizePerPage
+假如:
+每页显示条目数sizePerPage
+要显示的页数 page
+</code></pre>
+<h3 id="59-联合查询">5.9 联合查询</h3>
+<p>引入：union 联合、合并</p>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql">	<span class="k">select</span> <span class="err">字段</span><span class="o">|</span><span class="err">常量</span><span class="o">|</span><span class="err">表达式</span><span class="o">|</span><span class="err">函数</span> <span class="err">【</span><span class="k">from</span> <span class="err">表】</span> <span class="err">【</span><span class="k">where</span> <span class="err">条件】</span> <span class="k">union</span> <span class="err">【</span><span class="k">all</span><span class="err">】</span>
+	<span class="k">select</span> <span class="err">字段</span><span class="o">|</span><span class="err">常量</span><span class="o">|</span><span class="err">表达式</span><span class="o">|</span><span class="err">函数</span> <span class="err">【</span><span class="k">from</span> <span class="err">表】</span> <span class="err">【</span><span class="k">where</span> <span class="err">条件】</span> <span class="k">union</span> <span class="err">【</span><span class="k">all</span><span class="err">】</span>
+	<span class="k">select</span> <span class="err">字段</span><span class="o">|</span><span class="err">常量</span><span class="o">|</span><span class="err">表达式</span><span class="o">|</span><span class="err">函数</span> <span class="err">【</span><span class="k">from</span> <span class="err">表】</span> <span class="err">【</span><span class="k">where</span> <span class="err">条件】</span> <span class="k">union</span>  <span class="err">【</span><span class="k">all</span><span class="err">】</span>
+	<span class="p">.....</span>
+	<span class="k">select</span> <span class="err">字段</span><span class="o">|</span><span class="err">常量</span><span class="o">|</span><span class="err">表达式</span><span class="o">|</span><span class="err">函数</span> <span class="err">【</span><span class="k">from</span> <span class="err">表】</span> <span class="err">【</span><span class="k">where</span> <span class="err">条件】</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>特点：</p>
+<ol>
+<li>多条查询语句的查询的列数必须是一致的</li>
+<li>多条查询语句的查询的列的类型几乎相同</li>
+<li>union代表去重，union all代表不去重</li>
+</ol>
+<h2 id="6-dml语言">6. DML语言</h2>
+<h3 id="61-插入">6.1 插入</h3>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">insert</span> <span class="k">into</span> <span class="err">表名</span><span class="p">(</span><span class="err">字段名，</span><span class="p">...)</span>
+<span class="k">values</span><span class="p">(</span><span class="err">值</span><span class="mi">1</span><span class="err">，</span><span class="p">...);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>特点：</p>
+<ol>
+<li>字段类型和值类型一致或兼容，而且一一对应</li>
+<li>可以为空的字段，可以不用插入值，或用null填充</li>
+<li>不可以为空的字段，必须插入值</li>
+<li>字段个数和值的个数必须一致</li>
+<li>字段可以省略，但默认所有字段，并且顺序和表中的存储顺序一致</li>
+</ol>
+<h3 id="62-修改">6.2 修改</h3>
+<p>修改单表语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">update</span> <span class="err">表名</span> <span class="k">set</span> <span class="err">字段</span><span class="o">=</span><span class="err">新值</span><span class="p">,</span><span class="err">字段</span><span class="o">=</span><span class="err">新值</span>
+<span class="err">【</span><span class="k">where</span> <span class="err">条件】</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>修改多表语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">update</span> <span class="err">表</span><span class="mi">1</span> <span class="err">别名</span><span class="mi">1</span><span class="p">,</span><span class="err">表</span><span class="mi">2</span> <span class="err">别名</span><span class="mi">2</span>
+<span class="k">set</span> <span class="err">字段</span><span class="o">=</span><span class="err">新值，字段</span><span class="o">=</span><span class="err">新值</span>
+<span class="k">where</span> <span class="err">连接条件</span>
+<span class="k">and</span> <span class="err">筛选条件</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="63-删除">6.3 删除</h3>
+<p>方式1：delete语句</p>
+<p>单表的删除： ★</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">delete</span> <span class="k">from</span> <span class="err">表名</span> <span class="err">【</span><span class="k">where</span> <span class="err">筛选条件】</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>多表的删除：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">delete</span> <span class="err">别名</span><span class="mi">1</span><span class="err">，别名</span><span class="mi">2</span>
+<span class="k">from</span> <span class="err">表</span><span class="mi">1</span> <span class="err">别名</span><span class="mi">1</span><span class="err">，表</span><span class="mi">2</span> <span class="err">别名</span><span class="mi">2</span>
+<span class="k">where</span> <span class="err">连接条件</span>
+<span class="k">and</span> <span class="err">筛选条件</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>方式2：truncate语句: <code>truncate table 表名</code></p>
+<p>两种方式的区别【面试题】</p>
+<ol>
+<li>truncate不能加where条件，而delete可以加where条件</li>
+<li>truncate的效率高一丢丢</li>
+<li>truncate 删除带自增长的列的表后，如果再插入数据，数据从1开始. delete 删除带自增长列的表后，如果再插入数据，数据从上一次的断点处开始</li>
+<li>truncate删除不能回滚，delete删除可以回滚</li>
+</ol>
+<h2 id="7-ddl语句">7. DDL语句</h2>
+<h3 id="71-库和表的管理">7.1 库和表的管理</h3>
+<p>库的管理：</p>
+<ul>
+<li>创建库: <code>create database 库名</code></li>
+<li>删除库: <code>drop database 库名</code></li>
+</ul>
+<p>表的管理：</p>
+<ul>
+<li>创建表</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="n">stuinfo</span><span class="p">(</span>
+	<span class="n">stuId</span> <span class="nb">INT</span><span class="p">,</span>
+	<span class="n">stuName</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+	<span class="n">gender</span> <span class="nb">CHAR</span><span class="p">,</span>
+	<span class="n">bornDate</span> <span class="n">DATETIME</span>
+	
+
+<span class="p">);</span>
+<span class="k">DESC</span> <span class="n">studentinfo</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>修改表 alter. 语法：<code>ALTER TABLE 表名 ADD|MODIFY|DROP|CHANGE COLUMN 字段名 【字段类型】;</code></p>
+<ul>
+<li>修改字段名<code>ALTER TABLE studentinfo CHANGE  COLUMN sex gender CHAR;</code></li>
+<li>修改表名<code>ALTER TABLE stuinfo RENAME [TO]  studentinfo;</code></li>
+<li>修改字段类型和列级约束<code>ALTER TABLE studentinfo MODIFY COLUMN borndate DATE ;</code></li>
+<li>添加字段<code>ALTER TABLE studentinfo ADD COLUMN email VARCHAR(20) first;</code></li>
+<li>删除字段<code>ALTER TABLE studentinfo DROP COLUMN email;</code></li>
+</ul>
+</li>
+<li>
+<p>删除表 <code>DROP TABLE [IF EXISTS] studentinfo;</code></p>
+</li>
+</ul>
+<h3 id="72-常见数据类型">7.2 常见数据类型</h3>
+<ul>
+<li>整型</li>
+<li>小数：
+<ul>
+<li>浮点型</li>
+<li>定点型</li>
+</ul>
+</li>
+<li>字符型</li>
+<li>日期型</li>
+<li>Blob类型</li>
+</ul>
+<h3 id="73-常见约束">7.3 常见约束</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">NOT</span> <span class="k">NULL</span>
+<span class="k">DEFAULT</span>
+<span class="k">UNIQUE</span>
+<span class="k">CHECK</span>
+<span class="k">PRIMARY</span> <span class="k">KEY</span>
+<span class="k">FOREIGN</span> <span class="k">KEY</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="8-tcl语言">8. TCL语言</h2>
+<p>数据库事务：通过一组逻辑操作单元（一组DML——sql语句），将数据从一种状态切换到另外一种状态</p>
+<p>特点（ACID）</p>
+<ul>
+<li>原子性：要么都执行，要么都回滚</li>
+<li>一致性：保证数据的状态操作前和操作后保持一致</li>
+<li>隔离性：多个事务同时操作相同数据库的同一个数据时，一个事务的执行不受另外一个事务的干扰</li>
+<li>持久性：一个事务一旦提交，则数据将持久化到本地，除非其他事务对其进行修改</li>
+</ul>
+<p>相关步骤：</p>
+<ol>
+<li>开启事务</li>
+<li>编写事务的一组逻辑操作单元（多条sql语句）</li>
+<li>提交事务或回滚事务</li>
+</ol>
+<p>事务的分类：</p>
+<ul>
+<li>
+<p>隐式事务，没有明显的开启和结束事务的标志. 比如<code>insert、update、delete</code>语句本身就是一个事务</p>
+</li>
+<li>
+<p>显式事务，具有明显的开启和结束事务的标志</p>
+<ol>
+<li>开启事务: 取消自动提交事务的功能</li>
+<li>编写事务的一组逻辑操作单元（多条sql语句）<code>insert, update, delete</code></li>
+<li>提交事务或回滚事务</li>
+</ol>
+</li>
+</ul>
+<p>使用到的关键字</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">set</span> <span class="n">autocommit</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">start</span> <span class="k">transaction</span><span class="p">;</span>
+<span class="k">commit</span><span class="p">;</span>
+<span class="k">rollback</span><span class="p">;</span>
+
+<span class="n">savepoint</span>  <span class="err">断点</span>
+<span class="k">commit</span> <span class="k">to</span> <span class="err">断点</span>
+<span class="k">rollback</span> <span class="k">to</span> <span class="err">断点</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>事务的隔离级别:</p>
+<ul>
+<li>
+<p>事务并发问题如何发生？当多个事务同时操作同一个数据库的相同数据时</p>
+</li>
+<li>
+<p>事务的并发问题有哪些？</p>
+<ul>
+<li>脏读：一个事务读取到了另外一个事务未提交的数据</li>
+<li>不可重复读：同一个事务中，多次读取到的数据不一致</li>
+<li>幻读：一个事务读取数据时，另外一个事务进行更新，导致第一个事务读取到了没有更新的数据</li>
+</ul>
+</li>
+<li>
+<p>如何避免事务的并发问题？通过设置事务的隔离级别</p>
+<ol>
+<li><code>READ UNCOMMITTED</code></li>
+<li><code>READ COMMITTED</code> 可以避免脏读</li>
+<li><code>REPEATABLE READ</code> 可以避免脏读、不可重复读和一部分幻读</li>
+<li><code>SERIALIZABLE</code>可以避免脏读、不可重复读和幻读</li>
+</ol>
+</li>
+<li>
+<p>设置隔离级别：<code>set session|global  transaction isolation level 隔离级别名;</code></p>
+</li>
+<li>
+<p>查看隔离级别：<code>select @@tx_isolation;</code></p>
+</li>
+</ul>
+<h2 id="9-视图">9. 视图</h2>
+<p>含义：理解成一张虚拟的表</p>
+<p>视图和表的区别：</p>
+<p>| Syntax | 使用方式 | 占用物理空间     |
+| :&mdash;        :&mdash;  |     &mdash;: |
+| 视图 | 完全相同  | 不占用，仅仅保存的是sql逻辑 |
+| 表   | 完全相同 | 占用 |</p>
+<p>视图的好处：</p>
+<ol>
+<li>sql语句提高重用性，效率高</li>
+<li>和表实现了分离，提高了安全性</li>
+</ol>
+<ul>
+<li>视图的创建</li>
+</ul>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">VIEW</span>  <span class="err">视图名</span>
+<span class="k">AS</span>
+<span class="err">查询语句</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>视图的增删改查</p>
+<ol>
+<li>
+<p>查看视图的数据 <code>SELECT * FROM my_v1 WHERE last_name='Partners';</code></p>
+</li>
+<li>
+<p>插入视图的数据 <code>INSERT INTO my_v4(last_name,department_id) VALUES('虚竹',90);</code></p>
+</li>
+<li>
+<p>修改视图的数据 <code>UPDATE my_v4 SET last_name ='梦姑' WHERE last_name='虚竹';</code></p>
+</li>
+<li>
+<p>删除视图的数据 <code>DELETE FROM my_v4;</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>某些视图不能更新.</p>
+<ul>
+<li>包含以下关键字的sql语句：<code>分组函数、distinct、group  by、having、union或者union all</code></li>
+<li>常量视图</li>
+<li>Select中包含子查询</li>
+<li>join</li>
+<li>from一个不能更新的视图</li>
+<li>where子句的子查询引用了from子句中的表</li>
+</ul>
+</li>
+<li>
+<p>视图逻辑的更新</p>
+</li>
+</ul>
+<p>方式一：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">OR</span> <span class="k">REPLACE</span> <span class="k">VIEW</span> <span class="n">test_v7</span>
+<span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">last_name</span> <span class="k">FROM</span> <span class="n">employees</span>
+<span class="k">WHERE</span> <span class="n">employee_id</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>方式二:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">VIEW</span> <span class="n">test_v7</span>
+<span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">employee_id</span> <span class="k">FROM</span> <span class="n">employees</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>视图的删除<code>DROP VIEW test_v1,test_v2,test_v3;</code></li>
+<li>视图结构的查看	<code>DESC test_v7;</code> <code>SHOW CREATE VIEW test_v7;</code></li>
+</ul>
+<h2 id="10-变量">10. 变量</h2>
+<h3 id="101-系统变量">10.1 系统变量</h3>
+<h4 id="1011-全局变量">10.1.1 全局变量</h4>
+<p>作用域：针对于所有会话（连接）有效，但不能跨重启</p>
+<ul>
+<li>查看所有全局变量 <code>SHOW GLOBAL VARIABLES;</code></li>
+<li>查看满足条件的部分系统变量 <code>SHOW GLOBAL VARIABLES LIKE '%char%';</code></li>
+<li>查看指定的系统变量的值 <code>SELECT @@global.autocommit;</code></li>
+<li>为某个系统变量赋值 <code>SET @@global.autocommit=0;</code> <code>SET GLOBAL autocommit=0;</code></li>
+</ul>
+<h4 id="1012-会话变量">10.1.2 会话变量</h4>
+<p>作用域：针对于当前会话（连接）有效</p>
+<ul>
+<li>查看所有会话变量 <code>SHOW SESSION VARIABLES;</code></li>
+<li>查看满足条件的部分会话变量 <code>SHOW SESSION VARIABLES LIKE '%char%';</code></li>
+<li>查看指定的会话变量的值 <code>SELECT @@autocommit;</code> <code>SELECT @@session.tx_isolation;</code></li>
+<li>为某个会话变量赋值 <code>SET @@session.tx_isolation='read-uncommitted';</code> <code>SET SESSION tx_isolation='read-committed';</code></li>
+</ul>
+<h3 id="102-自定义变量">10.2 自定义变量</h3>
+<h4 id="1021-用户变量">10.2.1 用户变量</h4>
+<p>声明并初始化：</p>
+<p><code>SET @变量名=值;</code>
+<code>SET @变量名:=值;</code>
+<code>SELECT @变量名:=值;</code></p>
+<p>赋值：</p>
+<p>方式一：一般用于赋简单的值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SET</span> <span class="err">变量名</span><span class="o">=</span><span class="err">值</span><span class="p">;</span>
+<span class="k">SET</span> <span class="err">变量名</span><span class="p">:</span><span class="o">=</span><span class="err">值</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="err">变量名</span><span class="p">:</span><span class="o">=</span><span class="err">值</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>方式二：一般用于赋表 中的字段值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">SELECT 字段名或表达式 INTO 变量
+FROM 表;
+</code></pre></td></tr></table>
+</div>
+</div><p>使用：<code>select @变量名;</code></p>
+<h4 id="1022-局部变量">10.2.2 局部变量</h4>
+<p>声明：<code>declare 变量名 类型 【default 值】;</code></p>
+<p>赋值：</p>
+<p>方式一：一般用于赋简单的值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SET</span> <span class="err">变量名</span><span class="o">=</span><span class="err">值</span><span class="p">;</span>
+<span class="k">SET</span> <span class="err">变量名</span><span class="p">:</span><span class="o">=</span><span class="err">值</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="err">变量名</span><span class="p">:</span><span class="o">=</span><span class="err">值</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>方式二：一般用于赋表 中的字段值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="err">字段名或表达式</span> <span class="k">INTO</span> <span class="err">变量</span>
+<span class="k">FROM</span> <span class="err">表</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用：<code>select 变量名</code></p>
+<h4 id="二者的区别">二者的区别：</h4>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">作用域</th>
+<th align="right">定义位置</th>
+<th align="right">语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">用户变量</td>
+<td align="left">当前会话</td>
+<td align="right">会话的任何地方</td>
+<td align="right">加@符号，不用指定类型</td>
+</tr>
+<tr>
+<td align="left">局部变量</td>
+<td align="left">定义它的BEGIN END中</td>
+<td align="right">BEGIN END的第一句话</td>
+<td align="right">一般不用加@,需要指定类型</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-存储过程和函数">11. 存储过程和函数</h2>
+<h3 id="存储过程">存储过程</h3>
+<p>含义：一组经过预先编译的sql语句的集合</p>
+<p>好处：</p>
+<ol>
+<li>提高了sql语句的重用性，减少了开发程序员的压力</li>
+<li>提高了效率</li>
+<li>减少了传输次数</li>
+</ol>
+<p>分类：</p>
+<ol>
+<li>无返回无参</li>
+<li>仅仅带in类型，无返回有参</li>
+<li>仅仅带out类型，有返回无参</li>
+<li>既带in又带out，有返回有参</li>
+<li>带inout，有返回有参</li>
+</ol>
+<p>注意：in、out、inout都可以在一个存储过程中带多个</p>
+<h4 id="创建存储过程">创建存储过程</h4>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">procedure</span> <span class="err">存储过程名</span><span class="p">(</span><span class="k">in</span><span class="o">|</span><span class="k">out</span><span class="o">|</span><span class="k">inout</span> <span class="err">参数名</span>  <span class="err">参数类型</span><span class="p">,...)</span>
+<span class="k">begin</span>
+	<span class="err">存储过程体</span>
+<span class="k">end</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>类似于方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">	修饰符 返回类型 方法名(参数类型 参数名,...){
+
+		方法体;
+	}
+</code></pre></td></tr></table>
+</div>
+</div><p>注意</p>
+<ol>
+<li>需要设置新的结束标记: <code>delimiter 新的结束标记</code>. 示例：<code>delimiter $</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="err">存储过程名</span><span class="p">(</span><span class="k">IN</span><span class="o">|</span><span class="k">OUT</span><span class="o">|</span><span class="k">INOUT</span> <span class="err">参数名</span>  <span class="err">参数类型</span><span class="p">,...)</span>
+<span class="k">BEGIN</span>
+	<span class="n">sql语句1</span><span class="p">;</span>
+	<span class="n">sql语句2</span><span class="p">;</span>
+
+<span class="k">END</span> <span class="err">$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>存储过程体中可以有多条sql语句，如果仅仅一条sql语句，则可以省略begin end</li>
+<li>参数前面的符号的意思
+<ul>
+<li>in:该参数只能作为输入 （该参数不能做返回值）</li>
+<li>out：该参数只能作为输出（该参数只能做返回值）</li>
+<li>inout：既能做输入又能做输出</li>
+</ul>
+</li>
+</ol>
+<p>调用存储过程 <code>call 存储过程名(实参列表)</code></p>
+<h3 id="函数">函数</h3>
+<h4 id="创建函数">创建函数</h4>
+<p>学过的函数：LENGTH、SUBSTR、CONCAT等</p>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">FUNCTION</span> <span class="err">函数名</span><span class="p">(</span><span class="err">参数名</span> <span class="err">参数类型</span><span class="p">,...)</span> <span class="k">RETURNS</span> <span class="err">返回类型</span>
+<span class="k">BEGIN</span>
+	<span class="err">函数体</span>
+
+<span class="k">END</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="调用函数-select-函数名实参列表">调用函数 <code>SELECT 函数名（实参列表）</code></h4>
+<p>###函数和存储过程的区别</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">关键字</th>
+<th align="left">调用语法</th>
+<th align="left">返回值</th>
+<th align="left">应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">函数</td>
+<td align="left">FUNCTION</td>
+<td align="left">SELECT 函数()</td>
+<td align="left">只能是一个</td>
+<td align="left">一般用于查询结果为一个值并返回时，当有返回值而且仅仅一个</td>
+</tr>
+<tr>
+<td align="left">存储过程</td>
+<td align="left">PROCEDURE</td>
+<td align="left">CALL 存储过程()</td>
+<td align="left">可以有0个或多个</td>
+<td align="left">一般用于更新</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-流程控制结构">12. 流程控制结构</h2>
+<h3 id="121-分支">12.1 分支</h3>
+<h4 id="if函数">if函数</h4>
+<ul>
+<li>语法：if(条件，值1，值2)</li>
+<li>特点：可以用在任何位置</li>
+</ul>
+<h4 id="case语句">case语句</h4>
+<p>语法：</p>
+<pre><code>情况一：类似于switch
+case 表达式
+when 值1 then 结果1或语句1(如果是语句，需要加分号) 
+when 值2 then 结果2或语句2(如果是语句，需要加分号)
+...
+else 结果n或语句n(如果是语句，需要加分号)
+end 【case】（如果是放在begin end中需要加上case，如果放在select后面不需要）
+
+情况二：类似于多重if
+case 
+when 条件1 then 结果1或语句1(如果是语句，需要加分号) 
+when 条件2 then 结果2或语句2(如果是语句，需要加分号)
+...
+else 结果n或语句n(如果是语句，需要加分号)
+end 【case】（如果是放在begin end中需要加上case，如果放在select后面不需要）
+</code></pre>
+<p>特点：
+可以用在任何位置</p>
+<h4 id="if-elseif语句">if elseif语句</h4>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">if</span> <span class="err">情况</span><span class="mi">1</span> <span class="k">then</span> <span class="err">语句</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">elseif</span> <span class="err">情况</span><span class="mi">2</span> <span class="k">then</span> <span class="err">语句</span><span class="mi">2</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">else</span> <span class="err">语句</span><span class="n">n</span><span class="p">;</span>
+<span class="k">end</span> <span class="k">if</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>特点：
+只能用在begin end中！！！！！！！！！！！！！！！</p>
+<h4 id="三者比较">三者比较：</h4>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">应用场合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">if函数</td>
+<td align="left">简单双分支</td>
+</tr>
+<tr>
+<td align="left">case结构</td>
+<td align="left">等值判断的多分支</td>
+</tr>
+<tr>
+<td align="left">if结构</td>
+<td align="left">区间判断的多分支</td>
+</tr>
+</tbody>
+</table>
+<h3 id="122-循环">12.2 循环</h3>
+<p>语法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="err">【标签：】</span><span class="n">WHILE</span> <span class="err">循环条件</span>  <span class="k">DO</span>
+	<span class="err">循环体</span>
+<span class="k">END</span> <span class="n">WHILE</span> <span class="err">【标签】</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>特点：</p>
+<ul>
+<li>只能放在BEGIN END里面</li>
+<li>如果要搭配leave跳转语句，需要使用标签，否则可以不用标签</li>
+<li>leave类似于java中的break语句，跳出所在循环！！！</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-08-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/mysql-atguigu/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mysql/">mysql</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/java-shk-12/" class="prev" rel="prev" title="Java零基础教程（十二.反射Reflection）"><i class="fas fa-angle-left fa-fw"></i>Java零基础教程（十二.反射Reflection）</a>
+            <a href="/jdbc-atguigu/" class="next" rel="next" title="JDBC基础">JDBC基础<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.73.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">wenzhe</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":200},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

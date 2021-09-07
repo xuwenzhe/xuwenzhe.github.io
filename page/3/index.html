@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://xuwenzhe.github.io/" />
 <meta property="og:image" content="https://xuwenzhe.github.io/logo.png"/>
-<meta property="og:updated_time" content="2021-08-23T23:30:48-07:00" />
+<meta property="og:updated_time" content="2021-09-03T22:18:20-07:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://xuwenzhe.github.io/logo.png"/>
 
@@ -103,6 +103,27 @@
         alt="/me/profile2.jpg"
         title="/me/profile2.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/xuwenzhe" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/wenzhexu" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="mailto:xxxx@xxxx.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/linux-intro/">Linux入门</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-19">2020-08-19</time></span></div><div class="content">目录结构  /bin (/usr/bin, /usr/local/bin): binary,存放最经常使用的命令 /sbin (/usr/sbin, /usr/local/sbin): s: super user, 存放系统管理员使用的系统管理程序 /home: 存放普通用户的主目录，每个用户都有一个自己的目录 /root: 超级权限者的用户主目录(This is not the root (/) filesystem. It is the home directory for the root user.) /lib: 系统开机所需要最基本的动态连接共享库，类似Windows的DLL文件。几乎所有应用程序都需要用到这些共享库 /etc: 系统管理所需要的配置文件和子目录 /usr: 用户的很多应用程序和文件都放在这个目录下，类似Windows的program files目录 /proc,/srv,/sys: 内核相关目录（不要轻易修改） /dev: 硬件以文件的形式存放在该处 /media: U盘，光驱，等等 /mnt: 用户临时挂载的文件系统 /opt: 存放安装软件 /usr/local: 存放安装软件所安装的目录，一般是通过编译源码的方式安装的程序 /var: 存放经常被修改的东西，比如日志文件   Vi/Vim快捷键  拷贝当前行yy, 拷贝当前行以下的5行5yy,粘贴p 删除当前行dd, 删除当前行以下的5行5dd 查找关键词/keyword,下一个出现n 显示行号:set nu,隐藏行号:set nonu 阅览最首行gg最末行G 撤销输入动作u 移动光标至第20行20+shift g  开关重启命令 1 2 3 4 5 6  sync # 把内存数据同步到磁盘，以下操作前先执行该命令 shutdown -h now # 立即关机 shutdown -h 1 # 1min 关机 shutdown -r now # 立即重启 halt # 等同于关机 reboot # 立即重启   用户管理 1 2 3 4 5 6 7 8 9 10  useradd xiaoming # 自动创建home下同名目录 passwd xiaoming # 指定密码 userdel xiaoming # 删除用户xiaoming，home下其目录会保留 userdel -r xiaoming # 删除用户xiaoming，home下其目录不会保留 su - xiaoming # 切换用户登陆， 权限不足会给提示，exit返回到原先用户 groupadd zuming # 创建组 groupdel zuming # 删除组 useradd -g zuming xiaoming # 创建用户时，指定组 id xiaoming # 查询用户信息 usermod -g zuming2 xiaoming # 修改用户所在组    用户配置文件在： /etc/passwd （用户id，组id，家目录，shell） 组配置文件在：/etc/group 口令配置文件（密码，登录信息）：/etc/shadow(加密的)  实用命令 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  man ls # 显示ls用法 help cd # 显示cd用法 touch filename # 创建空文件 cat -n filename ｜ more # 打开文件内容（只读方式）, -n 显示行号，more分页显示 more filename # 按页显示文件，空格翻页，Enter下一行，ctrl+f/b less filename # 分页查看，lazy加载，利于显示大文件 &#34;less is more&#34; ls -l &gt; filename # 重定向（覆盖） ls -l &gt;&gt; filename # 追加（append到尾部） head -n 5 filename # 只显示文件前5行（默认10行） tail -n 5 filename # 只显示文件后5行（默认10行） -f追踪文件更新，日志监控经常用 date &#34;+%Y-%m-%d %H:%M:%S&#34; # 按格式显示当前年月日时分秒，“+”必要， -s设定 cal # 显示当前日历 find [scope] [-name 文件名, -user 用户, -size 文件大小] grep [-n 显示匹配行行号， -i 忽略大小写] 查找内容 源文件 cat hello.</div><div class="post-footer">
+        <a href="/linux-intro/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/precision-recall/">Precision和Recall</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-12">2020-08-12</time></span></div><div class="content">什么是精确率（precision）与召回率（recall）？ Precision和Recall是衡量模型预测能力的指标。在简单的分类问题（种类数=2）中，根据实际答案与模型预测，可分为如下4种情况：
+ True Positive (TP) - 正确预测了阳类 True Negative (TN) - 正确预测了阴类 False Positive (FP) - 错误预测了阳类（实际为阴类） False Negative (FN) - 错误预测了阴类（实际为阳类）  注：True和False表示预测是否正确，Positive和Negative表示预测结果
+精准率和召回率定义：
+Precision = TP / (TP + FP)
+Recall = TP / (TP + FN)
+他们区别在分母不同，所取值范围均为0～1
+如何理解Precision和Recall？ 信息检索中，Precision又叫查准率（找得对），Recall又叫查全率（找得全）。
+举个例子，池塘有大龙虾30只，小龙虾70只。我们发明了一只捕大龙虾神器专捕大龙虾。神器一网下去，捕到大龙虾20只，小龙虾5只。那么：
+精准率 = 20 /（20 + 5） = 0.80
+召回率 = 20 / 30 = 0.67
+我们来看3个极端神器的Precision和Recall。
+ 神器谨慎版：只捕了一只，且为大龙虾。Precision = 1/1 = 1.0, Recall = 1/30 = 0.</div><div class="post-footer">
+        <a href="/precision-recall/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/machine-learning/">machine learning</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/cookie-track-user/">网络广告是如何用cookie来追踪用户的？</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-09">2020-08-09</time></span></div><div class="content">什么是Cookie 参考 Web客户端追踪(上)-Cookie追踪
 网络广告代理商是如何通过 cookie 收集用户信息的？ - LO的回答 - 知乎
@@ -167,20 +188,6 @@ You cannot compare money across time.
 Example: Power of Compounding!
 Peter Minuit bought the Manhattan Island from Native Americans for $24 in 1626.</div><div class="post-footer">
         <a href="/coursera-umich-fffsdm/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/hugo-blog-site/">使用 Hugo &#43; Github Pages 搭建个人博客</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>wenzhe</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-03">2020-07-03</time></span></div><div class="content">Hugo: 一个静态网页生成器，将markdown格式的博文编译为HTML，CSS，JavaScript
-Github Pages: 静态网页托管服务，将hugo转化后的博客公开给读者访问
-reference: Mogeko博客《使用 Hugo + GitHub Pages 搭建个人博客》
-Step 1 - 创建Github Pages对应的repo repo name: [username].github.io
-reference: Github Pages official page
-Step 2 - 安装Hugo (Mac系统)
-1  brew install hugo   reference: Hugo official quickstart
-Step 3 - 使用Hugo创建本地博客文件夹 1 2  hugo new site myBlog cd myBlog   创建myBlog文件夹来存放博客站点。其中：
- content存放markdown博文 themes存放皮肤主题 config.toml配置站点  Step 4 - 安装皮肤主题 此博客使用mogege主题，原repo
-安装主题至themes下
-1  git clone https://github.</div><div class="post-footer">
-        <a href="/hugo-blog-site/">Read More</a></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -192,6 +199,10 @@ Step 3 - 使用Hugo创建本地博客文件夹 1 2  hugo new site myBlog cd myBl
                 </li><li class="page-item active">
                     <span class="page-link">
                         <a href="/page/3/">3</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/4/">4</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
